@@ -144,7 +144,7 @@ app.post('/send-project-brief', async (req, res) => {
                         </div>
 
                         <!-- Footer Section -->
-                        <div style='background-color: #020617; padding: 40px 30px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05);'>
+                        <div style='background: linear-gradient(180deg, rgba(15,23,42,1) 0%, rgba(2,6,23,1) 100%); padding: 40px 30px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05);'>
                             <img src="https://hdlpermacodetech.com/images/HDL_HexShield_Icon.png" alt="Shield Icon" style="height: 35px; width: auto; border: 0; outline: none; text-decoration: none; display: inline-block; margin-bottom: 20px; opacity: 0.8;">
                             
                             <p style='margin: 0 0 25px; color: #38bdf8; font-size: 14px; font-weight: 500; letter-spacing: 0.5px;'>Building Secure. Scalable. Professional Web Solutions.</p>
@@ -216,7 +216,7 @@ app.post('/send-project-brief', async (req, res) => {
                         </div>
 
                         <!-- Footer Section -->
-                        <div style='background-color: #020617; padding: 40px 30px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05);'>
+                        <div style='background: linear-gradient(180deg, rgba(15,23,42,1) 0%, rgba(2,6,23,1) 100%); padding: 40px 30px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05);'>
                             <img src="https://hdlpermacodetech.com/images/HDL_HexShield_Icon.png" alt="Shield Icon" style="height: 35px; width: auto; border: 0; outline: none; text-decoration: none; display: inline-block; margin-bottom: 20px; opacity: 0.8;">
                             
                             <p style='margin: 0 0 25px; color: #38bdf8; font-size: 14px; font-weight: 500; letter-spacing: 0.5px;'>Building Secure. Scalable. Professional Web Solutions.</p>
