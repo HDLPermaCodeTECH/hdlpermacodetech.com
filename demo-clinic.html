@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitality Clinic - Healthcare Demo</title>
+    <link rel="icon" type="image/png" href="images/HDL_HexShield_Icon.png">
+    <link rel="apple-touch-icon" href="images/HDL_HexShield_Icon.png">
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --clinic-primary: #0284c7;
+            /* Trust blue */
+            --clinic-secondary: #0ea5e9;
+            --clinic-acc: #10b981;
+            /* Health green */
+        }
+
+        body {
+            background-color: #f0f9ff;
+            /* Very light sky blue */
+            color: #334155;
+            /* Slate grayish blue */
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .clinic-header {
+            background: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .clinic-logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--clinic-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .clinic-links a {
+            color: #475569;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .clinic-links a:hover {
+            color: var(--clinic-primary);
+        }
+
+        .clinic-btn {
+            background-color: var(--clinic-acc);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.39);
+        }
+
+        .clinic-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.23);
+        }
+
+        .clinic-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 85vh;
+        }
+
+        .clinic-hero-text {
+            padding: 5rem 5% 5rem 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .clinic-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .clinic-subtitle {
+            font-size: 1.25rem;
+            color: #64748b;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .clinic-hero-img {
+            background: url('assets/demo/clinic-hero.png') center/cover;
+            border-bottom-left-radius: 4rem;
+            min-height: 400px;
+            width: 100%;
+            box-shadow: -20px 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .clinic-services {
+            padding: 6rem 10%;
+            text-align: center;
+            background: white;
+        }
+
+        .clinic-services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .clinic-card {
+            padding: 3rem 2rem;
+            background: #f8fafc;
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e2e8f0;
+        }
+
+        .clinic-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: var(--clinic-secondary);
+        }
+
+        .clinic-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .clinic-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Doctors Section */
+        .doctors-section {
+            padding: 6rem 10%;
+            background: #f0f9ff;
+            text-align: center;
+        }
+
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .doctor-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .doctor-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .doctor-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .doctor-info {
+            padding: 2rem;
+        }
+
+        /* Go back overlay */
+        .demo-return {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--clinic-primary);
+            padding: 1rem 2rem;
+            border-radius: 2rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            z-index: 9999;
+            box-shadow: 0 10px 30px rgba(2, 132, 199, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .demo-return:hover {
+            background: #0369a1;
+            transform: scale(1.05);
+        }
+
+        /* NEW FEATURES CSS */
+
+        /* Preloader */
+        .clinic-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #f0f9ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease;
+        }
+
+        .heartbeat {
+            font-size: 4rem;
+            text-shadow: 0 0 20px rgba(14, 165, 233, 0.5);
+            animation: beat 1s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes beat {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.2);
+            }
+        }
+
+        /* Stats Section */
+        .clinic-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            padding: 5rem 10%;
+            background: var(--clinic-primary);
+            color: white;
+            text-align: center;
+            margin-top: -4rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stat-number {
+            font-size: clamp(2.5rem, 4vw, 4rem);
+            font-weight: 800;
+            font-family: 'Outfit';
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .clinic-stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+                padding: 3rem 5%;
+            }
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 1.5rem;
+            width: 90%;
+            max-width: 500px;
+            transform: translateY(30px);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            position: relative;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #64748b;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--clinic-primary);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 0.5rem;
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s;
+            box-sizing: border-box;
+            background: #f8fafc;
+        }
+
+        .form-input:focus {
+            border-color: var(--clinic-primary);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .delay-3 {
+            transition-delay: 0.3s;
+        }
+    </style>
+</head>
+
+<body style="cursor: auto;">
+
+    <!-- Preloader -->
+    <div class="clinic-loader" id="loader">
+        <div class="heartbeat">⚕️</div>
+    </div>
+
+    <!-- Appointment Modal -->
+    <div class="modal-overlay" id="appointmentModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">✕</button>
+            <h2 style="font-family: 'Outfit'; font-size: 2rem; color: #0f172a; margin-bottom: 0.5rem;">Book a
+                Consultation</h2>
+            <p style="color: #64748b; margin-bottom: 2rem;">Secure your preferred schedule with our leading specialists.
+            </p>
+            <div class="form-group">
+                <input type="text" class="form-input" placeholder="Full Name">
+            </div>
+            <div class="form-group">
+                <input type="tel" class="form-input" placeholder="Phone Number">
+            </div>
+            <div class="form-group">
+                <input type="date" class="form-input">
+            </div>
+            <button class="clinic-btn"
+                style="width: 100%; text-align: center; border: none; font-size: 1.1rem; cursor: pointer; margin-top: 1rem;">Confirm
+                Appointment</button>
+        </div>
+    </div>
+
+    <header class="clinic-header">
+        <a href="#" class="clinic-logo">
+            <span style="font-size: 2rem; color: var(--clinic-acc);">+</span> Vitality<span
+                style="color:#0ea5e9">Clinic</span>
+        </a>
+        <nav class="clinic-links">
+            <a href="#">Treatments</a>
+            <a href="#">Our Doctors</a>
+            <a href="#">Patient Info</a>
+            <a href="#">Contact</a>
+        </nav>
+        <a href="#" class="clinic-btn open-modal-btn">Book Appointment</a>
+    </header>
+
+    <section class="clinic-hero">
+        <div class="clinic-hero-text reveal">
+            <h1 class="clinic-title">Modern Healthcare.<br><span style="color: var(--clinic-primary);">Compassionate
+                    Care.</span></h1>
+            <p class="clinic-subtitle">Experience a new standard of medical excellence. Our state-of-the-art facility
+                combines advanced technology with personalized patient attention for your family's lifelong wellness.
+            </p>
+            <div style="display: flex; gap: 1rem;">
+                <a href="#" class="clinic-btn open-modal-btn" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Schedule
+                    Visit</a>
+                <a href="#" class="clinic-btn"
+                    style="background: white; color: var(--clinic-primary); box-shadow: none; border: 2px solid var(--clinic-primary);">Meet
+                    the Team</a>
+            </div>
+        </div>
+        <div class="clinic-hero-img reveal delay-1"></div>
+    </section>
+
+    <!-- Animated Statistics Section -->
+    <section class="clinic-stats reveal">
+        <div>
+            <div class="stat-number" data-target="15">0</div>
+            <div class="stat-label">Years Experience</div>
+        </div>
+        <div>
+            <div class="stat-number" data-target="99">0</div>
+            <div class="stat-label">Success Rate (%)</div>
+        </div>
+        <div>
+            <div class="stat-number" data-target="10">0</div>
+            <div class="stat-label">Thousands Treated</div>
+        </div>
+        <div>
+            <div class="stat-number" data-target="45">0</div>
+            <div class="stat-label">Top Specialists</div>
+        </div>
+    </section>
+
+    <section class="clinic-services">
+        <h2 style="font-family: 'Outfit'; font-size: 2.5rem; color: #0f172a; margin-bottom: 1rem;">Specialized Medical
+            Services</h2>
+        <p style="color: #64748b; font-size: 1.15rem; max-width: 700px; margin: 0 auto;">Comprehensive treatment plans
+            tailored individually by leading specialists.</p>
+
+        <div class="clinic-services-grid">
+            <div class="clinic-card reveal delay-1" style="overflow: hidden; padding: 2rem;">
+                <img src="assets/demo/clinic-service1.png" alt="General Practice">
+                <h3 style="font-size: 1.5rem; color: #0f172a; margin-bottom: 1rem;">General Practice</h3>
+                <p style="color: #475569; line-height: 1.6;">Routine check-ups, preventive care, and holistic health
+                    management for patients of all ages.</p>
+            </div>
+            <div class="clinic-card reveal delay-2" style="overflow: hidden; padding: 2rem;">
+                <img src="assets/demo/clinic-service2.png" alt="Cardiology">
+                <h3 style="font-size: 1.5rem; color: #0f172a; margin-bottom: 1rem;">Cardiology</h3>
+                <p style="color: #475569; line-height: 1.6;">Advanced diagnostics and treatment for heart conditions
+                    using cutting-edge medical tracking arrays.</p>
+            </div>
+            <div class="clinic-card reveal delay-3" style="overflow: hidden; padding: 2rem;">
+                <img src="assets/demo/clinic-service3.png" alt="Laboratory">
+                <h3 style="font-size: 1.5rem; color: #0f172a; margin-bottom: 1rem;">Laboratory</h3>
+                <p style="color: #475569; line-height: 1.6;">Rapid, highly accurate on-site testing returning most
+                    urgent diagnostic results within hours.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet the Doctors Section -->
+    <section class="doctors-section">
+        <h2 style="font-family: 'Outfit'; font-size: 2.5rem; color: #0f172a; margin-bottom: 1rem;">Meet Our Specialists
+        </h2>
+        <p style="color: #64748b; font-size: 1.15rem; max-width: 700px; margin: 0 auto;">Dedicated professionals
+            bringing world-class healthcare to our community.</p>
+
+        <div class="doctors-grid">
+            <div class="doctor-card reveal delay-1">
+                <img src="assets/demo/clinic-doc1.png" alt="Dr. Sarah Jenkins" class="doctor-img">
+                <div class="doctor-info">
+                    <h3 style="font-size: 1.4rem; color: #0f172a; margin-bottom: 0.5rem; font-family: 'Outfit';">Dr.
+                        Sarah Jenkins</h3>
+                    <p style="color: var(--clinic-primary); font-weight: 600; margin-bottom: 1rem;">Chief of Cardiology
+                    </p>
+                    <p style="color: #64748b; font-size: 0.95rem; line-height: 1.5;">Board-certified cardiologist with
+                        15+ years of experience in minimally invasive procedures.</p>
+                </div>
+            </div>
+            <div class="doctor-card reveal delay-2">
+                <img src="assets/demo/clinic-doc2.png" alt="Dr. Marcus Chen" class="doctor-img">
+                <div class="doctor-info">
+                    <h3 style="font-size: 1.4rem; color: #0f172a; margin-bottom: 0.5rem; font-family: 'Outfit';">Dr.
+                        Marcus Chen</h3>
+                    <p style="color: var(--clinic-primary); font-weight: 600; margin-bottom: 1rem;">Lead Surgeon</p>
+                    <p style="color: #64748b; font-size: 0.95rem; line-height: 1.5;">Pioneering robotic surgery
+                        techniques to ensure faster recovery times for our patients.</p>
+                </div>
+            </div>
+            <div class="doctor-card reveal delay-3">
+                <img src="assets/demo/clinic-doc3.png" alt="Dr. Elena Rodriguez" class="doctor-img">
+                <div class="doctor-info">
+                    <h3 style="font-size: 1.4rem; color: #0f172a; margin-bottom: 0.5rem; font-family: 'Outfit';">Dr.
+                        Elena Rodriguez</h3>
+                    <p style="color: var(--clinic-primary); font-weight: 600; margin-bottom: 1rem;">Pediatric Lead</p>
+                    <p style="color: #64748b; font-size: 0.95rem; line-height: 1.5;">Dedicated to providing
+                        compassionate and comprehensive care for infants, children, and teens.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Return to Templates Button -->
+    <a href="templates.html" class="demo-return">
+        ← Back to Templates Catalog
+    </a>
+
+    <footer class="footer" style="margin-top: auto;">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="#" class="clinic-logo">
+                    <span style="font-size: 2rem; color: var(--clinic-acc);">+</span> Vitality<span
+                        style="color:#0ea5e9">Clinic</span>
+                </a>
+                <p>&copy; 2026 Vitality Clinic. All rights reserved.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Preloader Logic
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').style.opacity = '0';
+                setTimeout(() => document.getElementById('loader').style.display = 'none', 500);
+            }, 1000); // 1-second calming pulse
+        });
+
+        // Modal Overlay Logic
+        const modal = document.getElementById('appointmentModal');
+        const closeBtn = document.getElementById('closeModal');
+        const openBtns = document.querySelectorAll('.open-modal-btn');
+
+        openBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                modal.classList.add('active');
+            });
+        });
+
+        closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.classList.remove('active');
+        });
+
+        // Scroll Observer & Animated Counters
+        let hasCounted = false;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+
+                    // Fire counter animation exactly once when stats section appears
+                    if (entry.target.classList.contains('clinic-stats') && !hasCounted) {
+                        hasCounted = true;
+                        const counters = document.querySelectorAll('.stat-number');
+                        counters.forEach(counter => {
+                            const updateCount = () => {
+                                const target = +counter.getAttribute('data-target');
+                                const count = +counter.innerText;
+                                const speed = target / 60; // adjust for timing
+
+                                if (count < target) {
+                                    counter.innerText = Math.ceil(count + speed);
+                                    setTimeout(updateCount, 30);
+                                } else {
+                                    if (target === 10) counter.innerText = '10k+';
+                                    else if (target === 99) counter.innerText = '99%';
+                                    else counter.innerText = target + '+';
+                                }
+                            };
+                            updateCount();
+                        });
+                    }
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

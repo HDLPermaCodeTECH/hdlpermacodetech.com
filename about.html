@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | HDL Perma Code TECH</title>
+    <meta name="description"
+        content="Learn more about the architect behind HDL Perma Code TECH. Full-stack web developer and designer building high-converting websites.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&family=Outfit:wght@300;500;800&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/HDL_HexShield_Icon.png">
+    <link rel="apple-touch-icon" href="images/HDL_HexShield_Icon.png">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Specific Styles for About Page */
+        .about-hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 120px;
+            position: relative;
+        }
+
+        .about-hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        @media (max-width: 992px) {
+            .about-hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 4/5;
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.4), rgba(2, 6, 23, 0.1));
+            border: 1px solid var(--glass-border);
+            border-radius: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-placeholder::after {
+            content: '';
+        }
+
+        .photo-accents {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.1), transparent 50%),
+                radial-gradient(circle at bottom left, rgba(129, 140, 248, 0.1), transparent 50%);
+            pointer-events: none;
+        }
+
+        /* Timeline Styles */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--accent-cyan), var(--accent-indigo), transparent);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin-bottom: 4rem;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .timeline-item.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 2rem;
+            background: var(--bg-surface);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: auto;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+            text-align: left;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            background: var(--bg-base);
+            border: 4px solid var(--accent-cyan);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 80px !important;
+                text-align: left !important;
+            }
+
+            .timeline-dot {
+                left: 30px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content {
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Premium Initial Preloader -->
+    <div id="hdl-preloader" class="hdl-preloader">
+        <div class="preloader-content">
+            <img src="images/HDL_HexShield_Icon.png" alt="HDL Shield" class="preloader-shield">
+            <div class="preloader-glow"></div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor-dot" id="cursorDot"></div>
+    <div class="custom-cursor-ring" id="cursorRing"></div>
+
+    <canvas id="bgCanvas"></canvas>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <svg viewBox="0 0 950 140" class="nav-logo-svg" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(10, 10)">
+                        <path d="M45 5 L85 28 L85 72 L45 95 L5 72 L5 28 Z" fill="none" stroke="url(#nav_hex_grad)"
+                            stroke-width="8" stroke-linejoin="round" />
+                        <path d="M25 35 L25 65" stroke="#ffffff" stroke-width="7" stroke-linecap="round" />
+                        <path d="M65 35 L65 65" stroke="#ffffff" stroke-width="7" stroke-linecap="round" />
+                        <path d="M25 50 H65" stroke="#ffffff" stroke-width="7" stroke-linecap="round" opacity="0.3" />
+                        <path d="M52 28 L38 72" stroke="#38bdf8" stroke-width="7" stroke-linecap="round" />
+                        <circle cx="52" cy="28" r="3" fill="#38bdf8" />
+                        <circle cx="38" cy="72" r="3" fill="#38bdf8" />
+                        <defs>
+                            <linearGradient id="nav_hex_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#818cf8;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                    </g>
+                    <text x="120" y="78" class="logo-text">
+                        <tspan class="fw-900 fill-white">HDL</tspan>
+                        <tspan dx="-8" class="fw-100 fill-slate">Perma</tspan>
+                        <tspan dx="-8" class="fw-700 fill-cyan">Code</tspan>
+                        <tspan dx="-8" class="fw-900 fill-indigo">TECH</tspan>
+                    </text>
+                    <rect x="120" y="95" width="650" height="5" fill="url(#nav_line_grad)" rx="2.5" />
+                    <defs>
+                        <linearGradient id="nav_line_grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
+                            <stop offset="60%" style="stop-color:#818cf8;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#38bdf8;stop-opacity:0" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html" style="color: var(--accent-cyan);">About</a>
+                <a href="services.html">Services</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="templates.html">Templates</a>
+                <a href="index.html#portfolio">Work</a>
+                <a href="start-a-project.html" class="btn btn-outline">Start a Project</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <section class="about-hero" id="about-hero">
+        <div class="about-hero-grid">
+            <div class="hero-text reveal">
+                <h1 class="hero-title" style="font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1.5rem;">
+                    Building Modern Websites That Turn <span class="text-gradient">Visitors Into Customers.</span>
+                </h1>
+                <p class="hero-subtitle" style="margin-bottom: 2rem;">
+                    Welcome to <strong>HDL Perma Code TECH</strong>, a digital agency specializing in modern,
+                    responsive, and conversion-focused websites for businesses worldwide.
+                    <br><br>
+                    We help startups, entrepreneurs, and growing companies build strong online presence through clean
+                    design, fast performance, and strategic user experience.
+                    <br><br>
+                    <strong>Our goal is simple:</strong><br>
+                    To create websites that don’t just look good — but generate real business results.
+                </p>
+                <div class="hero-actions">
+                    <a href="start-a-project.html" class="btn btn-primary btn-large">Hire Us</a>
+                </div>
+            </div>
+            <div class="reveal delay-1">
+                <div class="photo-placeholder card" style="padding: 0;">
+                    <div class="photo-accents" style="z-index: 2;"></div>
+                    <img src="./images/hdl-dev-enhanced.png" alt="Studio Setup"
+                        style="width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 1;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. My Approach Section -->
+    <section class="who-i-am"
+        style="background: var(--bg-surface); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);">
+        <div class="section-header reveal">
+            <h2 class="section-title">Our <span class="text-gradient">Approach</span></h2>
+            <p>A website is more than design. It’s your digital storefront.</p>
+        </div>
+
+        <div class="reveal" style="max-width: 800px; margin: 0 auto 3rem; text-align: center;">
+            <p style="font-size: 1.1rem; color: var(--text-main); margin-bottom: 2rem;">That’s why we focus on:</p>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
+                <span
+                    style="padding: 0.5rem 1rem; background: rgba(56, 189, 248, 0.1); color: var(--accent-cyan); border-radius: 2rem; border: 1px solid rgba(56, 189, 248, 0.3);">Clean
+                    and modern UI/UX</span>
+                <span
+                    style="padding: 0.5rem 1rem; background: rgba(56, 189, 248, 0.1); color: var(--accent-cyan); border-radius: 2rem; border: 1px solid rgba(56, 189, 248, 0.3);">Mobile-first
+                    responsive development</span>
+                <span
+                    style="padding: 0.5rem 1rem; background: rgba(56, 189, 248, 0.1); color: var(--accent-cyan); border-radius: 2rem; border: 1px solid rgba(56, 189, 248, 0.3);">Fast
+                    loading performance</span>
+                <span
+                    style="padding: 0.5rem 1rem; background: rgba(56, 189, 248, 0.1); color: var(--accent-cyan); border-radius: 2rem; border: 1px solid rgba(56, 189, 248, 0.3);">SEO-friendly
+                    structure</span>
+                <span
+                    style="padding: 0.5rem 1rem; background: rgba(56, 189, 248, 0.1); color: var(--accent-cyan); border-radius: 2rem; border: 1px solid rgba(56, 189, 248, 0.3);">Conversion-focused
+                    layouts</span>
+                <span
+                    style="padding: 0.5rem 1rem; background: rgba(56, 189, 248, 0.1); color: var(--accent-cyan); border-radius: 2rem; border: 1px solid rgba(56, 189, 248, 0.3);">Clear
+                    call-to-actions</span>
+            </div>
+            <p style="font-size: 1.15rem; color: var(--text-main); font-weight: 500;">Every project we build is designed
+                to increase credibility, engagement, and client inquiries.</p>
+        </div>
+    </section>
+
+    <!-- 4. Core Skills Section -->
+    <section class="skills-section">
+        <div class="section-header reveal">
+            <h2 class="section-title">Core <span class="text-gradient">Skills</span></h2>
+            <p>The technical arsenal we use to build your digital dominance.</p>
+        </div>
+
+        <div class="grid about-grid" style="align-items: flex-start;">
+            <div class="card reveal delay-1"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; text-align: center; padding: 2rem;">
+                <h3
+                    style="grid-column: 1 / -1; margin-bottom: 1rem; color: var(--accent-cyan); text-align: left; font-size: 1.25rem;">
+                    Frontend Development</h3>
+                <div>
+                    <img src="https://cdn.simpleicons.org/html5/38bdf8" alt="HTML5"
+                        style="width: 40px; margin-bottom: 0.5rem;">
+                    <h4 style="font-size: 1rem;">HTML</h4>
+                </div>
+                <div>
+                    <svg viewBox="0 0 24 24" style="width: 40px; margin-bottom: 0.5rem; fill: #38bdf8;"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm17.09 4.109H5.93l.251 2.982h12.118l-.222 2.923H6.46l.205 2.766h9.585l-.39 4.38-4.04 1.144-4.032-1.144-.265-2.946H4.281l.465 5.2 7.068 2.012 7.072-2.012 1.096-12.305z" />
+                    </svg>
+                    <h4 style="font-size: 1rem;">CSS</h4>
+                </div>
+                <div>
+                    <img src="https://cdn.simpleicons.org/javascript/38bdf8" alt="JavaScript"
+                        style="width: 40px; margin-bottom: 0.5rem;">
+                    <h4 style="font-size: 1rem;">JavaScript</h4>
+                </div>
+                <div>
+                    <svg viewBox="0 0 24 24"
+                        style="width: 40px; margin-bottom: 0.5rem; fill: none; stroke: #38bdf8; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                        <rect x="16" y="11" width="6" height="10" rx="1"></rect>
+                    </svg>
+                    <h4 style="font-size: 1rem;">Responsive Design</h4>
+                </div>
+
+                <div style="grid-column: 1 / -1; height: 1px; background: var(--glass-border); margin: 1rem 0;"></div>
+
+                <h3
+                    style="grid-column: 1 / -1; margin-bottom: 1rem; color: var(--accent-cyan); text-align: left; font-size: 1.25rem;">
+                    Platforms & Tools</h3>
+                <div>
+                    <img src="https://cdn.simpleicons.org/wordpress/38bdf8" alt="WordPress"
+                        style="width: 40px; margin-bottom: 0.5rem;">
+                    <h4 style="font-size: 1rem;">WordPress</h4>
+                </div>
+                <div style="grid-column: span 2;">
+                    <img src="https://cdn.simpleicons.org/webflow/38bdf8" alt="No-code"
+                        style="width: 40px; margin-bottom: 0.5rem;">
+                    <h4 style="font-size: 1rem;">No-code Builders & Templates</h4>
+                </div>
+            </div>
+
+            <div class="about-skills reveal delay-2 card" style="padding: 2.5rem;">
+                <h3 style="margin-bottom: 2rem; color: var(--accent-cyan); font-size: 1.25rem;">Design & Optimization
+                </h3>
+                <div class="skill-item">
+                    <div class="skill-info"><span>UI/UX Design</span><span class="text-gradient">95%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-fill" data-width="95%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Landing Page Optimization</span><span class="text-gradient">98%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-fill" data-width="98%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Technical SEO Implementation</span><span
+                            class="text-gradient">90%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-fill" data-width="90%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Website Speed Optimization</span><span
+                            class="text-gradient">92%</span></div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-fill" data-width="92%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Graphic Design</span><span class="text-gradient">90%</span></div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-fill" data-width="90%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Professional Background Section -->
+    <section class="experience"
+        style="background: var(--bg-surface); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);">
+        <div class="section-header reveal">
+            <h2 class="section-title">Studio <span class="text-gradient">Background</span></h2>
+            <p style="max-width: 800px; margin: 0 auto;">With years of professional experience in web development,
+                graphic design, and IT strategy, we bring both technical knowledge and creative execution to every
+                project.
+            </p>
+        </div>
+
+        <div class="reveal" style="max-width: 800px; margin: 2rem auto 4rem; text-align: center;">
+            <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem;">Our collective experience in IT
+                and digital
+                management helped us develop:</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 style="color: var(--text-main); margin-bottom: 0.5rem;">Web Development & Strategy</h3>
+                    <p>Building a strong foundation with attention to detail and organized workflow systems.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 style="color: var(--text-main); margin-bottom: 0.5rem;">Technical Problem Solving</h3>
+                    <p>Strong technical troubleshooting skills developed through diverse IT and digital management
+                        roles.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 style="color: var(--text-main); margin-bottom: 0.5rem;">Client Communication</h3>
+                    <p>Providing clear communication with clients to ensure total transparency throughout projects.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3 style="color: var(--text-main); margin-bottom: 0.5rem;">Reliability & Professionalism</h3>
+                    <p>Focused on on-time project delivery. We understand how important reliability and professionalism
+                        are when working with international clients — and we prioritize both.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Why Clients Choose Us Section -->
+    <section class="why-us">
+        <div class="section-header reveal">
+            <h2 class="section-title">Why Clients <span class="text-gradient">Choose Us</span></h2>
+            <p>We don’t just complete projects — we build partnerships.</p>
+        </div>
+
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+            <div class="card reveal delay-1" style="padding: 2rem;">
+                <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <span style="color: var(--accent-cyan);">✓</span> Clean & Maintainable Code
+                </h3>
+            </div>
+            <div class="card reveal delay-2" style="padding: 2rem;">
+                <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <span style="color: var(--accent-cyan);">✓</span> Modern & Professional Designs
+                </h3>
+            </div>
+            <div class="card reveal delay-3" style="padding: 2rem;">
+                <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <span style="color: var(--accent-cyan);">✓</span> Clear & Fast Communication
+                </h3>
+            </div>
+            <div class="card reveal delay-1" style="padding: 2rem;">
+                <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <span style="color: var(--accent-cyan);">✓</span> Deadline-Oriented Workflow
+                </h3>
+            </div>
+            <div class="card reveal delay-2" style="padding: 2rem;">
+                <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <span style="color: var(--accent-cyan);">✓</span> Business-Focused Solutions
+                </h3>
+            </div>
+            <div class="card reveal delay-3" style="padding: 2rem;">
+                <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <span style="color: var(--accent-cyan);">✓</span> Long-Term Collaboration Mindset
+                </h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Let's Work Together Section -->
+    <section class="cta"
+        style="background: linear-gradient(145deg, rgba(30, 41, 59, 1), rgba(2, 6, 23, 1)); border-top: 1px solid var(--glass-border); text-align: center;">
+        <div class="reveal">
+            <h2 class="section-title" style="margin-bottom: 1rem;">Let's <span class="text-gradient">Work
+                    Together</span></h2>
+            <p style="font-size: 1.15rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 2rem;">
+                If you’re looking for a reliable Digital Agency that understands both design and business strategy,
+                we’re
+                ready to help.
+                <br><br>
+                <strong style="color: var(--text-main);">Whether you need:</strong> A custom business website • A
+                high-converting landing page • A website redesign • Template customization • Ongoing website support
+            </p>
+            <h3 style="margin-bottom: 2rem; color: var(--text-main); font-size: 1.3rem;">Let’s build something that
+                elevates your brand and drives results.</h3>
+
+            <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+                <a href="start-a-project.html" class="btn btn-primary btn-large">Hire Us</a>
+                <a href="index.html#portfolio" class="btn btn-outline btn-large">View Portfolio</a>
+                <a href="start-a-project.html" class="btn btn-secondary btn-large">Start Your Project Today</a>
+            </div>
+        </div>
+    </section>
+
+        <footer class="footer">
+        <div class="footer-content">
+            <!-- Brand Column -->
+            <div class="footer-col footer-brand">
+                <a href="index.html" class="nav-logo">
+                    <svg viewBox="0 0 950 140" class="nav-logo-svg" xmlns="http://www.w3.org/2000/svg">
+                        <g transform="translate(10, 10)">
+                            <path d="M45 5 L85 28 L85 72 L45 95 L5 72 L5 28 Z" fill="none" stroke="url(#ftr_hex_grad)"
+                                stroke-width="8" stroke-linejoin="round" />
+                            <path d="M25 35 L25 65" stroke="#ffffff" stroke-width="7" stroke-linecap="round" />
+                            <path d="M65 35 L65 65" stroke="#ffffff" stroke-width="7" stroke-linecap="round" />
+                            <path d="M25 50 H65" stroke="#ffffff" stroke-width="7" stroke-linecap="round"
+                                opacity="0.3" />
+                            <path d="M52 28 L38 72" stroke="#38bdf8" stroke-width="7" stroke-linecap="round" />
+                            <circle cx="52" cy="28" r="3" fill="#38bdf8" />
+                            <circle cx="38" cy="72" r="3" fill="#38bdf8" />
+                            <defs>
+                                <linearGradient id="ftr_hex_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#818cf8;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                        </g>
+                        <text x="120" y="78" class="logo-text">
+                            <tspan class="fw-900 fill-white">HDL</tspan>
+                            <tspan dx="-8" class="fw-100 fill-slate">Perma</tspan>
+                            <tspan dx="-8" class="fw-700 fill-cyan">Code</tspan>
+                            <tspan dx="-8" class="fw-900 fill-indigo">TECH</tspan>
+                        </text>
+                        <rect x="120" y="95" width="650" height="5" fill="url(#ftr_line_grad)" rx="2.5" />
+                        <defs>
+                            <linearGradient id="ftr_line_grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
+                                <stop offset="60%" style="stop-color:#818cf8;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#38bdf8;stop-opacity:0" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </a>
+                <p>Architecting high-performance, conversion-optimized digital experiences for ambitious brands scaling globally.</p>
+                <div class="footer-socials">
+                    <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                    <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a>
+                    <a href="#" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
+                </div>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class="footer-col">
+                <h4>Platform</h4>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Developer</a>
+                    <a href="services.html">Services & Specialities</a>
+                    <a href="pricing.html">Pricing Packages</a>
+                    <a href="templates.html">Premium Templates</a>
+                    <a href="index.html#portfolio">Work Portfolio</a>
+                </div>
+            </div>
+
+            <!-- Contact Column -->
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <div class="footer-links">
+                    <a href="mailto:client@hdlpermacodetech.com" style="display:flex; align-items:center; gap:0.5rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> Email Us</a>
+                    <a href="#" style="display:flex; align-items:center; gap:0.5rem; pointer-events: none;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> Premium Global Developer</a>
+                    <a href="start-a-project.html" style="display:flex; align-items:center; gap:0.5rem; color:var(--accent-cyan); margin-top:0.5rem;">Start a Project &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Newsletter Column -->
+            <div class="footer-col">
+                <h4>Insider Newsletter</h4>
+                <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1rem; line-height:1.5;">Get exclusive web architecture tips and early access to premium templates.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary" style="padding:0.75rem; justify-content:center; width: 100%;">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 HDL Perma Code TECH. All rights reserved.</p>
+            <div style="display:flex; gap:1.5rem;">
+                <a href="privacy-policy.html" style="color:var(--text-muted); text-decoration:none;">Privacy Policy</a>
+                <a href="terms-of-service.html" style="color:var(--text-muted); text-decoration:none;">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

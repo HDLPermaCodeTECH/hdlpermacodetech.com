@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | HDL Perma Code TECH</title>
+    <meta name="description"
+        content="Strategic Web Solutions Designed for Growth. We combine strategy, design, and development to create high-performing digital experiences for businesses worldwide.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&family=Outfit:wght@300;500;800&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/HDL_HexShield_Icon.png">
+    <link rel="apple-touch-icon" href="images/HDL_HexShield_Icon.png">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Specific Styles for Services Page */
+        .services-hero {
+            padding: 12rem 5% 6rem;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(2, 6, 23, 0.7), var(--bg-base) 95%), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 5%;
+        }
+
+        .service-card-detail {
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-top: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .service-card-detail::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.03), transparent);
+            transform: skewX(-20deg);
+            transition: 0.5s;
+        }
+
+        .service-card-detail:hover::before {
+            left: 150%;
+        }
+
+        .service-card-detail:hover {
+            transform: translateY(-10px);
+            border-color: rgba(56, 189, 248, 0.6);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), inset 0 0 40px rgba(56, 189, 248, 0.1);
+        }
+
+        .service-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 1.5rem;
+        }
+
+        .service-list li {
+            margin-bottom: 0.75rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .check-icon {
+            color: var(--accent-cyan);
+            font-weight: 900;
+        }
+
+        .process-section {
+            padding: 8rem 5%;
+            background: radial-gradient(circle at bottom, rgba(15, 23, 42, 0.8), var(--bg-main) 70%);
+            border-top: 1px solid var(--glass-border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .process-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 4rem auto 0;
+            position: relative;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 2rem;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-cyan), rgba(56, 189, 248, 0.1));
+            z-index: 0;
+        }
+
+        .timeline-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-badge {
+            width: 4rem;
+            height: 4rem;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-indigo));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 900;
+            font-family: var(--font-heading);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+            border: 4px solid var(--bg-main);
+        }
+
+        .timeline-content {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            padding: 2rem;
+            flex-grow: 1;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateX(10px);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .process-timeline::before {
+                left: 1.5rem;
+            }
+
+            .timeline-step {
+                gap: 1rem;
+            }
+
+            .timeline-badge {
+                width: 3rem;
+                height: 3rem;
+                font-size: 1.2rem;
+            }
+        }
+
+        .why-partner-section {
+            padding: 8rem 5%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .why-partner-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .partner-perk {
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.5rem 2rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            color: var(--text-base);
+            transition: all 0.3s ease;
+        }
+
+        .partner-perk:hover {
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(56, 189, 248, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .perk-icon-wrapper {
+            background: rgba(56, 189, 248, 0.1);
+            padding: 0.75rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-cyan);
+        }
+
+        .cta-section {
+            padding: 6rem 5%;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(30, 41, 59, 0.8), var(--bg-main) 100%);
+            border-top: 1px solid var(--glass-border);
+        }
+    </style>
+</head>
+
+<body class="dark-mode" style="cursor: none !important;">
+
+    <!-- Premium Initial Preloader -->
+    <div id="hdl-preloader" class="hdl-preloader">
+        <div class="preloader-content">
+            <img src="images/HDL_HexShield_Icon.png" alt="HDL Shield" class="preloader-shield">
+            <div class="preloader-glow"></div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div id="cursorDot" class="custom-cursor-dot"></div>
+    <div id="cursorRing" class="custom-cursor-ring"></div>
+
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <svg viewBox="0 0 950 140" class="nav-logo-svg" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(10, 10)">
+                        <path d="M45 5 L85 28 L85 72 L45 95 L5 72 L5 28 Z" fill="none" stroke="url(#nav_hex_grad)"
+                            stroke-width="8" stroke-linejoin="round" />
+                        <path d="M25 35 L25 65" stroke="#ffffff" stroke-width="7" stroke-linecap="round" />
+                        <path d="M65 35 L65 65" stroke="#ffffff" stroke-width="7" stroke-linecap="round" />
+                        <path d="M25 50 H65" stroke="#ffffff" stroke-width="7" stroke-linecap="round" opacity="0.3" />
+                        <path d="M52 28 L38 72" stroke="#38bdf8" stroke-width="7" stroke-linecap="round" />
+                        <circle cx="52" cy="28" r="3" fill="#38bdf8" />
+                        <circle cx="38" cy="72" r="3" fill="#38bdf8" />
+                        <defs>
+                            <linearGradient id="nav_hex_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#818cf8;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                    </g>
+                    <text x="120" y="78" class="logo-text">
+                        <tspan class="fw-900 fill-white">HDL</tspan>
+                        <tspan dx="-8" class="fw-100 fill-slate">Perma</tspan>
+                        <tspan dx="-8" class="fw-700 fill-cyan">Code</tspan>
+                        <tspan dx="-8" class="fw-900 fill-indigo">TECH</tspan>
+                    </text>
+                    <rect x="120" y="95" width="650" height="5" fill="url(#nav_line_grad)" rx="2.5" />
+                    <defs>
+                        <linearGradient id="nav_line_grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
+                            <stop offset="60%" style="stop-color:#818cf8;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#38bdf8;stop-opacity:0" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html" style="color: var(--accent-cyan);">Services</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="templates.html">Templates</a>
+                <a href="index.html#portfolio">Work</a>
+                <a href="start-a-project.html" class="btn btn-outline">Start a Project</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Services Hero -->
+    <header class="services-hero reveal">
+        <div class="glow-orb"
+            style="top: -20%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%); animation-delay: 0s;">
+        </div>
+        <div class="glow-orb"
+            style="bottom: -20%; right: -10%; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(129, 140, 248, 0.1) 0%, transparent 70%); animation-delay: -5s;">
+        </div>
+        <div class="glow-orb"
+            style="top: 40%; left: 60%; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%); animation-delay: -10s;">
+        </div>
+
+        <h1 class="massive-title"
+            style="font-size: clamp(3rem, 6vw, 4.5rem); margin-bottom: 1.5rem; position: relative;">Our <span
+                class="text-gradient">Services</span></h1>
+        <h2
+            style="color: var(--text-main); font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 1.5rem; position: relative;">
+            Strategic Web Solutions Designed for Growth</h2>
+        <p
+            style="font-size: 1.15rem; color: var(--text-muted); max-width: 800px; margin: 0 auto; line-height: 1.8; position: relative;">
+            We are a boutique web development studio focused on building modern, high-performing digital experiences for
+            businesses worldwide.<br><br>
+            We combine strategy, design, and development to create websites that not only look exceptional — but drive
+            measurable results.
+        </p>
+    </header>
+
+    <!-- Services Grid -->
+    <main class="services-grid">
+
+        <!-- Custom Website Development -->
+        <article class="service-card-detail reveal delay-1">
+            <h3
+                style="font-size: 1.5rem; font-family: var(--font-heading); color: var(--accent-cyan); margin-bottom: 0.5rem;">
+                Custom Website Development</h3>
+            <h4 style="color: var(--text-main); font-weight: 500; margin-bottom: 1rem;">Tailored Digital Experiences
+                Built
+                for Performance</h4>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">We craft fully customized websites aligned with
+                your
+                brand identity and business objectives.</p>
+            <p style="font-weight: 600; color: var(--text-base);">Our solutions are:</p>
+            <ul class="service-list">
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> Fully responsive (mobile-first approach)</li>
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> Clean and conversion-focused</li>
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> SEO-ready structure</li>
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> Optimized for speed and performance</li>
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> Built with scalable architecture</li>
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> Designed with modern UI/UX principles</li>
+            </ul>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 1.5rem; font-style: italic;">Ideal for
+                startups,
+                established businesses, and growing brands seeking a strong online presence.</p>
+        </article>
+
+        <!-- Redesign & Optimization -->
+        <article class="service-card-detail reveal delay-2">
+            <h3
+                style="font-size: 1.5rem; font-family: var(--font-heading); color: var(--accent-cyan); margin-bottom: 0.5rem;">
+                Website Redesign & Optimization</h3>
+            <h4 style="color: var(--text-main); font-weight: 500; margin-bottom: 1rem;">Transforming Underperforming
+                Websites into Growth Assets</h4>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">If your website feels outdated, slow, or
+                ineffective,
+                we redesign it with strategy and precision.</p>
+            <p style="font-weight: 600; color: var(--text-base);">Our redesign process includes:</p>
+            <ul class="service-list">
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> User experience improvement</li>
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> Visual modernization</li>
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> Speed and performance optimization</li>
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> Conversion structure enhancement</li>
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> Mobile responsiveness upgrade</li>
+            </ul>
+            <p
+                style="color: var(--text-muted); font-size: 0.9rem; margin-top: 1.5rem; font-style: italic; font-weight: 600;">
+                We
+                don’t just refresh designs — we improve performance.</p>
+        </article>
+
+        <!-- Landing Pages -->
+        <article class="service-card-detail reveal delay-3">
+            <h3
+                style="font-size: 1.5rem; font-family: var(--font-heading); color: var(--accent-cyan); margin-bottom: 0.5rem;">
+                High-Converting Landing Pages</h3>
+            <h4 style="color: var(--text-main); font-weight: 500; margin-bottom: 1rem;">Designed to Generate Leads and
+                Sales</h4>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">We develop strategic landing pages built for
+                marketing
+                campaigns and product launches.</p>
+            <p style="font-weight: 600; color: var(--text-base);">Each landing page is structured with:</p>
+            <ul class="service-list">
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> Clear value proposition</li>
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> Strong call-to-action placement</li>
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> Conversion-focused layout</li>
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> Persuasive design psychology</li>
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> Fast-loading performance</li>
+            </ul>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 1.5rem; font-style: italic;">Perfect for
+                paid
+                ads, service promotion, and lead generation funnels.</p>
+        </article>
+
+        <!-- Premium Templates -->
+        <article class="service-card-detail reveal delay-1">
+            <h3
+                style="font-size: 1.5rem; font-family: var(--font-heading); color: var(--accent-cyan); margin-bottom: 0.5rem;">
+                Premium Website Templates</h3>
+            <h4 style="color: var(--text-main); font-weight: 500; margin-bottom: 1rem;">Professional Templates. Faster
+                Launch.
+                Proven Structure.</h4>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">We design high-quality website templates for
+                businesses that want professional results with efficient turnaround.</p>
+            <p style="font-weight: 600; color: var(--text-base);">Available categories:</p>
+            <ul class="service-list">
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> Corporate & Business</li>
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> Healthcare & Medical</li>
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> Personal Branding</li>
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> E-commerce & Portfolio</li>
+            </ul>
+            <p style="font-weight: 600; color: var(--text-base); margin-top: 1rem;">Templates can be:</p>
+            <ul class="service-list" style="margin-top: 0.5rem;">
+                <li><span class="check-icon" style="color: var(--accent-indigo);"><svg width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 16 16 12 12 8"></polyline>
+                            <line x1="8" y1="12" x2="16" y2="12"></line>
+                        </svg></span> Purchased as-is</li>
+                <li><span class="check-icon" style="color: var(--accent-indigo);"><svg width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 16 16 12 12 8"></polyline>
+                            <line x1="8" y1="12" x2="16" y2="12"></line>
+                        </svg></span> Fully customized</li>
+                <li><span class="check-icon" style="color: var(--accent-indigo);"><svg width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 16 16 12 12 8"></polyline>
+                            <line x1="8" y1="12" x2="16" y2="12"></line>
+                        </svg></span> Completely restructured based on your needs</li>
+            </ul>
+        </article>
+
+        <!-- E-Commerce -->
+        <article class="service-card-detail reveal delay-2">
+            <h3
+                style="font-size: 1.5rem; font-family: var(--font-heading); color: var(--accent-cyan); margin-bottom: 0.5rem;">
+                E-Commerce Development</h3>
+            <h4 style="color: var(--text-main); font-weight: 500; margin-bottom: 1rem;">Scalable Online Stores Built to
+                Sell
+            </h4>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">We develop secure, user-friendly e-commerce
+                websites
+                designed for smooth customer experience and increased sales.</p>
+            <p style="font-weight: 600; color: var(--text-base);">Includes:</p>
+            <ul class="service-list">
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> Product management system</li>
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> Payment gateway integration</li>
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> Secure checkout setup</li>
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> Mobile optimization</li>
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> Performance optimization</li>
+            </ul>
+        </article>
+
+        <!-- Support & Maintenance -->
+        <article class="service-card-detail reveal delay-3">
+            <h3
+                style="font-size: 1.5rem; font-family: var(--font-heading); color: var(--accent-cyan); margin-bottom: 0.5rem;">
+                Ongoing Support & Maintenance</h3>
+            <h4 style="color: var(--text-main); font-weight: 500; margin-bottom: 1rem;">Long-Term Technical Partnership
+            </h4>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">We offer continuous website maintenance and
+                support
+                to ensure your digital presence remains secure, updated, and optimized.</p>
+            <p style="font-weight: 600; color: var(--text-base);">Services include:</p>
+            <ul class="service-list">
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> Website updates</li>
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> Technical troubleshooting</li>
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> Security checks</li>
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> Minor content updates</li>
+                <li><span class="check-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg></span> Performance monitoring</li>
+            </ul>
+        </article>
+
+    </main>
+
+    <!-- Process Section -->
+    <section class="process-section reveal">
+        <h2 class="section-title" style="text-align: center;">Our <span class="text-gradient">Process</span></h2>
+        <p style="text-align: center; color: var(--text-muted); font-size: 1.1rem;">We follow a structured and
+            transparent
+            workflow. Clear communication and structured execution define our process.</p>
+
+        <div class="process-timeline reveal delay-1">
+            <div class="timeline-step">
+                <div class="timeline-badge">1</div>
+                <div class="timeline-content">
+                    <h4 style="color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.25rem;">Discovery & Strategy
+                    </h4>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">We dive deep into your business
+                        goals, target audience, and brand identity to lay a solid foundation for the project.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-badge">2</div>
+                <div class="timeline-content">
+                    <h4 style="color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.25rem;">UX Planning &
+                        Wireframing</h4>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">We architect the user journey,
+                        creating wireframes that ensure logical flow, high conversion rates, and an intuitive user
+                        experience.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-badge">3</div>
+                <div class="timeline-content">
+                    <h4 style="color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.25rem;">Visual Design</h4>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">We bring the wireframes to life
+                        with stunning, modern UI design perfectly aligned with your brand\'s aesthetic.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-badge">4</div>
+                <div class="timeline-content">
+                    <h4 style="color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.25rem;">Development &
+                        Testing</h4>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">We write clean, high-performance
+                        code, ensuring pixel-perfect translation of the design across all devices and browsers.</p>
+                </div>
+            </div>
+            <div class="timeline-step">
+                <div class="timeline-badge">5</div>
+                <div class="timeline-content">
+                    <h4 style="color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.25rem;">Launch & Support
+                    </h4>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">We deploy your new website
+                        smoothly and remain your long-term technical partner for continuous optimization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Partner Section -->
+    <section class="why-partner-section reveal">
+        <h2 class="section-title" style="text-align: center;">Why <span class="text-gradient">Partner With Us?</span>
+        </h2>
+        <p style="text-align: center; color: var(--text-muted); font-size: 1.1rem;">We treat every project as a
+            partnership
+            — not just a task.</p>
+
+        <div class="why-partner-grid reveal delay-1">
+            <div class="partner-perk">
+                <div class="perk-icon-wrapper">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                </div>
+                <span>Strategic & business-focused approach</span>
+            </div>
+            <div class="partner-perk">
+                <div class="perk-icon-wrapper">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                </div>
+                <span>Clean, scalable code structure</span>
+            </div>
+            <div class="partner-perk">
+                <div class="perk-icon-wrapper">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="3" y1="9" x2="21" y2="9"></line>
+                        <line x1="9" y1="21" x2="9" y2="9"></line>
+                    </svg>
+                </div>
+                <span>Modern and premium design standards</span>
+            </div>
+            <div class="partner-perk">
+                <div class="perk-icon-wrapper">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                        </path>
+                    </svg>
+                </div>
+                <span>Transparent communication</span>
+            </div>
+            <div class="partner-perk">
+                <div class="perk-icon-wrapper">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                </div>
+                <span>Reliable deadlines</span>
+            </div>
+            <div class="partner-perk">
+                <div class="perk-icon-wrapper">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                </div>
+                <span>Long-term collaboration mindset</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section reveal">
+        <h2 class="section-title">Let’s Build Something <span class="text-gradient">Exceptional</span></h2>
+        <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 600px; margin: 0 auto 2.5rem;">
+            Whether you need a custom website, a redesign, or a scalable online store — we are ready to help.<br><br>
+            Start your project today and elevate your digital presence.
+        </p>
+
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+            <a href="start-a-project.html" class="btn btn-primary"
+                style="padding-left: 1.5rem; padding-right: 1.5rem;">Request a Consultation</a>
+            <a href="index.html#portfolio" class="btn btn-outline"
+                style="padding-left: 1.5rem; padding-right: 1.5rem;">View Our Work</a>
+            <a href="start-a-project.html" class="btn btn-secondary"
+                style="padding-left: 1.5rem; padding-right: 1.5rem;">Get a Custom Quote</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+        <footer class="footer">
+        <div class="footer-content">
+            <!-- Brand Column -->
+            <div class="footer-col footer-brand">
+                <a href="index.html" class="nav-logo">
+                    <svg viewBox="0 0 950 140" class="nav-logo-svg" xmlns="http://www.w3.org/2000/svg">
+                        <g transform="translate(10, 10)">
+                            <path d="M45 5 L85 28 L85 72 L45 95 L5 72 L5 28 Z" fill="none" stroke="url(#ftr_hex_grad)"
+                                stroke-width="8" stroke-linejoin="round" />
+                            <path d="M25 35 L25 65" stroke="#ffffff" stroke-width="7" stroke-linecap="round" />
+                            <path d="M65 35 L65 65" stroke="#ffffff" stroke-width="7" stroke-linecap="round" />
+                            <path d="M25 50 H65" stroke="#ffffff" stroke-width="7" stroke-linecap="round"
+                                opacity="0.3" />
+                            <path d="M52 28 L38 72" stroke="#38bdf8" stroke-width="7" stroke-linecap="round" />
+                            <circle cx="52" cy="28" r="3" fill="#38bdf8" />
+                            <circle cx="38" cy="72" r="3" fill="#38bdf8" />
+                            <defs>
+                                <linearGradient id="ftr_hex_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#818cf8;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                        </g>
+                        <text x="120" y="78" class="logo-text">
+                            <tspan class="fw-900 fill-white">HDL</tspan>
+                            <tspan dx="-8" class="fw-100 fill-slate">Perma</tspan>
+                            <tspan dx="-8" class="fw-700 fill-cyan">Code</tspan>
+                            <tspan dx="-8" class="fw-900 fill-indigo">TECH</tspan>
+                        </text>
+                        <rect x="120" y="95" width="650" height="5" fill="url(#ftr_line_grad)" rx="2.5" />
+                        <defs>
+                            <linearGradient id="ftr_line_grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
+                                <stop offset="60%" style="stop-color:#818cf8;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#38bdf8;stop-opacity:0" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </a>
+                <p>Architecting high-performance, conversion-optimized digital experiences for ambitious brands scaling globally.</p>
+                <div class="footer-socials">
+                    <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                    <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a>
+                    <a href="#" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
+                </div>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class="footer-col">
+                <h4>Platform</h4>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Developer</a>
+                    <a href="services.html">Services & Specialities</a>
+                    <a href="pricing.html">Pricing Packages</a>
+                    <a href="templates.html">Premium Templates</a>
+                    <a href="index.html#portfolio">Work Portfolio</a>
+                </div>
+            </div>
+
+            <!-- Contact Column -->
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <div class="footer-links">
+                    <a href="mailto:client@hdlpermacodetech.com" style="display:flex; align-items:center; gap:0.5rem;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> Email Us</a>
+                    <a href="#" style="display:flex; align-items:center; gap:0.5rem; pointer-events: none;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> Premium Global Developer</a>
+                    <a href="start-a-project.html" style="display:flex; align-items:center; gap:0.5rem; color:var(--accent-cyan); margin-top:0.5rem;">Start a Project &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Newsletter Column -->
+            <div class="footer-col">
+                <h4>Insider Newsletter</h4>
+                <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1rem; line-height:1.5;">Get exclusive web architecture tips and early access to premium templates.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary" style="padding:0.75rem; justify-content:center; width: 100%;">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 HDL Perma Code TECH. All rights reserved.</p>
+            <div style="display:flex; gap:1.5rem;">
+                <a href="privacy-policy.html" style="color:var(--text-muted); text-decoration:none;">Privacy Policy</a>
+                <a href="terms-of-service.html" style="color:var(--text-muted); text-decoration:none;">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

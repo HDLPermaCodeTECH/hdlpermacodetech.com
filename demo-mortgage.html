@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michelle Molina - Mortgage Services</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Trusted mortgage solutions tailored to your financial goals. Make homeownership simple, fast & stress-free with Michelle Molina.">
+    <link rel="icon" type="image/png" href="images/HDL_HexShield_Icon.png">
+    <link rel="apple-touch-icon" href="images/HDL_HexShield_Icon.png">
+
+    <!-- Using Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        :root {
+            --mortgage-primary: #0a192f;
+            /* Navy Blue */
+            --mortgage-secondary: #ffffff;
+            /* White */
+            --mortgage-accent: #d4af37;
+            /* Gold */
+            --mortgage-accent-hover: #b5952f;
+            /* Darker Gold */
+            --mortgage-text: #334155;
+            --mortgage-text-light: #64748b;
+            --mortgage-bg-light: #f8fafc;
+        }
+
+        body {
+            background-color: var(--mortgage-secondary);
+            color: var(--mortgage-text);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            cursor: auto !important;
+            /* Reset global cursor from main CSS */
+        }
+
+        * {
+            cursor: auto !important;
+        }
+
+        /* --- Scroll Reveal Animations --- */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        /* --- Navigation --- */
+        .mortgage-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--mortgage-accent);
+            transition: padding 0.3s;
+        }
+
+        .mortgage-logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mortgage-logo span {
+            color: var(--mortgage-accent);
+        }
+
+        .mortgage-nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .mortgage-nav-links a.nav-item {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .mortgage-nav-links a.nav-item:hover {
+            color: var(--mortgage-accent);
+        }
+
+        .mortgage-btn {
+            background: var(--mortgage-accent);
+            color: var(--mortgage-primary) !important;
+            padding: 0.75rem 2rem;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            border: 2px solid var(--mortgage-accent);
+        }
+
+        .mortgage-btn:hover {
+            background: var(--mortgage-accent-hover);
+            border-color: var(--mortgage-accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .mortgage-btn-outline {
+            background: transparent;
+            color: var(--mortgage-accent) !important;
+            border: 2px solid var(--mortgage-accent);
+        }
+
+        .mortgage-btn-outline:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .menu-toggle {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            z-index: 101;
+        }
+
+        /* --- Hero Section --- */
+        .mortgage-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 5% 4rem;
+            /* Using a high-quality real estate/family image */
+            background: linear-gradient(rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.9)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1920&q=80') center/cover;
+            position: relative;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 10;
+        }
+
+        .hero-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #e2e8f0;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* --- Global Section Settings --- */
+        .mortgage-section {
+            padding: 6rem 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--mortgage-primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-title span {
+            color: var(--mortgage-accent);
+        }
+
+        .bg-light {
+            background-color: var(--mortgage-bg-light);
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        /* --- About Section --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            aspect-ratio: 4/5;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 4px solid var(--mortgage-accent);
+            border-radius: 12px;
+            transform: translate(15px, 15px);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .about-content h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            color: var(--mortgage-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: var(--mortgage-text-light);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .about-bullets {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .about-bullets li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: var(--mortgage-primary);
+        }
+
+        .about-bullets li svg {
+            color: var(--mortgage-accent);
+        }
+
+        /* --- Loan Services Section --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border-bottom: 4px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--mortgage-accent);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--mortgage-accent);
+        }
+
+        .service-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            color: var(--mortgage-primary);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--mortgage-text-light);
+            line-height: 1.6;
+        }
+
+        /* --- Why Choose Section --- */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-item svg {
+            width: 48px;
+            height: 48px;
+            color: var(--mortgage-accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-item h4 {
+            font-family: 'Outfit';
+            font-size: 1.2rem;
+            color: var(--mortgage-primary);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        /* --- Process Steps Section --- */
+        .process-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .process-container::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 15%;
+            right: 15%;
+            height: 2px;
+            background: rgba(10, 25, 47, 0.1);
+            z-index: 1;
+        }
+
+        .process-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--mortgage-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit';
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 0 auto 1.5rem;
+            border: 4px solid var(--mortgage-bg-light);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .process-step:hover .step-number {
+            background: var(--mortgage-accent);
+            transform: scale(1.1);
+        }
+
+        .process-step h4 {
+            font-family: 'Outfit';
+            font-size: 1.25rem;
+            color: var(--mortgage-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .process-step p {
+            color: var(--mortgage-text-light);
+        }
+
+        /* --- Testimonials Section --- */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            border: 1px solid #e2e8f0;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+            font-size: 4rem;
+            color: rgba(212, 175, 55, 0.15);
+            font-family: serif;
+        }
+
+        .stars {
+            color: var(--mortgage-accent);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-text {
+            color: var(--mortgage-text-light);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .client-name {
+            font-weight: 700;
+            color: var(--mortgage-primary);
+            font-family: 'Outfit';
+            font-size: 1.1rem;
+        }
+
+        /* --- CTA Bottom Section --- */
+        .cta-bottom {
+            background: var(--mortgage-primary);
+            color: white;
+            text-align: center;
+            padding: 8rem 5%;
+            position: relative;
+        }
+
+        .cta-bottom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .cta-bottom h2 {
+            font-family: 'Outfit';
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-bottom p {
+            color: #cbd5e1;
+            margin-bottom: 3rem;
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-info-bar {
+            margin-top: 3rem;
+            display: inline-flex;
+            gap: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* --- Footer --- */
+        .mortgage-footer {
+            background: #020617;
+            color: #94a3b8;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 3rem;
+        }
+
+        .footer-info h3 {
+            color: white;
+            font-family: 'Outfit';
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--mortgage-accent);
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* --- Mobile Responsive --- */
+        @media(max-width: 992px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                margin-bottom: 2rem;
+            }
+
+            .process-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 4rem;
+            }
+
+            .process-container::before {
+                display: none;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-links {
+                justify-content: center;
+                margin-bottom: 2rem;
+            }
+
+            .mortgage-nav-links {
+                display: none;
+                /* In a real scenario, this would become a hamburger menu */
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 300px;
+                background: var(--mortgage-primary);
+                flex-direction: column;
+                justify-content: center;
+                transition: right 0.4s ease;
+                border-left: 2px solid var(--mortgage-accent);
+            }
+
+            .mortgage-nav-links.active {
+                right: 0;
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .contact-info-bar {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1.5rem;
+                border-radius: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="mortgage-nav">
+        <a href="#" class="mortgage-logo">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--mortgage-accent)"
+                stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            Molina <span>Mortgage</span>
+        </a>
+        <button class="menu-toggle"
+            onclick="document.querySelector('.mortgage-nav-links').classList.toggle('active')">☰</button>
+        <div class="mortgage-nav-links">
+            <button class="menu-toggle" style="position: absolute; top: 1.5rem; right: 2rem; display: block;"
+                onclick="document.querySelector('.mortgage-nav-links').classList.remove('active')">✕</button>
+            <a href="#about" class="nav-item">About</a>
+            <a href="#services" class="nav-item">Loan Programs</a>
+            <a href="#process" class="nav-item">Process</a>
+            <a href="#contact" class="mortgage-btn">Apply Now</a>
+        </div>
+    </nav>
+
+    <header class="mortgage-hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Making Homeownership Simple, Fast & Stress-Free</h1>
+            <p class="hero-subtitle">Trusted mortgage solutions tailored to your financial goals. Get personalized
+                guidance every step of the way into your dream home.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="mortgage-btn">Apply Now</a>
+                <a href="#contact" class="mortgage-btn mortgage-btn-outline">Book a Free Consultation</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="mortgage-section bg-light">
+        <div class="about-grid">
+            <div class="about-image reveal-up">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80"
+                    alt="Michelle Molina - Mortgage Professional">
+            </div>
+            <div class="about-content reveal-up delay-1">
+                <h3>Your Trusted Mortgage Advisor</h3>
+                <p>Welcome! I'm Michelle Molina. With years of dedicated experience in the mortgage industry, I'm
+                    passionate about helping families and individuals find the perfect financing solutions for their
+                    dream homes.</p>
+                <p>My client-first approach ensures that you receive transparent, honest, and completely tailored advice
+                    to fit your unique financial situation. Whether you are buying your first home or refinancing, I'm
+                    here to advocate for you.</p>
+
+                <ul class="about-bullets">
+                    <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg> 15+ Years of Dedicated Experience</li>
+                    <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg> Highly Personalized Service</li>
+                    <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg> Licensed and Knowledgeable Expert</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="mortgage-section">
+        <div class="section-header reveal-up">
+            <h2 class="section-title">Comprehensive <span>Loan Services</span></h2>
+            <p style="color: var(--mortgage-text-light); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">Discover
+                the perfect lending program tailored explicitly to your real estate goals and financial profile.</p>
+        </div>
+
+        <div class="services-grid">
+            <!-- Home Purchase -->
+            <div class="service-card reveal-up delay-1">
+                <div class="service-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    </svg></div>
+                <h3>Home Purchase Loans</h3>
+                <p>Secure the precise financing you need to buy your dream home with competitive rates and highly
+                    flexible down payment options.</p>
+            </div>
+            <!-- Refinance -->
+            <div class="service-card reveal-up delay-2">
+                <div class="service-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg></div>
+                <h3>Mortgage Refinancing</h3>
+                <p>Lower your monthly payments, reduce your interest rate, or access your home's equity for major
+                    expenses and improvements.</p>
+            </div>
+            <!-- FHA/VA -->
+            <div class="service-card reveal-up delay-3">
+                <div class="service-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                    </svg></div>
+                <h3>FHA & VA Loans</h3>
+                <p>Government-backed loans offering flexible credit requirements and exceptional terms for qualified
+                    veterans and home buyers.</p>
+            </div>
+            <!-- Conventional -->
+            <div class="service-card reveal-up delay-1">
+                <div class="service-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg></div>
+                <h3>Conventional Loans</h3>
+                <p>Traditional fixed and adjustable-rate mortgages designed for buyers with strong credit profiles and
+                    stable income.</p>
+            </div>
+            <!-- First-time -->
+            <div class="service-card reveal-up delay-2">
+                <div class="service-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg></div>
+                <h3>First-Time Homebuyer</h3>
+                <p>Specialized programs with significant down payment assistance and educational resources to get you
+                    into your first home.</p>
+            </div>
+            <!-- Investment -->
+            <div class="service-card reveal-up delay-3">
+                <div class="service-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="3" y1="9" x2="21" y2="9"></line>
+                        <line x1="9" y1="21" x2="9" y2="9"></line>
+                    </svg></div>
+                <h3>Investment Property Loans</h3>
+                <p>Expand your real estate portfolio with highly competitive financing crafted specifically for rental
+                    and investment properties.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="mortgage-section bg-light">
+        <div class="section-header reveal-up">
+            <h2 class="section-title">Why Choose <span>Michelle Molina?</span></h2>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-item reveal-up delay-1">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <h4>Fast Pre-Approvals</h4>
+            </div>
+            <div class="benefit-item reveal-up delay-2">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+                <h4>Competitive Rates</h4>
+            </div>
+            <div class="benefit-item reveal-up delay-3">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                <h4>Transparent Process</h4>
+            </div>
+            <div class="benefit-item reveal-up delay-1">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                </svg>
+                <h4>Excellent Support</h4>
+            </div>
+            <div class="benefit-item reveal-up delay-2">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                <h4>Step-by-Step Guidance</h4>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="mortgage-section">
+        <div class="section-header reveal-up">
+            <h2 class="section-title">A Simple <span>3-Step Process</span></h2>
+            <p style="color: var(--mortgage-text-light); font-size: 1.1rem;">Getting a mortgage doesn't have to be
+                complicated.</p>
+        </div>
+
+        <div class="process-container reveal-up delay-1">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <h4>Apply Online</h4>
+                <p>Complete our secure online application in just minutes. Minimal paperwork required.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <h4>Get Pre-Approved</h4>
+                <p>Review your tailored options alongside Michelle and get your pre-approval letter fast.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <h4>Close & Move In</h4>
+                <p>Finalize the loan with transparent closing costs and get the keys to your dream home.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="mortgage-section bg-light">
+        <div class="section-header reveal-up">
+            <h2 class="section-title">Client <span>Testimonials</span></h2>
+            <p style="color: var(--mortgage-text-light); font-size: 1.1rem;">Don't just take our word for it. Read what
+                our clients have to say.</p>
+        </div>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card reveal-up delay-1">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Michelle made the entire home buying process incredibly smooth. She
+                    answered all our questions patiently and got us a truly fantastic rate!"</p>
+                <div class="client-name">- Sarah T.</div>
+            </div>
+            <div class="testimonial-card reveal-up delay-2">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"I thought refinancing would be a massive headache, but Michelle's team made
+                    it completely stress-free. Highly recommended for busy professionals."</p>
+                <div class="client-name">- James M.</div>
+            </div>
+            <div class="testimonial-card reveal-up delay-3">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"As a first-time homebuyer, I was entirely nervous. Michelle's step-by-step
+                    guidance gave me the absolute confidence I needed to buy."</p>
+                <div class="client-name">- Emily R.</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="cta-bottom">
+        <div class="reveal-up">
+            <h2>Ready to Start Your Homeownership Journey?</h2>
+            <p>Contact us today to deeply explore your options or apply online instantly.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="#" class="mortgage-btn">Apply Now</a>
+                <a href="#" class="mortgage-btn mortgage-btn-outline"
+                    style="color: white !important; border-color: white;">Schedule a Call</a>
+            </div>
+
+            <div class="contact-info-bar">
+                <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        style="vertical-align: middle; margin-right: 5px; color: var(--mortgage-accent);">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                        </path>
+                    </svg> (555) 123-4567</span>
+                <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        style="vertical-align: middle; margin-right: 5px; color: var(--mortgage-accent);">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg> michelle@molinamortgage.com</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="mortgage-footer">
+        <div class="footer-grid">
+            <div class="footer-info">
+                <h3>Michelle Molina Mortgage Services</h3>
+                <p>NMLS #123456 | <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" style="vertical-align: middle;">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    </svg> Equal Housing Lender</p>
+                <br>
+                <p style="color: #64748b;">123 Financial District, Suite 400<br>New York, NY 10005</p>
+            </div>
+            <div style="text-align: right;">
+                <div class="footer-links" style="justify-content: flex-end; margin-bottom: 2rem;">
+                    <a href="#">Facebook</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Instagram</a>
+                </div>
+                <div style="display: flex; gap: 1.5rem; justify-content: flex-end;">
+                    <a href="#" style="color: #64748b; text-decoration: none; transition: color 0.3s;"
+                        onmouseover="this.style.color='var(--mortgage-accent)'"
+                        onmouseout="this.style.color='#64748b'">Privacy Policy</a>
+                    <a href="#" style="color: #64748b; text-decoration: none; transition: color 0.3s;"
+                        onmouseover="this.style.color='var(--mortgage-accent)'"
+                        onmouseout="this.style.color='#64748b'">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 Michelle Molina Mortgage Services. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Return Menu overlay for demo purposes -->
+    <a href="templates.html"
+        style="position: fixed; bottom: 2rem; right: 2rem; background: rgba(10,25,47,0.95); backdrop-filter: blur(10px); border: 1px solid rgba(212,175,55,0.3); padding: 1rem 2rem; border-radius: 2rem; color: white; text-decoration: none; font-weight: 600; z-index: 9999; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: all 0.3s; display: flex; align-items: center; gap: 0.5rem;"
+        onmouseover="this.style.background='var(--mortgage-accent)'; this.style.color='var(--mortgage-primary)';"
+        onmouseout="this.style.background='rgba(10,25,47,0.95)'; this.style.color='white';">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+        </svg> Back to Templates
+    </a>
+
+    <!-- Basic animations script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal-up');
+
+            const revealOnScroll = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            reveals.forEach(reveal => {
+                revealOnScroll.observe(reveal);
+            });
+        });
+    </script>
+</body>
+
+</html>

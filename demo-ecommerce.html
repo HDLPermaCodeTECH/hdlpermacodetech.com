@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D E-Commerce Configurator | HDL Perma Code</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #020617;
+            --accent-cyan: #38bdf8;
+            --text-main: #f8fafc;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            height: 100vh;
+            cursor: none;
+        }
+
+        #canvas-container {
+            flex-grow: 1;
+            position: relative;
+        }
+
+        .ui-panel {
+            width: 350px;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(20px);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            z-index: 10;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            font-size: 1.8rem;
+            background: linear-gradient(45deg, #fff, var(--accent-cyan));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        .color-picker {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .color-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .color-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .color-btn.active {
+            border-color: #fff;
+            transform: scale(1.1);
+        }
+
+        .back-btn {
+            margin-top: auto;
+            color: var(--text-main);
+            text-decoration: none;
+            text-align: center;
+            padding: 1rem;
+            border: 1px solid var(--accent-cyan);
+            border-radius: 2rem;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            background: var(--accent-cyan);
+            color: #000;
+        }
+
+        .overlay-text {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            pointer-events: none;
+        }
+
+        a,
+        button,
+        input,
+        textarea,
+        .color-btn,
+        label {
+            cursor: none !important;
+        }
+
+        .custom-cursor-dot {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 5px rgba(56, 189, 248, 0.8), 0 0 10px rgba(56, 189, 248, 0.4);
+            background-color: var(--accent-cyan);
+        }
+
+        .custom-cursor-ring {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(56, 189, 248, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease, border-color 0.3s ease;
+            box-shadow: inset 0 0 10px rgba(56, 189, 248, 0.2), 0 0 10px rgba(56, 189, 248, 0.2);
+        }
+
+        .custom-cursor-ring.hovering {
+            width: 50px;
+            height: 50px;
+            border-color: rgba(129, 140, 248, 0.8);
+            background-color: rgba(56, 189, 248, 0.1);
+        }
+
+        .custom-cursor-dot.hovering {
+            width: 8px;
+            height: 8px;
+            background-color: var(--text-main);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+    </style>
+    <!-- Load Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+
+<body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor-dot" id="cursorDot"></div>
+    <div class="custom-cursor-ring" id="cursorRing"></div>
+    <div id="canvas-container">
+        <div class="overlay-text">
+            <h2 style="font-family:'Outfit'; margin:0;">HDL WebGL Engine</h2>
+            <p>Drag to rotate. Scroll to zoom.</p>
+        </div>
+    </div>
+
+    <div class="ui-panel">
+        <div>
+            <h1>Geometric Configurator</h1>
+            <p>Customize the premium structure in real-time. Rendering at a locked 60 FPS.</p>
+        </div>
+
+        <div>
+            <h3 style="margin-top:0;">Material Color</h3>
+            <div class="color-picker">
+                <div class="color-btn active" style="background: #38bdf8;" onclick="changeColor(0x38bdf8, this)"></div>
+                <div class="color-btn" style="background: #818cf8;" onclick="changeColor(0x818cf8, this)"></div>
+                <div class="color-btn" style="background: #fbbf24;" onclick="changeColor(0xfbbf24, this)"></div>
+                <div class="color-btn" style="background: #f87171;" onclick="changeColor(0xf87171, this)"></div>
+            </div>
+        </div>
+
+        <div>
+            <h3>Geometry Wireframe</h3>
+            <label style="display:flex; align-items:center; gap:0.5rem; cursor:pointer;">
+                <input type="checkbox" id="wireframeToggle" onchange="toggleWireframe(this.checked)"> Enable Wireframe
+                rendering
+            </label>
+        </div>
+
+        <a href="index.html#demos" class="back-btn">← Exit Configurator</a>
+    </div>
+
+    <script>
+        // Set up Three.js scene
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x020617);
+        scene.fog = new THREE.FogExp2(0x020617, 0.02);
+
+        const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+        camera.position.z = 15;
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 1.0;
+
+        // Create a complex shape
+        const geometry = new THREE.TorusKnotGeometry(3, 1, 100, 16);
+        const material = new THREE.MeshStandardMaterial({
+            color: 0x38bdf8,
+            roughness: 0.1,
+            metalness: 0.8,
+            wireframe: false
+        });
+        const mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+
+        const pointLight1 = new THREE.PointLight(0xffffff, 1);
+        pointLight1.position.set(10, 10, 10);
+        scene.add(pointLight1);
+
+        const pointLight2 = new THREE.PointLight(0xc084fc, 2);
+        pointLight2.position.set(-10, -10, 10);
+        scene.add(pointLight2);
+
+        // Animation Loop
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update(); // only required if controls.enableDamping or controls.autoRotate are set
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Handle Resize
+        window.addEventListener('resize', () => {
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        });
+
+        // UI Interactions
+        function changeColor(hexCode, element) {
+            material.color.setHex(hexCode);
+            document.querySelectorAll('.color-btn').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        function toggleWireframe(isWireframe) {
+            material.wireframe = isWireframe;
+        }
+
+        // Custom Cursor Logic
+        const cursorDot = document.getElementById('cursorDot');
+        const cursorRing = document.getElementById('cursorRing');
+        if (cursorDot && cursorRing) {
+            window.addEventListener('mousemove', (e) => {
+                const posX = e.clientX;
+                const posY = e.clientY;
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+                cursorRing.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 150, fill: "forwards", easing: "ease-out" });
+            });
+            const interactiveElements = document.querySelectorAll('a, button, input, textarea, .color-btn, label');
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursorDot.classList.add('hovering'); cursorRing.classList.add('hovering');
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursorDot.classList.remove('hovering'); cursorRing.classList.remove('hovering');
+                });
+            });
+            document.addEventListener('mouseleave', () => { cursorDot.style.opacity = '0'; cursorRing.style.opacity = '0'; });
+            document.addEventListener('mouseenter', () => { cursorDot.style.opacity = '1'; cursorRing.style.opacity = '1'; });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Storefront - Women's Collection</title>
+    <link rel="icon" type="image/png" href="images/HDL_HexShield_Icon.png">
+    <link rel="apple-touch-icon" href="images/HDL_HexShield_Icon.png">
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --store-bg: #fdfdfd;
+            --store-text: #1a1a1a;
+            --store-accent: #ff4757;
+            /* Vibrant Coral/Red */
+            --store-gray: #f1f2f6;
+        }
+
+        body {
+            background-color: var(--store-bg);
+            color: var(--store-text);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            cursor: auto;
+            /* Standard cursor for e-commerce */
+        }
+
+        /* Override global custom cursor for storefront elements */
+        a,
+        button,
+        input,
+        textarea,
+        .product-card,
+        .category-card,
+        .store-nav-links a,
+        .store-icon-links a {
+            cursor: pointer !important;
+        }
+
+        /* Announcement Bar */
+        .store-announcement {
+            background-color: var(--store-text);
+            color: white;
+            text-align: center;
+            padding: 0.5rem;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        /* Navigation */
+        .store-nav {
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(253, 253, 253, 0.9);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .store-logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--store-text);
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .store-links a {
+            color: var(--store-text);
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .store-links a:hover {
+            color: var(--store-accent);
+        }
+
+        .store-icons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .store-icon-btn {
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: var(--store-accent);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Hero Section */
+        .store-hero {
+            display: flex;
+            align-items: center;
+            padding: 4rem 5%;
+            background-color: var(--store-gray);
+            min-height: 70vh;
+        }
+
+        .store-hero-text {
+            flex: 1;
+            padding-right: 2rem;
+        }
+
+        .store-hero-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .store-hero-subtitle {
+            font-size: 1.15rem;
+            color: #57606f;
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+
+        .store-btn {
+            background-color: var(--store-accent);
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 2px;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .store-btn:hover {
+            background-color: #ff3344;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 71, 87, 0.2);
+        }
+
+        .store-hero-images {
+            flex: 1;
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+
+        .store-hero-images img {
+            width: 250px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .store-hero-images img:nth-child(2) {
+            transform: translateY(40px);
+        }
+
+        .store-hero-images:hover img:nth-child(1) {
+            transform: translateY(-10px) rotate(-2deg);
+        }
+
+        .store-hero-images:hover img:nth-child(2) {
+            transform: translateY(30px) rotate(2deg);
+        }
+
+        /* Product Grid */
+        .store-products {
+            padding: 6rem 5%;
+        }
+
+        .product-section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            cursor: pointer;
+            position: relative;
+        }
+
+        .product-img-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: var(--store-gray);
+            padding-top: 130%;
+            /* Aspect ratio */
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .product-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
+
+        .product-add {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            right: 1rem;
+            background: white;
+            color: var(--store-text);
+            text-align: center;
+            padding: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            border: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .product-card:hover .product-add {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .product-add:hover {
+            background: var(--store-accent);
+            color: white;
+        }
+
+        .product-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 0 0 0.25rem 0;
+        }
+
+        .product-price {
+            color: #57606f;
+            font-weight: 500;
+        }
+
+        /* Demo Return Overlay */
+        .demo-return {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--store-text);
+            border: 1px solid var(--store-text);
+            padding: 1rem 2rem;
+            border-radius: 2rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            z-index: 9999;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .demo-return:hover {
+            background: var(--store-accent);
+            border-color: var(--store-accent);
+        }
+
+        /* Categories Section */
+        .store-categories {
+            padding: 5rem 5%;
+            background: white;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .category-card {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--store-gray);
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        .category-card img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .category-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            transition: background 0.3s;
+        }
+
+        .category-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .category-card:hover::after {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .category-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+        }
+
+        .category-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            margin: 0 0 1rem 0;
+            text-transform: uppercase;
+        }
+
+        .category-btn {
+            background: white;
+            color: var(--store-text);
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .category-btn:hover {
+            background: var(--store-accent);
+            color: white;
+        }
+
+        /* Benefits Section */
+        .store-benefits {
+            padding: 4rem 5%;
+            background: var(--store-gray);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        @media (max-width: 900px) {
+            .store-benefits {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--store-text);
+        }
+
+        .benefit-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .benefit-desc {
+            color: #57606f;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Newsletter */
+        .store-newsletter {
+            padding: 8rem 5%;
+            text-align: center;
+            background: white;
+        }
+
+        .newsletter-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-desc {
+            color: #57606f;
+            margin-bottom: 2rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 1px solid #ced6e0;
+            border-radius: 2px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--store-text);
+        }
+
+        .newsletter-btn {
+            background: var(--store-text);
+            color: white;
+            border: none;
+            padding: 0 2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .newsletter-btn:hover {
+            background: var(--store-accent);
+        }
+
+        /* Store Footer */
+        .store-footer {
+            background: var(--store-text);
+            color: white;
+            padding: 5rem 5% 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        @media (max-width: 900px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .footer-brand {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .footer-desc {
+            color: #a4b0be;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            max-width: 300px;
+        }
+
+        .footer-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #a4b0be;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+
+        /* --- NEW STUNNING FEATURES --- */
+        /* Infinite Marquee */
+        .marquee-container {
+            width: 100%;
+            background: var(--store-text);
+            color: white;
+            padding: 1.2rem 0;
+            overflow: hidden;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 25s linear infinite;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .marquee-content span {
+            margin: 0 3rem;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Wishlist Buttons */
+        .wishlist-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(5px);
+        }
+        .product-card:hover .wishlist-btn {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .wishlist-btn:hover {
+            transform: scale(1.1);
+            background: white;
+        }
+        .wishlist-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: var(--store-text);
+            stroke-width: 2;
+            transition: fill 0.3s, stroke 0.3s;
+        }
+        .wishlist-btn.active svg {
+            fill: var(--store-accent);
+            stroke: var(--store-accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            color: #a4b0be;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="store-announcement">
+        Free Global Shipping on Orders Over $150
+    </div>
+
+    <nav class="store-nav">
+        <div class="store-links">
+            <a href="demo-storefront-arrivals.html">New Arrivals</a>
+            <a href="demo-storefront-men.html">Men</a>
+            <a href="demo-storefront-women.html">Women</a>
+            <a href="demo-storefront-accessories.html">Accessories</a>
+        </div>
+        <a href="demo-storefront.html" class="store-logo">AURA.</a>
+        <div class="store-icons">
+            <button class="store-icon-btn">🔍</button>
+            <button class="store-icon-btn">👤</button>
+            <button class="store-icon-btn">
+                🛒
+                <span class="cart-count">2</span>
+            </button>
+        </div>
+    </nav>
+
+    <header class="store-hero">
+        <div class="store-hero-text reveal">
+            <h1 class="store-hero-title">Women's<br><span style="color: var(--store-accent);">Collection</span></h1>
+            <p class="store-hero-subtitle">Discover curated styles crafted for elegance and unstoppable confidence.
+                Unleash your potential.</p>
+            <a href="#" class="store-btn">Explore Women's</a>
+        </div>
+        <div class="store-hero-images reveal delay-1">
+            <img src="images/store/ai/women_hero_1.png" alt="Women's Fashion 1">
+            <img src="images/store/ai/women_hero_2.png" alt="Women's Fashion 2">
+        </div>
+    </header>
+
+    <!-- Infinite Marquee Banner -->
+    <div class="marquee-container reveal">
+        <div class="marquee-content">
+            <span>PREMIUM QUALITY</span><span>•</span>
+            <span>FREE WORLDWIDE SHIPPING</span><span>•</span>
+            <span>NEW ARRIVALS JUST DROPPED</span><span>•</span>
+            <span>SUSTAINABLE MATERIALS</span><span>•</span>
+            <span>URBAN STREETWEAR ESSENTIALS</span><span>•</span>
+            <!-- Duplicate for infinite seamless loop -->
+            <span>PREMIUM QUALITY</span><span>•</span>
+            <span>FREE WORLDWIDE SHIPPING</span><span>•</span>
+            <span>NEW ARRIVALS JUST DROPPED</span><span>•</span>
+            <span>SUSTAINABLE MATERIALS</span><span>•</span>
+            <span>URBAN STREETWEAR ESSENTIALS</span><span>•</span>
+        </div>
+    </div>
+
+
+    <section class="store-products">
+        <h2 class="product-section-title">Trending in Women's</h2>
+        <div class="product-grid">
+            <div class="product-card reveal delay-1">
+                <div class="product-img-wrapper">
+                    <img src="images/store/ai/prod_women_dress.png" class="product-img" alt="Women's Dress">
+                    <button class="product-add">Quick Add</button>
+                </div>
+                <div class="product-info">
+                    <div>
+                        <h3 class="product-name">Silk Slip Dress</h3>
+                        <div class="product-price">$140.00</div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card reveal delay-2">
+                <div class="product-img-wrapper">
+                    <img src="images/store/ai/prod_women_skirt.png" class="product-img" alt="Women's Skirt">
+                    <button class="product-add">Quick Add</button>
+                </div>
+                <div class="product-info">
+                    <div>
+                        <h3 class="product-name">Pleated Skirt</h3>
+                        <div class="product-price">$95.00</div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card reveal delay-3">
+                <div class="product-img-wrapper">
+                    <img src="images/store/ai/prod_women_coat.png" class="product-img" alt="Women's Coat">
+                    <button class="product-add">Quick Add</button>
+                </div>
+                <div class="product-info">
+                    <div>
+                        <h3 class="product-name">Twill Coat</h3>
+                        <div class="product-price">$220.00</div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card reveal delay-4">
+                <div class="product-img-wrapper">
+                    <img src="images/store/ai/prod_women_top.png" class="product-img" alt="Women's Top">
+                    <button class="product-add">Quick Add</button>
+                </div>
+                <div class="product-info">
+                    <div>
+                        <h3 class="product-name">Cropped Top</h3>
+                        <div class="product-price">$45.00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="store-categories">
+        <div class="category-grid">
+            <a href="#" class="category-card reveal delay-1">
+                <img src="images/store/ai/cat_menswear.png" alt="Menswear">
+                <div class="category-content">
+                    <h3 class="category-title">Menswear</h3>
+                    <span class="category-btn">Shop Now</span>
+                </div>
+            </a>
+            <a href="#" class="category-card reveal delay-2">
+                <img src="images/store/ai/cat_womenswear.png" alt="Womenswear">
+                <div class="category-content">
+                    <h3 class="category-title">Womenswear</h3>
+                    <span class="category-btn">Shop Now</span>
+                </div>
+            </a>
+            <a href="#" class="category-card reveal delay-3">
+                <img src="images/store/ai/cat_sneakers.png" alt="Footwear">
+                <div class="category-content">
+                    <h3 class="category-title">Sneakers</h3>
+                    <span class="category-btn">Shop Now</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="store-benefits">
+        <div class="benefit-item reveal delay-1">
+            <div class="benefit-icon">📦</div>
+            <h4 class="benefit-title">Free Shipping</h4>
+            <p class="benefit-desc">On all orders over $150. Fast, tracked delivery straight to your door.</p>
+        </div>
+        <div class="benefit-item reveal delay-2">
+            <div class="benefit-icon">🔄</div>
+            <h4 class="benefit-title">Easy Returns</h4>
+            <p class="benefit-desc">Not quite right? Return it within 30 days for a full refund or exchange.</p>
+        </div>
+        <div class="benefit-item reveal delay-3">
+            <div class="benefit-icon">🔒</div>
+            <h4 class="benefit-title">Secure Checkout</h4>
+            <p class="benefit-desc">Your payment information is encrypted and securely processed.</p>
+        </div>
+        <div class="benefit-item reveal delay-4">
+            <div class="benefit-icon">💬</div>
+            <h4 class="benefit-title">24/7 Support</h4>
+            <p class="benefit-desc">Our dedicated team is here to help you anytime, anywhere.</p>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="store-newsletter">
+        <div class="newsletter-wrapper reveal">
+            <h2 class="newsletter-title">Join the Insider Club</h2>
+            <p class="newsletter-desc">Subscribe to our newsletter and get 15% off your first order. Be the first to
+                know about new drops and exclusive sales.</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault();">
+                <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="store-footer">
+        <div class="footer-grid">
+            <div class="footer-col reveal delay-1">
+                <a href="#" class="footer-brand" style="color: white; text-decoration: none;">AURA.</a>
+                <p class="footer-desc">Crafting premium, sustainable fashion for the modern urban explorer. Designed
+                    with purpose. Fabricated for life.</p>
+            </div>
+            <div class="footer-col reveal delay-2">
+                <h4 class="footer-title">Shop</h4>
+                <ul class="footer-links">
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Best Sellers</a></li>
+                    <li><a href="#">Men's Collection</a></li>
+                    <li><a href="#">Women's Collection</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">Sale</a></li>
+                </ul>
+            </div>
+            <div class="footer-col reveal delay-3">
+                <h4 class="footer-title">Help</h4>
+                <ul class="footer-links">
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col reveal delay-4">
+                <h4 class="footer-title">Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                    <li><a href="#">Accessibility</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>&copy; 2026 Aura Storefront Demo. All rights reserved.</div>
+            <div style="display: flex; gap: 1rem;">
+                <!-- Placeholder Social Icons using text -->
+                <a href="#" style="color: #a4b0be; text-decoration: none;">IG</a>
+                <a href="#" style="color: #a4b0be; text-decoration: none;">TW</a>
+                <a href="#" style="color: #a4b0be; text-decoration: none;">FB</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Return to Templates Button -->
+    <a href="templates.html" class="demo-return">
+        ← Back to Templates Catalog
+    </a>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

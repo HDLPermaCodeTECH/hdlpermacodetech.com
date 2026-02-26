@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HDL Perma Code TECH | Premium Web Development</title>
+    <meta name="description"
+        content="Elevate your digital presence with HDL Perma Code TECH. We build the most beautiful, high-performance websites for visionary clients.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&family=Outfit:wght@300;500;800&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/HDL_HexShield_Icon.png">
+    <link rel="apple-touch-icon" href="images/HDL_HexShield_Icon.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Premium Initial Preloader -->
+    <div id="hdl-preloader" class="hdl-preloader">
+        <div class="preloader-content">
+            <img src="images/HDL_HexShield_Icon.png" alt="HDL Shield" class="preloader-shield">
+            <div class="preloader-glow"></div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor-dot" id="cursorDot"></div>
+    <div class="custom-cursor-ring" id="cursorRing"></div>
+
+    <canvas id="bgCanvas"></canvas>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <svg viewBox="0 0 950 140" class="nav-logo-svg" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(10, 10)">
+                        <path d="M45 5 L85 28 L85 72 L45 95 L5 72 L5 28 Z" fill="none" stroke="url(#nav_hex_grad)"
+                            stroke-width="8" stroke-linejoin="round" />
+                        <path d="M25 35 L25 65" stroke="#ffffff" stroke-width="7" stroke-linecap="round" />
+                        <path d="M65 35 L65 65" stroke="#ffffff" stroke-width="7" stroke-linecap="round" />
+                        <path d="M25 50 H65" stroke="#ffffff" stroke-width="7" stroke-linecap="round" opacity="0.3" />
+                        <path d="M52 28 L38 72" stroke="#38bdf8" stroke-width="7" stroke-linecap="round" />
+                        <circle cx="52" cy="28" r="3" fill="#38bdf8" />
+                        <circle cx="38" cy="72" r="3" fill="#38bdf8" />
+                        <defs>
+                            <linearGradient id="nav_hex_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#818cf8;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                    </g>
+                    <text x="120" y="78" class="logo-text">
+                        <tspan class="fw-900 fill-white">HDL</tspan>
+                        <tspan dx="-8" class="fw-100 fill-slate">Perma</tspan>
+                        <tspan dx="-8" class="fw-700 fill-cyan">Code</tspan>
+                        <tspan dx="-8" class="fw-900 fill-indigo">TECH</tspan>
+                    </text>
+                    <rect x="120" y="95" width="650" height="5" fill="url(#nav_line_grad)" rx="2.5" />
+                    <defs>
+                        <linearGradient id="nav_line_grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
+                            <stop offset="60%" style="stop-color:#818cf8;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#38bdf8;stop-opacity:0" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" style="color: var(--accent-cyan);">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="templates.html">Templates</a>
+                <a href="#portfolio">Work</a>
+                <a href="start-a-project.html" class="btn btn-outline">Start a Project</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-icon-container reveal"
+                style="display: flex; justify-content: center; margin-bottom: 2rem;">
+                <img src="images/HDL_HexShield_Icon.png" alt="HDL Shield" class="hero-shield">
+            </div>
+
+            <div class="hero-content-text center-text">
+                <div class="availability-badge reveal"
+                    style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.2); padding: 0.5rem 1.25rem; border-radius: 2rem; margin-bottom: 2rem;">
+                    <span
+                        style="display: block; width: 8px; height: 8px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 10px #22c55e; animation: pulse 2s infinite;"></span>
+                    <span
+                        style="color: #22c55e; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;">Live
+                        Availability: Accepting Projects</span>
+                </div>
+
+                <h1 class="hero-title massive-title reveal delay-1">
+                    <span id="typewriter-line1"></span><br>
+                    <span id="typewriter-line2" class="text-gradient"></span>
+                </h1>
+
+                <p class="hero-subtitle reveal delay-2"
+                    style="font-size: 1.25rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.6;">
+                    Premium web development, template engineering, and custom digital solutions designed to rank higher,
+                    convert faster, and generate client leads.
+                </p>
+
+                <div class="hero-actions center-actions reveal delay-3">
+                    <a href="pricing.html" class="btn btn-primary btn-large">View Pricing & Packages</a>
+                    <a href="templates.html" class="btn btn-outline-hero btn-large">Explore Templates</a>
+                </div>
+
+                <div class="trust-metrics reveal delay-4"
+                    style="display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--glass-border); max-width: 800px; margin-left: auto; margin-right: auto;">
+                    <div class="metric-item stat-card" style="text-align: center; flex: 1;">
+                        <h4 class="stat-value"
+                            style="font-size: 2.5rem; font-family: var(--font-heading); color: var(--text-base); margin-bottom: 0;">
+                            5+</h4>
+                        <p
+                            style="color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">
+                            Years Experience</p>
+                    </div>
+                    <div class="metric-item stat-card" style="text-align: center; flex: 1;">
+                        <h4 class="stat-value"
+                            style="font-size: 2.5rem; font-family: var(--font-heading); color: var(--text-base); margin-bottom: 0;">
+                            80+</h4>
+                        <p
+                            style="color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">
+                            Projects Completed</p>
+                    </div>
+                    <div class="metric-item stat-card" style="text-align: center; flex: 1;">
+                        <h4 class="stat-value"
+                            style="font-size: 2.5rem; font-family: var(--font-heading); color: var(--text-base); margin-bottom: 0;">
+                            100%</h4>
+                        <p
+                            style="color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">
+                            Client Satisfaction</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Tech Marquee Section -->
+    <section class="tech-marquee">
+        <div class="marquee-content">
+            <img src="https://cdn.simpleicons.org/react" alt="React" class="tech-icon">
+            <img src="https://cdn.simpleicons.org/nodedotjs" alt="Node.js" class="tech-icon">
+            <img src="https://cdn.simpleicons.org/python" alt="Python" class="tech-icon">
+            <img src="https://cdn.simpleicons.org/typescript" alt="TypeScript" class="tech-icon">
+            <img src="https://cdn.simpleicons.org/tailwindcss" alt="TailwindCSS" class="tech-icon">
+            <img src="https://cdn.simpleicons.org/mongodb" alt="MongoDB" class="tech-icon">
+            <img src="https://cdn.simpleicons.org/docker" alt="Docker" class="tech-icon">
+            <img src="https://cdn.simpleicons.org/graphql" alt="GraphQL" class="tech-icon">
+            <img src="https://cdn.simpleicons.org/javascript" alt="JavaScript" class="tech-icon">
+            <img src="https://cdn.simpleicons.org/figma" alt="Figma" class="tech-icon">
+            <!-- Duplicated for seamless loop -->
+            <img src="https://cdn.simpleicons.org/react" alt="React" class="tech-icon" aria-hidden="true">
+            <img src="https://cdn.simpleicons.org/nodedotjs" alt="Node.js" class="tech-icon" aria-hidden="true">
+            <img src="https://cdn.simpleicons.org/python" alt="Python" class="tech-icon" aria-hidden="true">
+            <img src="https://cdn.simpleicons.org/typescript" alt="TypeScript" class="tech-icon" aria-hidden="true">
+            <img src="https://cdn.simpleicons.org/tailwindcss" alt="TailwindCSS" class="tech-icon" aria-hidden="true">
+            <img src="https://cdn.simpleicons.org/mongodb" alt="MongoDB" class="tech-icon" aria-hidden="true">
+            <img src="https://cdn.simpleicons.org/docker" alt="Docker" class="tech-icon" aria-hidden="true">
+            <img src="https://cdn.simpleicons.org/graphql" alt="GraphQL" class="tech-icon" aria-hidden="true">
+            <img src="https://cdn.simpleicons.org/javascript" alt="JavaScript" class="tech-icon" aria-hidden="true">
+            <img src="https://cdn.simpleicons.org/figma" alt="Figma" class="tech-icon" aria-hidden="true">
+        </div>
+    </section>
+
+    <!-- Marketing Video Section -->
+    <section class="marketing-video-section" id="marketing">
+        <div class="marketing-header reveal">
+            <h2 class="section-title">The Standard of <span class="text-gradient">Excellence</span></h2>
+            <p class="section-subtitle">Watch why industry leaders choose HDL Perma Code TECH for their most critical
+                digital infrastructure.</p>
+        </div>
+
+        <div class="video-presentation-wrapper reveal delay-1">
+            <div class="custom-promo-video video-frame">
+                <!-- Background ambient layer -->
+                <div class="promo-bg-layer" style="background-image: url('images/marketing-bg.png');"></div>
+
+                <!-- Content layer with animated scenes -->
+                <div class="promo-content-layer">
+                    <div class="promo-scene scene-1">
+                        <h3>We Don't Just Build Websites.</h3>
+                    </div>
+
+                    <div class="promo-scene scene-2">
+                        <h3>We Engineer <br>
+                            <h2>Digital Dominance.</h2>
+                        </h3>
+                    </div>
+
+                    <div class="promo-scene scene-3">
+                        <h3 style="margin-bottom: 2rem; font-size: 1.8rem; font-weight: 400; color: var(--text-muted);">
+                            Experience the Difference</h3>
+                        <div class="video-logo-bottom"
+                            style="margin-bottom: 2.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+                            <img src="images/HDL_HexShield_Icon.png" alt="HDL Logo" style="width: 85px;">
+                            <div
+                                style="font-family: var(--font-sans); font-size: 2.2rem; letter-spacing: -2px; display: flex; align-items: center; position: relative;">
+                                <span style="font-weight: 900; color: #ffffff;">HDL</span>
+                                <span style="font-weight: 300; color: #cbd5e1; margin-left: 2px;">Perma</span>
+                                <span style="font-weight: 700; color: #38bdf8; margin-left: -2px;">Code</span>
+                                <span style="font-weight: 900; color: #818cf8; margin-left: -2px;">TECH</span>
+                                <!-- Gradient UI Underline -->
+                                <div
+                                    style="position: absolute; bottom: -8px; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, #38bdf8 0%, #818cf8 60%, transparent 100%); border-radius: 2px;">
+                                </div>
+                            </div>
+                        </div>
+                        <a href="start-a-project.html" class="btn btn-primary btn-large">Start Your Project</a>
+                    </div>
+                </div>
+
+                <!-- Loading/Progress Bar -->
+                <div class="promo-progress-bar"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About & Skills Section -->
+    <section class="about" id="about">
+        <div class="section-header reveal">
+            <h2 class="section-title">About <span class="text-gradient">Us</span></h2>
+            <p>Bridging the gap between high-end design aesthetics and robust, scalable logic.</p>
+        </div>
+
+        <div class="grid about-grid reveal delay-1">
+            <div class="card about-text">
+                <h3>Welcome to HDL Perma Code TECH</h3>
+                <p>
+                    We are a digital agency specializing in modern, responsive, and
+                    conversion-focused websites for businesses worldwide.
+                </p>
+                <p>
+                    We help startups, entrepreneurs, and growing companies build strong online presence through clean
+                    design, fast performance, and strategic user experience. Our goal is to create websites that don’t
+                    just look good — but generate real business results.
+                </p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
+                    <a href="about.html" class="btn btn-primary">Discover Our Agency</a>
+                    <a href="start-a-project.html" class="btn btn-outline">Start Your Free Consultation</a>
+                </div>
+            </div>
+
+            <div class="card about-skills" id="aboutSkills">
+                <div class="skill-item">
+                    <div class="skill-info"><span>HTML / CSS / Font Awesome</span><span class="text-gradient">98%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-fill" data-width="98%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>JavaScript / React / Node.js</span><span
+                            class="text-gradient">90%</span></div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-fill" data-width="90%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Responsive Website Design</span><span
+                            class="text-gradient">100%</span></div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-fill" data-width="100%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>UI/UX & Graphic Design</span><span class="text-gradient">85%</span>
+                    </div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-fill" data-width="85%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>SEO & Performance Optimization</span><span
+                            class="text-gradient">95%</span></div>
+                    <div class="skill-bar-bg">
+                        <div class="skill-fill" data-width="95%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="section-header reveal">
+            <h2 class="section-title">World-Class <span class="text-gradient">Services</span></h2>
+            <p>From architectural logic to breathtaking aesthetics, we handle the entire digital lifecycle.</p>
+        </div>
+        <div class="grid services-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+            <!-- Starter -->
+            <div class="card service-card reveal" style="display: flex; flex-direction: column;">
+                <div class="card-icon"
+                    style="color: var(--accent-cyan); display: flex; align-items: center; justify-content: center;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+                        <path
+                            d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+                        <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5-4 5-4l3 3" />
+                        <circle cx="15" cy="9" r="1" />
+                    </svg>
+                </div>
+                <h3 style="margin-bottom: 0.5rem; font-size: 1.3rem;">Starter Package</h3>
+                <p style="margin-bottom: 1.5rem; font-size: 0.95rem;">Essential internet presence. 5 custom-designed
+                    pages perfect for new businesses launching their digital footprint.</p>
+                <a href="pricing.html"
+                    style="margin-top: auto; font-family: var(--font-heading); font-weight: 700; color: var(--accent-cyan); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                    $549 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </div>
+            <!-- Business -->
+            <div class="card service-card reveal delay-1" style="display: flex; flex-direction: column;">
+                <div class="card-icon"
+                    style="color: var(--accent-cyan); display: flex; align-items: center; justify-content: center;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                    </svg>
+                </div>
+                <h3 style="margin-bottom: 0.5rem; font-size: 1.3rem;">Business Package</h3>
+                <p style="margin-bottom: 1.5rem; font-size: 0.95rem;">Our most popular tier. 10 premium pages with
+                    advanced animations, integrations, and priority support.</p>
+                <a href="pricing.html"
+                    style="margin-top: auto; font-family: var(--font-heading); font-weight: 700; color: var(--accent-cyan); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                    $999 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </div>
+            <!-- Professional -->
+            <div class="card service-card reveal delay-2" style="display: flex; flex-direction: column;">
+                <div class="card-icon"
+                    style="color: var(--accent-cyan); display: flex; align-items: center; justify-content: center;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                </div>
+                <h3 style="margin-bottom: 0.5rem; font-size: 1.3rem;">Professional Package</h3>
+                <p style="margin-bottom: 1.5rem; font-size: 0.95rem;">Unlimited scale. Full UI/UX prototyping, custom
+                    dashboards, and complex web app logic for serious enterprises.</p>
+                <a href="pricing.html"
+                    style="margin-top: auto; font-family: var(--font-heading); font-weight: 700; color: var(--accent-cyan); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                    $1,799 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </div>
+            <!-- E-Commerce -->
+            <div class="card service-card reveal delay-3" style="display: flex; flex-direction: column;">
+                <div class="card-icon"
+                    style="color: var(--accent-cyan); display: flex; align-items: center; justify-content: center;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1" />
+                        <circle cx="20" cy="21" r="1" />
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                    </svg>
+                </div>
+                <h3 style="margin-bottom: 0.5rem; font-size: 1.3rem;">E-Commerce Package</h3>
+                <p style="margin-bottom: 1.5rem; font-size: 0.95rem;">Complete online retail infrastructure up to 250
+                    products. Advanced security, payment gateways, and inventory.</p>
+                <a href="pricing.html"
+                    style="margin-top: auto; font-family: var(--font-heading); font-weight: 700; color: var(--accent-cyan); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                    $1,499 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stunning Demos Section -->
+    <section class="demos" id="demos">
+        <div class="section-header reveal">
+            <h2 class="section-title">Stunning <span class="text-gradient">Demos</span></h2>
+            <p>Experience our engineering firsthand. Interact with these live, high-performance prototypes.</p>
+        </div>
+        <div class="grid demos-grid">
+            <!-- Demo 1 -->
+            <div class="demo-card-wrapper reveal delay-1">
+                <div class="demo-card">
+                    <div class="demo-thumbnail">
+                        <img src="images/aura-dashboard-mockup.webp" alt="Real-time Analytics Dashboard"
+                            onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80'">
+                        <a href="demo-analytics.html" class="demo-overlay">
+                            <span class="btn btn-primary demo-btn">Launch Demo</span>
+                        </a>
+                    </div>
+                    <div class="demo-info">
+                        <h3>Real-time Analytics</h3>
+                        <p>High-frequency data streaming visualized through a custom WebGL engine.</p>
+                        <div class="demo-tags">
+                            <span>React</span>
+                            <span>WebSocket</span>
+                            <span>D3.js</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 2 -->
+            <div class="demo-card-wrapper reveal delay-2">
+                <div class="demo-card">
+                    <div class="demo-thumbnail">
+                        <img src="images/ai-generated-ui.png" alt="AI Generative Interface"
+                            onerror="this.src='https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80'">
+                        <a href="demo-ai.html" class="demo-overlay">
+                            <span class="btn btn-primary demo-btn">Launch Demo</span>
+                        </a>
+                    </div>
+                    <div class="demo-info">
+                        <h3>AI Generative Interface</h3>
+                        <p>A seamless, low-latency chat interface connected to bespoke LLM pipelines.</p>
+                        <div class="demo-tags">
+                            <span>Next.js</span>
+                            <span>OpenAI API</span>
+                            <span>Tailwind</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo 3 -->
+            <div class="demo-card-wrapper reveal delay-3">
+                <div class="demo-card">
+                    <div class="demo-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=800&q=80"
+                            alt="E-Commerce 3D Configurator">
+                        <a href="demo-ecommerce.html" class="demo-overlay">
+                            <span class="btn btn-primary demo-btn">Launch Demo</span>
+                        </a>
+                    </div>
+                    <div class="demo-info">
+                        <h3>E-Commerce 3D Engine</h3>
+                        <p>Interactive product configurator running at 60fps directly in the browser.</p>
+                        <div class="demo-tags">
+                            <span>Three.js</span>
+                            <span>WebGL</span>
+                            <span>GSAP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Premium Templates Section -->
+    <section class="templates" id="templates">
+        <div class="section-header reveal">
+            <h2 class="section-title">Premium <span class="text-gradient">Templates</span></h2>
+            <p>Kickstart your project with our world-class, fully engineered website templates. Fully customizable to
+                match your brand's unique identity.</p>
+        </div>
+
+        <div class="grid templates-grid">
+            <!-- Template 1: E-Commerce -->
+            <article class="template-card reveal delay-1">
+                <div class="template-preview">
+                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80"
+                        alt="E-Commerce Store Template">
+                </div>
+                <div class="template-info">
+                    <div class="template-category">E-Commerce</div>
+                    <h2 class="template-title">Aura Storefront</h2>
+                    <p class="template-desc">High-converting digital retail template featuring interactive product
+                        galleries and lightning-fast checkout flows.</p>
+                    <div class="template-actions">
+                        <a href="demo-storefront.html" target="_blank" class="btn btn-primary"
+                            style="flex: 1; padding: 0.75rem;">Live Preview</a>
+                        <a href="start-a-project.html" class="btn btn-outline"
+                            style="padding: 0.75rem; color: var(--accent-cyan); border-color: var(--accent-cyan);">Use
+                            This</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Template 2: Corporate Business -->
+            <article class="template-card reveal delay-2">
+                <div class="template-preview">
+                    <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=80"
+                        alt="Corporate Business Template">
+                </div>
+                <div class="template-info">
+                    <div class="template-category">Corporate / Agency</div>
+                    <h2 class="template-title">Enterprise Nexus</h2>
+                    <p class="template-desc">A highly professional, authority-building layout designed for enterprises
+                        wanting a commanding online presence.</p>
+                    <div class="template-actions">
+                        <a href="demo-corporate.html" target="_blank" class="btn btn-primary"
+                            style="flex: 1; padding: 0.75rem;">Live Preview</a>
+                        <a href="start-a-project.html" class="btn btn-outline"
+                            style="padding: 0.75rem; color: var(--accent-cyan); border-color: var(--accent-cyan);">Use
+                            This</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Template 3: Creative Portfolio -->
+            <article class="template-card reveal delay-3">
+                <div class="template-preview">
+                    <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=800&q=80"
+                        alt="Creative Portfolio Template">
+                </div>
+                <div class="template-info">
+                    <div class="template-category">Creative / Portfolio</div>
+                    <h2 class="template-title">Lumina Folio</h2>
+                    <p class="template-desc">A stunning, visual-first portfolio template engineered to showcase case
+                        studies and high-end animations.</p>
+                    <div class="template-actions">
+                        <a href="demo-portfolio.html" target="_blank" class="btn btn-primary"
+                            style="flex: 1; padding: 0.75rem;">Live Preview</a>
+                        <a href="start-a-project.html" class="btn btn-outline"
+                            style="padding: 0.75rem; color: var(--accent-cyan); border-color: var(--accent-cyan);">Use
+                            This</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <div class="reveal center-actions" style="margin-top: 5rem; display: flex; justify-content: center;">
+            <a href="templates.html" class="btn btn-outline btn-large"
+                style="display: inline-flex; border: 1px solid var(--accent-cyan); padding: 1rem 3rem; font-size: 1.1rem;">View
+                All Premium Templates &rarr;</a>
+        </div>
+    </section>
+
+    <section class="portfolio" id="portfolio">
+        <div class="section-header reveal">
+            <h2 class="section-title">Featured <span class="text-gradient">Masterpieces</span></h2>
+            <p>A glimpse into the digital excellence we construct daily.</p>
+        </div>
+        <div class="grid portfolio-grid">
+            <div class="card portfolio-card reveal">
+                <div class="portfolio-img bg-project-1"></div>
+                <div class="portfolio-content">
+                    <h3>Aura E-Commerce</h3>
+                    <p>Next-gen platform scaling to millions of users seamlessly.</p>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <a href="aura-case-study.html" class="portfolio-link">Case Study &rarr;</a>
+                        <a href="demo-storefront.html" target="_blank" class="portfolio-link"
+                            style="color: var(--accent-cyan);">Live Preview &rarr;</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card portfolio-card reveal delay-1">
+                <div class="portfolio-img bg-project-2"></div>
+                <div class="portfolio-content">
+                    <h3>FinTech Dashboard</h3>
+                    <p>Real-time data visualization with military-grade security.</p>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <a href="fintech-case-study.html" class="portfolio-link">Case Study &rarr;</a>
+                        <a href="demo-analytics.html" target="_blank" class="portfolio-link"
+                            style="color: var(--accent-cyan);">Live Preview &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Insights / Blog Section -->
+    <section class="insights" id="insights" style="padding: 6rem 5%; background: var(--bg-base); position: relative;">
+        <div class="section-header reveal">
+            <h2 class="section-title">Latest <span class="text-gradient">Insights</span></h2>
+            <p>Thoughts on modern web development, SEO strategies, and digital scaling.</p>
+        </div>
+
+        <div class="grid insights-grid reveal delay-1"
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
+            <!-- Article 1 -->
+            <article class="card"
+                style="display: flex; flex-direction: column; overflow: hidden; transition: transform 0.3s;">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80"
+                    alt="Blog Image" style="width: 100%; height: 200px; object-fit: cover;">
+                <div style="padding: 2rem;">
+                    <div
+                        style="font-size: 0.85rem; color: var(--accent-cyan); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px;">
+                        Development</div>
+                    <h3
+                        style="font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: 1rem; color: var(--text-main);">
+                        Why Your Business Needs a Custom Solution Over a Page Builder</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">
+                        Page builders are great for starters, but scaling a business requires bespoke architecture for
+                        speed and security.</p>
+                    <a href="blog-custom-solution.html"
+                        style="color: var(--text-main); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--accent-cyan); padding-bottom: 2px;">Read
+                        Article &rarr;</a>
+                </div>
+            </article>
+
+            <!-- Article 2 -->
+            <article class="card"
+                style="display: flex; flex-direction: column; overflow: hidden; transition: transform 0.3s;">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80"
+                    alt="Blog Image" style="width: 100%; height: 200px; object-fit: cover;">
+                <div style="padding: 2rem;">
+                    <div
+                        style="font-size: 0.85rem; color: var(--accent-cyan); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px;">
+                        SEO & Conversion</div>
+                    <h3
+                        style="font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: 1rem; color: var(--text-main);">
+                        3 Frontend Changes That Boosted Conversion by 40%</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">A
+                        deep dive into how Core Web Vitals and accessible UI components directly impact your bottom
+                        line.</p>
+                    <a href="blog-frontend-conversion.html"
+                        style="color: var(--text-main); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--accent-cyan); padding-bottom: 2px;">Read
+                        Article &rarr;</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials"
+        style="padding: 8rem 5%; background: var(--bg-surface); position: relative; border-bottom: 1px solid var(--glass-border);">
+        <div class="section-header reveal">
+            <h2 class="section-title">Client <span class="text-gradient">Success</span></h2>
+            <p>Don't just take our word for it. Hear from visionary leaders who partnered with us.</p>
+        </div>
+
+        <div class="grid testimonials-grid reveal delay-1"
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
+            <div class="card testi-card" style="padding: 2.5rem; transition: transform 0.3s;">
+                <div style="color: #fbbf24; font-size: 1.2rem; margin-bottom: 1rem;">★★★★★</div>
+                <p style="color: var(--text-muted); font-style: italic; margin-bottom: 2rem; line-height: 1.6;">"Working
+                    with HDL PermaCodeTECH was an absolute game-changer. They transformed our outdated system into a
+                    blazing fast React application within weeks. Our conversion rates are up 40%."</p>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=100&q=80"
+                        alt="Client"
+                        style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--glass-border);">
+                    <div>
+                        <h4
+                            style="font-family: var(--font-heading); color: var(--text-main); margin: 0; font-size: 1rem;">
+                            Marcus Sterling</h4>
+                        <p style="color: var(--text-muted); margin: 0; font-size: 0.85rem;">CEO, TechNova Inc.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="card testi-card" style="padding: 2.5rem; transition: transform 0.3s;">
+                <div style="color: #fbbf24; font-size: 1.2rem; margin-bottom: 1rem;">★★★★★</div>
+                <p style="color: var(--text-muted); font-style: italic; margin-bottom: 2rem; line-height: 1.6;">"Bought
+                    their premium template and hired them for custom features. Insanely fast turnaround and the code
+                    quality is flawless. Best developer investment we've ever made."</p>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80"
+                        alt="Client"
+                        style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--glass-border);">
+                    <div>
+                        <h4
+                            style="font-family: var(--font-heading); color: var(--text-main); margin: 0; font-size: 1rem;">
+                            Elena Rodriguez</h4>
+                        <p style="color: var(--text-muted); margin: 0; font-size: 0.85rem;">Founder, Lumina Studio</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnerships & Platforms Section -->
+    <section class="partnerships reveal"
+        style="padding: 5rem 2rem; background: var(--bg-surface); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); text-align: center; margin-top: 6rem; margin-bottom: 5rem; border-radius: 20px; max-width: 1400px; margin-left: auto; margin-right: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+        
+        <div class="section-header reveal" style="margin-bottom: 3rem;">
+            <p style="font-family: var(--font-heading); color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; font-weight: 700; margin-bottom: 1rem;">Powering Our Infrastructure</p>
+            <h2 class="section-title" style="font-size: clamp(2rem, 5vw, 3rem); line-height: 1.2;">Official <span class="text-gradient">Platforms</span> & Core Tech</h2>
+        </div>
+
+        <div class="partner-logos-container">
+            <div class="partner-logos">
+                <!-- Set 1 -->
+                <div class="partner-logo">
+                    <!-- Hostinger is usually quite horizontal, giving it specific width -->
+                    <img src="images/Hostinger_Logo.png" alt="Hostinger"
+                        style="width: 180px; height: auto; object-fit: contain;">
+                </div>
+                <div class="partner-logo">
+                    <!-- WordPress has a taller stacked mark/wordmark sometimes -->
+                    <img src="images/wordpress-logo.png" alt="WordPress"
+                        style="width: 200px; height: auto; object-fit: contain;">
+                </div>
+                <div class="partner-logo">
+                    <!-- Elementor is relatively horizontal but bulky -->
+                    <img src="images/elementor-logo.png" alt="Elementor"
+                        style="width: 240px; height: auto; object-fit: contain; margin-top: 15px;">
+                </div>
+                <div class="partner-logo">
+                    <!-- WPBakery is horizontally elongated -->
+                    <img src="images/Integrations-WPBakery-1724x970-2.svg" alt="WPBakery" style="width: 400px; height: auto; object-fit: contain; margin: 0 -40px;">
+                </div>
+                <div class="partner-logo">
+                    <!-- GoDaddy tends to be quite horizontal -->
+                    <img src="images/Godaddy-logo.png" alt="GoDaddy"
+                        style="width: 200px; height: auto; object-fit: contain;">
+                </div>
+                <div class="partner-logo">
+                    <!-- Gemini is a very short and wide wordmark -->
+                    <img src="images/google-gemini-logo-2025-1440x430.png" alt="Google Gemini"
+                        style="width: 230px; height: auto; object-fit: contain;">
+                </div>
+
+                <!-- Set 2 -->
+                <div class="partner-logo">
+                    <img src="images/Hostinger_Logo.png" alt="Hostinger"
+                        style="width: 180px; height: auto; object-fit: contain;">
+                </div>
+                <div class="partner-logo">
+                    <img src="images/wordpress-logo.png" alt="WordPress"
+                        style="width: 200px; height: auto; object-fit: contain;">
+                </div>
+                <div class="partner-logo">
+                    <img src="images/elementor-logo.png" alt="Elementor"
+                        style="width: 240px; height: auto; object-fit: contain; margin-top: 15px;">
+                </div>
+                <div class="partner-logo">
+                    <img src="images/Integrations-WPBakery-1724x970-2.svg" alt="WPBakery" style="width: 400px; height: auto; object-fit: contain; margin: 0 -40px;">
+                </div>
+                <div class="partner-logo">
+                    <img src="images/Godaddy-logo.png" alt="GoDaddy"
+                        style="width: 200px; height: auto; object-fit: contain;">
+                </div>
+                <div class="partner-logo">
+                    <img src="images/google-gemini-logo-2025-1440x430.png" alt="Google Gemini"
+                        style="width: 230px; height: auto; object-fit: contain;">
+                </div>
+
+                <!-- Set 3 -->
+                <div class="partner-logo">
+                    <img src="images/Hostinger_Logo.png" alt="Hostinger"
+                        style="width: 180px; height: auto; object-fit: contain;">
+                </div>
+                <div class="partner-logo">
+                    <img src="images/wordpress-logo.png" alt="WordPress"
+                        style="width: 200px; height: auto; object-fit: contain;">
+                </div>
+                <div class="partner-logo">
+                    <img src="images/elementor-logo.png" alt="Elementor"
+                        style="width: 240px; height: auto; object-fit: contain; margin-top: 15px;">
+                </div>
+                <div class="partner-logo">
+                    <img src="images/Integrations-WPBakery-1724x970-2.svg" alt="WPBakery" style="width: 400px; height: auto; object-fit: contain; margin: 0 -40px;">
+                </div>
+                <div class="partner-logo">
+                    <img src="images/Godaddy-logo.png" alt="GoDaddy"
+                        style="width: 200px; height: auto; object-fit: contain;">
+                </div>
+                <div class="partner-logo">
+                    <img src="images/google-gemini-logo-2025-1440x430.png" alt="Google Gemini"
+                        style="width: 230px; height: auto; object-fit: contain;">
+                </div>
+
+                <!-- Set 4 -->
+                <div class="partner-logo">
+                    <img src="images/Hostinger_Logo.png" alt="Hostinger"
+                        style="width: 180px; height: auto; object-fit: contain;">
+                </div>
+                <div class="partner-logo">
+                    <img src="images/wordpress-logo.png" alt="WordPress"
+                        style="width: 200px; height: auto; object-fit: contain;">
+                </div>
+                <div class="partner-logo">
+                    <img src="images/elementor-logo.png" alt="Elementor"
+                        style="width: 240px; height: auto; object-fit: contain; margin-top: 15px;">
+                </div>
+                <div class="partner-logo">
+                    <img src="images/Integrations-WPBakery-1724x970-2.svg" alt="WPBakery" style="width: 400px; height: auto; object-fit: contain; margin: 0 -40px;">
+                </div>
+                <div class="partner-logo">
+                    <img src="images/Godaddy-logo.png" alt="GoDaddy"
+                        style="width: 200px; height: auto; object-fit: contain;">
+                </div>
+                <div class="partner-logo">
+                    <img src="images/google-gemini-logo-2025-1440x430.png" alt="Google Gemini"
+                        style="width: 230px; height: auto; object-fit: contain;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- Brand Column -->
+            <div class="footer-col footer-brand">
+                <a href="index.html" class="nav-logo">
+                    <svg viewBox="0 0 950 140" class="nav-logo-svg" xmlns="http://www.w3.org/2000/svg">
+                        <g transform="translate(10, 10)">
+                            <path d="M45 5 L85 28 L85 72 L45 95 L5 72 L5 28 Z" fill="none" stroke="url(#ftr_hex_grad)"
+                                stroke-width="8" stroke-linejoin="round" />
+                            <path d="M25 35 L25 65" stroke="#ffffff" stroke-width="7" stroke-linecap="round" />
+                            <path d="M65 35 L65 65" stroke="#ffffff" stroke-width="7" stroke-linecap="round" />
+                            <path d="M25 50 H65" stroke="#ffffff" stroke-width="7" stroke-linecap="round"
+                                opacity="0.3" />
+                            <path d="M52 28 L38 72" stroke="#38bdf8" stroke-width="7" stroke-linecap="round" />
+                            <circle cx="52" cy="28" r="3" fill="#38bdf8" />
+                            <circle cx="38" cy="72" r="3" fill="#38bdf8" />
+                            <defs>
+                                <linearGradient id="ftr_hex_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#818cf8;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                        </g>
+                        <text x="120" y="78" class="logo-text">
+                            <tspan class="fw-900 fill-white">HDL</tspan>
+                            <tspan dx="-8" class="fw-100 fill-slate">Perma</tspan>
+                            <tspan dx="-8" class="fw-700 fill-cyan">Code</tspan>
+                            <tspan dx="-8" class="fw-900 fill-indigo">TECH</tspan>
+                        </text>
+                        <rect x="120" y="95" width="650" height="5" fill="url(#ftr_line_grad)" rx="2.5" />
+                        <defs>
+                            <linearGradient id="ftr_line_grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
+                                <stop offset="60%" style="stop-color:#818cf8;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#38bdf8;stop-opacity:0" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </a>
+                <p>Architecting high-performance, conversion-optimized digital experiences for ambitious brands scaling
+                    globally.</p>
+                <div class="footer-socials">
+                    <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                            </path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg></a>
+                    <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
+                            </path>
+                        </svg></a>
+                    <a href="#" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                            </path>
+                        </svg></a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-col">
+                <h4>Platform</h4>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Developer</a>
+                    <a href="services.html">Services & Specialities</a>
+                    <a href="pricing.html">Pricing Packages</a>
+                    <a href="templates.html">Premium Templates</a>
+                    <a href="index.html#portfolio">Work Portfolio</a>
+                </div>
+            </div>
+
+            <!-- Contact Column -->
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <div class="footer-links">
+                    <a href="mailto:client@hdlpermacodetech.com"
+                        style="display:flex; align-items:center; gap:0.5rem;"><svg width="14" height="14"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg> Email Us</a>
+                    <a href="#" style="display:flex; align-items:center; gap:0.5rem; pointer-events: none;"><svg
+                            width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg> Premium Global Developer</a>
+                    <a href="start-a-project.html"
+                        style="display:flex; align-items:center; gap:0.5rem; color:var(--accent-cyan); margin-top:0.5rem;">Start
+                        a Project &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Newsletter Column -->
+            <div class="footer-col">
+                <h4>Insider Newsletter</h4>
+                <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1rem; line-height:1.5;">Get exclusive
+                    web architecture tips and early access to premium templates.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary"
+                        style="padding:0.75rem; justify-content:center; width: 100%;">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 HDL Perma Code TECH. All rights reserved.</p>
+            <div style="display:flex; gap:1.5rem;">
+                <a href="privacy-policy.html" style="color:var(--text-muted); text-decoration:none;">Privacy Policy</a>
+                <a href="terms-of-service.html" style="color:var(--text-muted); text-decoration:none;">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lead Magnet Modal -->
+    <div class="lead-modal" id="leadModal"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(2, 6, 23, 0.9); z-index: 9999; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.4s;">
+        <div class="lead-modal-content"
+            style="background: var(--bg-surface); border: 1px solid var(--glass-border); border-radius: 12px; padding: 3rem 2rem; max-width: 500px; width: 90%; text-align: center; position: relative; transform: translateY(20px); transition: transform 0.4s;">
+            <button id="closeLeadModal"
+                style="position: absolute; top: 1rem; right: 1.5rem; background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer;">&times;</button>
+            <h3
+                style="font-family: var(--font-heading); font-size: 1.8rem; color: var(--text-main); margin-bottom: 1rem;">
+                Free Website Audit Checklist</h3>
+            <p style="color: var(--text-muted); margin-bottom: 2rem; line-height: 1.6;">Discover the exact 10 steps to
+                increase your website's conversion rate and SEO ranking instantly.</p>
+            <form id="leadMagnetForm" style="display: flex; flex-direction: column; gap: 1rem;">
+                <input type="email" required placeholder="Enter your best email"
+                    style="padding: 1rem; background: var(--bg-base); border: 1px solid var(--glass-border); border-radius: 8px; color: var(--text-main); font-family: var(--font-sans); outline: none;">
+                <button type="submit" class="btn btn-primary" style="justify-content: center; width: 100%;">Download
+                    Now</button>
+            </form>
+            <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: 1rem;">100% Free. No spam.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

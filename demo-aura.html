@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Global Edge Architecture | Simulation</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #020617;
+            --surface: #0f172a;
+            --border: rgba(255, 255, 255, 0.05);
+            --neon-blue: #38bdf8;
+            --neon-green: #22c55e;
+            --neon-purple: #818cf8;
+            --neon-yellow: #eab308;
+            --text-main: #f8fafc;
+            --text-muted: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top Navbar */
+        .terminal-header {
+            height: 60px;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            flex-shrink: 0;
+            z-index: 10;
+        }
+
+        .brand {
+            font-weight: 900;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .status-badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--neon-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        /* Main Area */
+        .architecture-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            flex-grow: 1;
+            padding: 2rem;
+            gap: 2rem;
+            position: relative;
+        }
+
+        /* Flow Columns */
+        .flow-col {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .node-card {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .node-card.active {
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+            border-color: rgba(56, 189, 248, 0.8);
+        }
+
+        .node-card.db-active {
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+            border-color: rgba(34, 197, 94, 0.6);
+        }
+
+        .node-title {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .node-value {
+            font-family: 'Fira Code', monospace;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        /* Central Map Area */
+        .map-container {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: radial-gradient(circle at center, rgba(15, 23, 42, 1) 0%, rgba(2, 6, 23, 1) 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .map-grid {
+            position: absolute;
+            inset: 0;
+            background-size: 40px 40px;
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        }
+
+        /* World Map Nodes */
+        .geo-node {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--text-muted);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.2s;
+        }
+
+        .geo-node::after {
+            content: attr(data-region);
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-muted);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.7rem;
+            white-space: nowrap;
+        }
+
+        .geo-node.nextjs {
+            background: #ffffff;
+            box-shadow: 0 0 10px #ffffff;
+        }
+
+        .geo-node.mongo {
+            background: var(--neon-green);
+            box-shadow: 0 0 10px var(--neon-green);
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Animated Data Packets */
+        .packet {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--neon-blue);
+            box-shadow: 0 0 10px var(--neon-blue);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .packet.success {
+            background: var(--neon-green);
+            box-shadow: 0 0 10px var(--neon-green);
+        }
+
+        /* Live Log Feed */
+        .log-container {
+            background: rgba(2, 6, 23, 0.9);
+            border-top: 1px solid var(--border);
+            height: 200px;
+            padding: 1rem 2rem;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            z-index: 10;
+        }
+
+        .log-entry {
+            display: flex;
+            gap: 1rem;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .log-time {
+            color: var(--text-muted);
+        }
+
+        .log-type.info {
+            color: var(--neon-blue);
+        }
+
+        .log-type.success {
+            color: var(--neon-green);
+        }
+
+        .log-type.db {
+            color: var(--neon-yellow);
+        }
+
+        .btn-fire {
+            background: var(--surface);
+            color: var(--text-main);
+            border: 1px solid var(--neon-blue);
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-top: auto;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .btn-fire:hover {
+            background: rgba(56, 189, 248, 0.1);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+        }
+
+        .btn-fire:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="terminal-header">
+        <div class="brand">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            AURA GLOBAL EDGE ARCHITECTURE
+        </div>
+        <div class="status-badge">
+            <div class="status-dot" style="background:var(--neon-blue); box-shadow: 0 0 10px var(--neon-blue);"></div>
+            EDGE NETWORK ONLINE (104 NODES)
+        </div>
+    </header>
+
+    <div class="architecture-grid">
+        <!-- Client / Edge Column -->
+        <div class="flow-col">
+            <h3 style="color: var(--text-muted); font-size: 0.8rem; letter-spacing: 2px;">CLIENT TIER</h3>
+
+            <div class="node-card" id="clientCard">
+                <div class="node-title">
+                    Global Traffic
+                    <span style="color: var(--neon-blue);">12,450 req/s</span>
+                </div>
+                <div style="font-size: 0.8rem; color: var(--text-muted);">Simulated incoming checkout requests from
+                    distributed global clients.</div>
+            </div>
+
+            <div class="btn-fire" onclick="fireCheckout()" id="simulateBtn">
+                SIMULATE CHECKOUT PEAK
+            </div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); text-align: center; margin-top: -0.5rem;">Click to
+                trigger edge function</div>
+        </div>
+
+        <!-- Visual Map Column -->
+        <div class="map-container" id="mapContainer">
+            <div class="map-grid"></div>
+
+            <!-- Edge Nodes -->
+            <div class="geo-node nextjs" data-region="IAD1 (US East)" style="left: 25%; top: 40%;"></div>
+            <div class="geo-node nextjs" data-region="LHR1 (London)" style="left: 48%; top: 35%;"></div>
+            <div class="geo-node nextjs" data-region="SIN1 (Singapore)" style="left: 80%; top: 55%;"></div>
+            <div class="geo-node nextjs" data-region="HND1 (Tokyo)" style="left: 88%; top: 42%;"></div>
+
+            <!-- DB Primary -->
+            <div class="geo-node mongo" data-region="MongoDB Primary" style="left: 35%; top: 45%;"></div>
+        </div>
+
+        <!-- Database Column -->
+        <div class="flow-col">
+            <h3 style="color: var(--text-muted); font-size: 0.8rem; letter-spacing: 2px;">DATA TIER</h3>
+
+            <div class="node-card" id="redisCard">
+                <div class="node-title">
+                    Upstash Redis (Edge)
+                    <span style="color: var(--neon-yellow);">Low-latency</span>
+                </div>
+                <div class="node-value" id="redisLatency">-- ms</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">Inventory Cache Hit</div>
+            </div>
+
+            <div class="node-card" id="mongoCard">
+                <div class="node-title">
+                    MongoDB Atlas
+                    <span style="color: var(--neon-green);">ACID Tx</span>
+                </div>
+                <div class="node-value" id="mongoLatency">-- ms</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">Distributed Transaction Cluster</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terminal Logger -->
+    <div class="log-container" id="logger">
+        <div class="log-entry">
+            <span class="log-time">[SYSTEM]</span>
+            <span class="log-type info">INFO</span>
+            <span>Aura global infrastructure initialized and listening on Edge nodes.</span>
+        </div>
+    </div>
+
+    <script>
+        const logger = document.getElementById('logger');
+        const mapContainer = document.getElementById('mapContainer');
+        const redisCard = document.getElementById('redisCard');
+        const mongoCard = document.getElementById('mongoCard');
+
+        // Helper: Format Time
+        function getTimeString() {
+            const now = new Date();
+            return `[${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}.${now.getMilliseconds().toString().padStart(3, '0')}]`;
+        }
+
+        // Helper: Add Log Entry
+        function log(message, type = 'info') {
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+
+            let typeColorClass = 'info';
+            if (type === 'success') typeColorClass = 'success';
+            if (type === 'db') typeColorClass = 'db';
+
+            entry.innerHTML = `
+                <span class="log-time">${getTimeString()}</span>
+                <span class="log-type ${typeColorClass}">${type.toUpperCase()}</span>
+                <span>${message}</span>
+            `;
+            logger.appendChild(entry);
+            logger.scrollTop = logger.scrollHeight;
+
+            if (logger.children.length > 50) {
+                logger.removeChild(logger.firstChild);
+            }
+        }
+
+        // Animation Helper
+        function createPacket(startX, startY, endX, endY, classes = [], duration = 500) {
+            return new Promise(resolve => {
+                const packet = document.createElement('div');
+                packet.className = 'packet';
+                classes.forEach(c => packet.classList.add(c));
+
+                packet.style.left = startX + 'px';
+                packet.style.top = startY + 'px';
+                mapContainer.appendChild(packet);
+
+                const animation = packet.animate([
+                    { left: startX + 'px', top: startY + 'px', opacity: 1, transform: 'scale(1)' },
+                    { left: endX + 'px', top: endY + 'px', opacity: 1, transform: 'scale(1.5)' },
+                    { left: endX + 'px', top: endY + 'px', opacity: 0, transform: 'scale(0)' }
+                ], {
+                    duration: duration,
+                    easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)'
+                });
+
+                animation.onfinish = () => {
+                    packet.remove();
+                    resolve();
+                };
+            });
+        }
+
+        // Nodes Data (Relative percentages)
+        const nodes = [
+            { id: 'IAD1', x: 25, y: 40 },
+            { id: 'LHR1', x: 48, y: 35 },
+            { id: 'SIN1', x: 80, y: 55 },
+            { id: 'HND1', x: 88, y: 42 }
+        ];
+        const primaryDB = { x: 35, y: 45 };
+
+        // Main Simulation Flow
+        async function fireCheckout() {
+            const btn = document.getElementById('simulateBtn');
+            btn.style.pointerEvents = 'none';
+            btn.style.opacity = '0.5';
+
+            // 1. Pick random Edge Node closest to "User"
+            const edgeNode = nodes[Math.floor(Math.random() * nodes.length)];
+            const rect = mapContainer.getBoundingClientRect();
+
+            const startX = 0; // Coming from left client side
+            const startY = rect.height / 2;
+            const edgeX = (edgeNode.x / 100) * rect.width;
+            const edgeY = (edgeNode.y / 100) * rect.height;
+            const dbX = (primaryDB.x / 100) * rect.width;
+            const dbY = (primaryDB.y / 100) * rect.height;
+
+            log(`Incoming checkout request routed to nearest Edge Node [${edgeNode.id}] via Anycast.`, 'info');
+
+            // Client -> Edge
+            await createPacket(startX, startY, edgeX, edgeY, [], 300);
+
+            log(`Checking Redis Edge Cache at ${edgeNode.id}...`, 'info');
+
+            // Edge -> Redis (Fast)
+            redisCard.classList.add('active');
+            await new Promise(r => setTimeout(r, 150)); // Tiny delay
+            const redisLat = Math.floor(Math.random() * 8 + 2); // 2-10ms
+            document.getElementById('redisLatency').textContent = `${redisLat} ms`;
+            redisCard.classList.remove('active');
+
+            log(`Inventory validated. Cache Hit: ${redisLat}ms. Proceeding to Transaction.`, 'db');
+
+            // Edge -> DB
+            await createPacket(edgeX, edgeY, dbX, dbY, ['success'], 400);
+
+            mongoCard.classList.add('db-active');
+            const mongoLat = Math.floor(Math.random() * 20 + 25); // 25-45ms
+
+            log(`MongoDB ACID Transaction: Order written globally.`, 'db');
+
+            await new Promise(r => setTimeout(r, 300));
+            document.getElementById('mongoLatency').textContent = `${mongoLat} ms`;
+            mongoCard.classList.remove('db-active');
+
+            // DB -> Route -> Client
+            await createPacket(dbX, dbY, edgeX, edgeY, ['success'], 400);
+            await createPacket(edgeX, edgeY, startX, startY, ['success'], 300);
+
+            const totalLat = redisLat + mongoLat + 15; // + network overhead
+            log(`Checkout complete! Total End-to-End Latency: ${totalLat}ms`, 'success');
+
+            btn.style.pointerEvents = 'auto';
+            btn.style.opacity = '1';
+        }
+
+        // Auto background traffic
+        setInterval(() => {
+            if (Math.random() > 0.7) {
+                const rect = mapContainer.getBoundingClientRect();
+                const node = nodes[Math.floor(Math.random() * nodes.length)];
+                createPacket(0, Math.random() * rect.height, (node.x / 100) * rect.width, (node.y / 100) * rect.height, [], 600);
+            }
+        }, 800);
+
+    </script>
+</body>
+
+</html>
