@@ -90,6 +90,7 @@ try {
     $devMail->setFrom($smtp_username, 'HDL Perma Code TECH Website');
     $devMail->addAddress($to_developer);
     $devMail->addReplyTo($email, $name);
+    $devMail->Sender = $smtp_username; // Enforce Return-Path
 
     // Content
     $devMail->isHTML(false);
@@ -105,7 +106,7 @@ try {
     $devMail->Body = $dev_body;
 
     // Send developer notification
-    $devMail->send();
+    $dev_sent = $devMail->send();
 
 
     // ==========================================
@@ -122,6 +123,7 @@ try {
     $clientMail->setFrom($smtp_username, 'HDL Perma Code TECH');
     $clientMail->addAddress($email, $name);
     $clientMail->addReplyTo($smtp_username, 'HDL Perma Code TECH');
+    $clientMail->Sender = $smtp_username; // Enforce Return-Path
 
     $clientMail->isHTML(true);
     $clientMail->Subject = 'We received your project brief! - HDL Perma Code TECH';
@@ -181,9 +183,15 @@ try {
     </html>
     ";
 
-    $clientMail->send();
+    $client_sent = $clientMail->send();
 
-    echo json_encode(['success' => true, 'message' => 'Brief sent successfully via Hostinger SMTP!']);
+    if ($dev_sent && $client_sent) {
+        echo json_encode(['success' => true, 'message' => 'Brief sent successfully via Hostinger SMTP!']);
+    }
+    else {
+        http_response_code(500);
+        echo json_encode(['success' => false, 'message' => 'Mailer Error: Could not dispatch all emails.']);
+    }
 
 }
 catch (Exception $e) {
