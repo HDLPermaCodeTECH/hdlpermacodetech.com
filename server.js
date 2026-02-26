@@ -97,13 +97,55 @@ app.post('/send-project-brief', async (req, res) => {
 
         // 1. Developer Notification Email
         const developerHtml = `
-            <h2>New Project Brief Received!</h2>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Inquiry Type:</strong> ${readableInquiry}</p>
-            <p><strong>Budget:</strong> ${readableBudget}</p>
-            <h3>Project Details:</h3>
-            <p>${message}</p>
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <meta charset='utf-8'>
+                <style>
+                    body { margin: 0; padding: 0; background-color: #020617; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #f8fafc; }
+                    .email-container { max-width: 600px; margin: 0 auto; background-color: #0f172a; padding: 40px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); }
+                    .header { text-align: center; margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; }
+                    .logo { font-size: 24px; font-weight: 900; color: #ffffff; letter-spacing: -1px; }
+                    .logo span.perma { font-weight: 300; color: #cbd5e1; }
+                    .logo span.code { font-weight: 700; color: #38bdf8; }
+                    .logo span.tech { font-weight: 900; color: #818cf8; }
+                    .content { line-height: 1.6; color: #cbd5e1; }
+                    h2 { color: #f8fafc; margin-top: 0; color: #38bdf8; }
+                    .summary-box { background-color: #1e293b; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #818cf8; }
+                    .summary-box p { margin: 8px 0; color: #f8fafc; }
+                    .summary-box strong { color: #818cf8; display: inline-block; width: 110px; }
+                    .message-box { background-color: #020617; padding: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); color: #cbd5e1; white-space: pre-wrap; margin-top: 15px; font-style: italic; }
+                    .footer { margin-top: 40px; text-align: center; font-size: 12px; color: #64748b; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+                </style>
+            </head>
+            <body>
+                <div style='background-color: #020617; padding: 40px 20px; width: 100%; box-sizing: border-box;'>
+                    <div class='email-container'>
+                        <div class='header'>
+                            <div class='logo'>NEW LEAD <span class='perma'>|</span> <span class='code'>HDL</span><span class='tech'>TECH</span></div>
+                        </div>
+                        <div class='content'>
+                            <h2>New Project Brief Received!</h2>
+                            <p>Great news! A new prospective client has just submitted a project brief through the website frontend.</p>
+                            
+                            <div class='summary-box'>
+                                <p><strong>Name:</strong> ${name}</p>
+                                <p><strong>Email:</strong> ${email}</p>
+                                <p><strong>Inquiry Type:</strong> ${readableInquiry}</p>
+                                <p><strong>Budget:</strong> ${readableBudget}</p>
+                            </div>
+                            
+                            <h3 style='color: #f8fafc; margin-bottom: 5px; margin-top: 25px;'>Project Details/Message:</h3>
+                            <div class='message-box'>${message}</div>
+                        </div>
+                        <div class='footer'>
+                            You can reply directly to this email to contact ${name}.<br>
+                            &copy; ${new Date().getFullYear()} HDL Perma Code TECH System.
+                        </div>
+                    </div>
+                </div>
+            </body>
+            </html>
         `;
 
         const myEmail = process.env.EMAIL_USER || "developer@hdlpermacodetech.com";
