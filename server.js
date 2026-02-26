@@ -122,7 +122,37 @@ app.post('/send-project-brief', async (req, res) => {
                 <div style='background-color: #020617; padding: 40px 20px; width: 100%; box-sizing: border-box;'>
                     <div class='email-container'>
                         <div class='header'>
-                            <div class='logo'>NEW LEAD <span class='perma'>|</span> <span class='code'>HDL</span><span class='tech'>TECH</span></div>
+                            <div class='logo'>
+                                <svg viewBox="0 0 950 140" style="height: 60px; max-width: 100%;" xmlns="http://www.w3.org/2000/svg">
+                                    <g transform="translate(10, 10)">
+                                        <path d="M45 5 L85 28 L85 72 L45 95 L5 72 L5 28 Z" fill="none" stroke="url(#nav_hex_grad)"
+                                            stroke-width="8" stroke-linejoin="round" />
+                                        <path d="M25 35 L25 65" stroke="#ffffff" stroke-width="7" stroke-linecap="round" />
+                                        <path d="M65 35 L65 65" stroke="#ffffff" stroke-width="7" stroke-linecap="round" />
+                                        <path d="M25 50 H65" stroke="#ffffff" stroke-width="7" stroke-linecap="round" opacity="0.3" />
+                                        <path d="M52 28 L38 72" stroke="#38bdf8" stroke-width="7" stroke-linecap="round" />
+                                        <circle cx="52" cy="28" r="3" fill="#38bdf8" />
+                                        <circle cx="38" cy="72" r="3" fill="#38bdf8" />
+                                        <defs>
+                                            <linearGradient id="nav_hex_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
+                                                <stop offset="100%" style="stop-color:#818cf8;stop-opacity:1" />
+                                            </linearGradient>
+                                        </defs>
+                                    </g>
+                                    <text x="120" y="78" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="900" font-size="64" fill="#ffffff">
+                                        HDL<tspan dx="-5" font-weight="300" fill="#cbd5e1">Perma</tspan><tspan dx="-5" font-weight="700" fill="#38bdf8">Code</tspan><tspan dx="-5" font-weight="900" fill="#818cf8">TECH</tspan>
+                                    </text>
+                                    <rect x="120" y="95" width="650" height="5" fill="url(#nav_line_grad)" rx="2.5" />
+                                    <defs>
+                                        <linearGradient id="nav_line_grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                            <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
+                                            <stop offset="60%" style="stop-color:#818cf8;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#38bdf8;stop-opacity:0" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
                         </div>
                         <div class='content'>
                             <h2>New Project Brief Received!</h2>
@@ -178,7 +208,37 @@ app.post('/send-project-brief', async (req, res) => {
                 <div style='background-color: #020617; padding: 40px 20px; width: 100%; box-sizing: border-box;'>
                     <div class='email-container'>
                         <div class='header'>
-                            <div class='logo'>HDL<span class='perma'>Perma</span><span class='code'>Code</span><span class='tech'>TECH</span></div>
+                            <div class='logo'>
+                                <svg viewBox="0 0 950 140" style="height: 60px; max-width: 100%;" xmlns="http://www.w3.org/2000/svg">
+                                    <g transform="translate(10, 10)">
+                                        <path d="M45 5 L85 28 L85 72 L45 95 L5 72 L5 28 Z" fill="none" stroke="url(#nav_hex_grad)"
+                                            stroke-width="8" stroke-linejoin="round" />
+                                        <path d="M25 35 L25 65" stroke="#ffffff" stroke-width="7" stroke-linecap="round" />
+                                        <path d="M65 35 L65 65" stroke="#ffffff" stroke-width="7" stroke-linecap="round" />
+                                        <path d="M25 50 H65" stroke="#ffffff" stroke-width="7" stroke-linecap="round" opacity="0.3" />
+                                        <path d="M52 28 L38 72" stroke="#38bdf8" stroke-width="7" stroke-linecap="round" />
+                                        <circle cx="52" cy="28" r="3" fill="#38bdf8" />
+                                        <circle cx="38" cy="72" r="3" fill="#38bdf8" />
+                                        <defs>
+                                            <linearGradient id="nav_hex_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
+                                                <stop offset="100%" style="stop-color:#818cf8;stop-opacity:1" />
+                                            </linearGradient>
+                                        </defs>
+                                    </g>
+                                    <text x="120" y="78" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="900" font-size="64" fill="#ffffff">
+                                        HDL<tspan dx="-5" font-weight="300" fill="#cbd5e1">Perma</tspan><tspan dx="-5" font-weight="700" fill="#38bdf8">Code</tspan><tspan dx="-5" font-weight="900" fill="#818cf8">TECH</tspan>
+                                    </text>
+                                    <rect x="120" y="95" width="650" height="5" fill="url(#nav_line_grad)" rx="2.5" />
+                                    <defs>
+                                        <linearGradient id="nav_line_grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                            <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
+                                            <stop offset="60%" style="stop-color:#818cf8;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#38bdf8;stop-opacity:0" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
                         </div>
                         <div class='content'>
                             <h2>Hi ${name},</h2>
