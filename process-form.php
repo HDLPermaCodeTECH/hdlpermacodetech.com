@@ -16,7 +16,7 @@ use PHPMailer\PHPMailer\SMTP;
 // The user MUST fill in their created email password here.
 $smtp_host = 'smtp.hostinger.com';
 $smtp_username = 'developer@hdlpermacodetech.com';
-$smtp_password = 'PLACE_YOUR_EMAIL_PASSWORD_HERE';
+$smtp_password = 'Nitro19960422.';
 
 $smtp_port = 465; // Hostinger uses 465 for SSL, or 587 for TLS
 // -------------------------------------------------------------
