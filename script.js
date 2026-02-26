@@ -156,7 +156,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     body: JSON.stringify(formData)
                 });
 
-                const result = await response.json();
+                const responseText = await response.text();
+                let result;
+                try {
+                    result = JSON.parse(responseText);
+                } catch (e) {
+                    console.error("Raw Server Response:", responseText);
+                    throw new Error("Server returned an invalid response (Check console for exact error or HTML page).");
+                }
 
                 if (result.success) {
                     // Success State
