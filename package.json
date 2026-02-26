@@ -1,0 +1,13 @@
+{
+  "name": "hdlpermacodetech",
+  "version": "1.0.0",
+  "description": "HDL Perma Code TECH Official Website",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "build": "echo 'No build required for static site'"
+  },
+  "keywords": [],
+  "author": "HDL Perma Code TECH",
+  "license": "ISC"
+}
