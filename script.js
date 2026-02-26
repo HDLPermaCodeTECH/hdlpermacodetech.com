@@ -121,20 +121,80 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const mainForm = document.getElementById('mainForm');
     if (mainForm) {
-        mainForm.addEventListener('submit', (e) => {
+        mainForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const btn = mainForm.querySelector('button');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<span>Processing...</span>';
-            setTimeout(() => {
-                btn.innerHTML = '<span>Inquiry Sent Successfully!</span>';
-                btn.style.background = '#10b981';
-                mainForm.reset();
+            const btn = mainForm.querySelector('button[type="submit"]');
+            const btnText = document.getElementById('submitBtnText');
+            const originalText = btnText.innerText;
+            const notification = document.getElementById('formNotification');
+
+            // Set Loading State
+            btnText.innerText = 'Processing...';
+            btn.style.opacity = '0.7';
+            btn.style.pointerEvents = 'none';
+            notification.style.display = 'none';
+
+            // Gather Data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                inquiryType: document.getElementById('inquiryType').value,
+                budget: document.getElementById('budget').value,
+                message: document.getElementById('message').value
+            };
+
+            try {
+                // Send AJAX Request
+                const response = await fetch('process-form.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    // Success State
+                    btnText.innerText = 'Sent Successfully!';
+                    btn.style.background = '#10b981'; // Green
+
+                    notification.innerText = 'Thank you! Your project brief has been sent. Check your email for confirmation.';
+                    notification.style.color = '#10b981';
+                    notification.style.border = '1px solid #10b981';
+                    notification.style.background = 'rgba(16, 185, 129, 0.1)';
+                    notification.style.display = 'block';
+
+                    mainForm.reset();
+
+                    // Reset dropdown visual states
+                    const selectTriggers = document.querySelectorAll('.custom-select-trigger');
+                    selectTriggers[0].innerText = 'Inquiry Type';
+                    selectTriggers[1].innerText = 'Estimated Budget';
+                    document.querySelectorAll('.custom-option').forEach(opt => opt.classList.remove('selected'));
+                } else {
+                    throw new Error(result.message || 'Something went wrong.');
+                }
+            } catch (error) {
+                // Error State
+                btnText.innerText = 'Failed to Send';
+                btn.style.background = '#ef4444'; // Red
+
+                notification.innerText = error.message || 'Error connecting to server. Please try again.';
+                notification.style.color = '#ef4444';
+                notification.style.border = '1px solid #ef4444';
+                notification.style.background = 'rgba(239, 68, 68, 0.1)';
+                notification.style.display = 'block';
+            } finally {
+                // Restore button after delay
                 setTimeout(() => {
-                    btn.innerHTML = originalText;
+                    btnText.innerText = originalText;
                     btn.style.background = '';
-                }, 3000);
-            }, 1500);
+                    btn.style.opacity = '1';
+                    btn.style.pointerEvents = 'auto';
+                }, 4000);
+            }
         });
     }
 

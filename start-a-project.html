@@ -100,11 +100,11 @@
                 <form class="contact-form" id="mainForm">
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                         <div class="form-group">
-                            <input type="text" id="name" required placeholder=" ">
+                            <input type="text" id="name" name="name" required placeholder=" ">
                             <label for="name">Your Name</label>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" required placeholder=" ">
+                            <input type="email" id="email" name="email" required placeholder=" ">
                             <label for="email">Your Email</label>
                         </div>
                     </div>
@@ -140,19 +140,24 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <textarea id="message" rows="4" required placeholder=" "></textarea>
+                        <textarea id="message" name="message" rows="4" required placeholder=" "></textarea>
                         <label for="message">Project Details</label>
                     </div>
                     <div style="display: flex; justify-content: center;">
-                        <button type="submit" class="btn btn-primary submit-btn"
+                        <button type="submit" class="btn btn-primary submit-btn" id="submitBtn"
                             style="width: 100%; justify-content: center;">
-                            <span>Send Project Brief</span>
-                            <svg viewBox="0 0 24 24" class="send-icon" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <span id="submitBtnText">Send Project Brief</span>
+                            <svg viewBox="0 0 24 24" class="send-icon" id="submitBtnIcon" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="22" y1="2" x2="11" y2="13"></line>
                                 <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                             </svg>
                         </button>
+                    </div>
+
+                    <!-- Notification Banner -->
+                    <div id="formNotification"
+                        style="display: none; margin-top: 1.5rem; padding: 1rem; border-radius: 8px; text-align: center; font-weight: 500; transition: all 0.3s ease;">
                     </div>
                 </form>
             </div>
@@ -277,7 +282,8 @@
             <p>&copy; 2026 HDL Perma Code TECH. All rights reserved.</p>
             <div style="display:flex; gap:1.5rem;">
                 <a href="privacy-policy.html" style="color:var(--text-muted); text-decoration:none;">Privacy Policy</a>
-                <a href="terms-of-service.html" style="color:var(--text-muted); text-decoration:none;">Terms of Service</a>
+                <a href="terms-of-service.html" style="color:var(--text-muted); text-decoration:none;">Terms of
+                    Service</a>
             </div>
         </div>
     </footer>
