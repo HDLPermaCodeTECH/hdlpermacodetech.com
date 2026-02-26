@@ -144,11 +144,14 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                // Send AJAX Request
-                const response = await fetch('process-form.php', {
+                // Send AJAX Request: Use Node.js locally (since PHP is not installed locally), and send.php on Hostinger
+                const isLocal = window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+                const backendUrl = isLocal ? 'http://localhost:5000/send-project-brief' : 'send.php';
+
+                const response = await fetch(backendUrl, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
+                        'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(formData)
                 });
