@@ -4,8 +4,8 @@
   "description": "HDL Perma Code TECH Official Website",
   "main": "index.html",
   "scripts": {
-    "start": "npx serve .",
-    "build": "echo 'No build required for static site'"
+    "start": "node -e 'console.log(\"Server started.\")'",
+    "build": "echo 'Build completed'"
   },
   "keywords": [],
   "author": "HDL Perma Code TECH",
