@@ -18,8 +18,15 @@ $smtp_host = 'smtp.hostinger.com';
 $smtp_username = 'developer@hdlpermacodetech.com';
 $smtp_password = 'Nitro19960422.';
 
-$smtp_port = 465; // Hostinger uses 465 for SSL, or 587 for TLS
+$smtp_port = 587; // Switch to TLS port 587 (Hostinger recommended fallback)
 // -------------------------------------------------------------
+
+// Enable SMTP debugging for Hostinger error tracing
+// 0 = off, 1 = client messages, 2 = client and server messages
+$debug_level = SMTP::DEBUG_SERVER;
+
+
+ob_start(); // Buffer the debug output so it doesn't break JSON
 
 
 // Define recipients
@@ -78,12 +85,13 @@ try {
     // ==========================================
 
     // Server settings
+    $devMail->SMTPDebug = $debug_level;
     $devMail->isSMTP();
     $devMail->Host = $smtp_host;
     $devMail->SMTPAuth = true;
     $devMail->Username = $smtp_username;
     $devMail->Password = $smtp_password;
-    $devMail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Enable SSL
+    $devMail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Switch to TLS
     $devMail->Port = $smtp_port;
 
     // Recipients
@@ -112,12 +120,13 @@ try {
     // ==========================================
     // 2. Auto-Reply to Client
     // ==========================================
+    $clientMail->SMTPDebug = $debug_level;
     $clientMail->isSMTP();
     $clientMail->Host = $smtp_host;
     $clientMail->SMTPAuth = true;
     $clientMail->Username = $smtp_username;
     $clientMail->Password = $smtp_password;
-    $clientMail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Enable SSL
+    $clientMail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Switch to TLS
     $clientMail->Port = $smtp_port;
 
     $clientMail->setFrom($smtp_username, 'HDL Perma Code TECH');
@@ -186,17 +195,21 @@ try {
     $client_sent = $clientMail->send();
 
     if ($dev_sent && $client_sent) {
-        echo json_encode(['success' => true, 'message' => 'Brief sent successfully via Hostinger SMTP!']);
+        // Clear debug buffer on success
+        ob_end_clean();
+        echo json_encode(['success' => true, 'message' => 'Brief sent successfully via Hostinger SMTP (TLS)!']);
     }
     else {
+        $debug_output = ob_get_clean();
         http_response_code(500);
-        echo json_encode(['success' => false, 'message' => 'Mailer Error: Could not dispatch all emails.']);
+        echo json_encode(['success' => false, 'message' => 'Mailer Error: ' . $debug_output]);
     }
 
 }
 catch (Exception $e) {
+    $debug_output = ob_get_clean();
     http_response_code(500);
-    // Returning the exact mailer Error so they know if the password/auth failed
-    echo json_encode(['success' => false, 'message' => 'Mailer Error: ' . $devMail->ErrorInfo]);
+    // Return the exact mailer Error + Debug trace so they know if the auth failed
+    echo json_encode(['success' => false, 'message' => 'Exception Error: ' . $e->getMessage() . ' | Trace: ' . $debug_output]);
 }
 ?>
