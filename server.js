@@ -103,31 +103,61 @@ app.post('/send-project-brief', async (req, res) => {
                 <meta charset='utf-8'>
                 <meta name='viewport' content='width=device-width, initial-scale=1.0'>
             </head>
-            <body style="margin: 0; padding: 0; background-color: #020617; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #f8fafc;">
+            <body style="margin: 0; padding: 0; background-color: #020617; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #f8fafc; -webkit-font-smoothing: antialiased;">
                 <div style='background-color: #020617; padding: 40px 20px; width: 100%; box-sizing: border-box;'>
-                    <div style='max-width: 600px; margin: 0 auto; background-color: #0f172a; padding: 40px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);'>
-                        <div style='text-align: center; margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px;'>
-                            <div style='text-align: center; margin-bottom: 20px;'>
-                                <img src="https://hdlpermacodetech.com/images/hdlpermacodetech.png" alt="HDL Perma Code TECH Logo" style="height: 50px; max-width: 100%; border: 0; outline: none; text-decoration: none; display: inline-block;">
-                            </div>
+                    <div style='max-width: 600px; margin: 0 auto; background-color: #0f172a; padding: 0; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); overflow: hidden; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);'>
+                        
+                        <!-- Header Section -->
+                        <div style='text-align: center; padding: 40px 20px 30px; background: linear-gradient(180deg, rgba(15,23,42,1) 0%, rgba(2,6,23,1) 100%); border-bottom: 1px solid rgba(255,255,255,0.05);'>
+                            <img src="https://hdlpermacodetech.com/images/HDL_HexShield_Icon.png" alt="Shield Icon" style="height: 55px; width: auto; border: 0; outline: none; text-decoration: none; display: block; margin: 0 auto 15px;">
+                            <img src="https://hdlpermacodetech.com/images/hdlpermacodetech.png" alt="HDL Perma Code TECH" style="height: 24px; width: auto; max-width: 100%; border: 0; outline: none; text-decoration: none; display: block; margin: 0 auto;">
                         </div>
-                        <div style='line-height: 1.6; color: #cbd5e1;'>
-                            <h2 style='color: #38bdf8; margin-top: 0;'>New Project Brief Received!</h2>
-                            <p style='color: #cbd5e1;'>Great news! A new prospective client has just submitted a project brief through the website frontend.</p>
+
+                        <!-- Body Section -->
+                        <div style='padding: 40px; line-height: 1.6; color: #cbd5e1;'>
+                            <h2 style='color: #f8fafc; margin-top: 0; font-size: 22px; font-weight: 600; letter-spacing: -0.5px;'>New Project Brief Received <span style='color: #38bdf8;'>🚀</span></h2>
+                            <p style='color: #94a3b8; font-size: 15px;'>A new prospective client has just submitted a project brief through the website frontend. Details are below.</p>
                             
-                            <div style='background-color: #1e293b; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #818cf8;'>
-                                <p style='margin: 8px 0; color: #f8fafc;'><strong style='color: #818cf8; display: inline-block; width: 110px;'>Name:</strong> ${name}</p>
-                                <p style='margin: 8px 0; color: #f8fafc;'><strong style='color: #818cf8; display: inline-block; width: 110px;'>Email:</strong> ${email}</p>
-                                <p style='margin: 8px 0; color: #f8fafc;'><strong style='color: #818cf8; display: inline-block; width: 110px;'>Inquiry Type:</strong> ${readableInquiry}</p>
-                                <p style='margin: 8px 0; color: #f8fafc;'><strong style='color: #818cf8; display: inline-block; width: 110px;'>Budget:</strong> ${readableBudget}</p>
+                            <div style='background-color: #1e293b; padding: 25px; border-radius: 10px; margin: 30px 0; border-left: 4px solid #818cf8; box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);'>
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin: 0; padding: 0;">
+                                    <tr>
+                                        <td style='padding: 8px 0; width: 120px;'><strong style='color: #818cf8; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;'>Name:</strong></td>
+                                        <td style='padding: 8px 0; color: #f8fafc; font-size: 15px; font-weight: 500;'>${name}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style='padding: 8px 0;'><strong style='color: #818cf8; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;'>Email:</strong></td>
+                                        <td style='padding: 8px 0; color: #f8fafc; font-size: 15px; font-weight: 500;'><a href="mailto:${email}" style="color: #38bdf8; text-decoration: none;">${email}</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td style='padding: 8px 0;'><strong style='color: #818cf8; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;'>Inquiry Type:</strong></td>
+                                        <td style='padding: 8px 0; color: #f8fafc; font-size: 15px; font-weight: 500;'>${readableInquiry}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style='padding: 8px 0;'><strong style='color: #818cf8; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;'>Budget:</strong></td>
+                                        <td style='padding: 8px 0; color: #f8fafc; font-size: 15px; font-weight: 500;'>${readableBudget}</td>
+                                    </tr>
+                                </table>
                             </div>
                             
-                            <h3 style='color: #f8fafc; margin-bottom: 5px; margin-top: 25px;'>Project Details/Message:</h3>
-                            <div style='background-color: #020617; padding: 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); color: #cbd5e1; white-space: pre-wrap; margin-top: 15px; font-style: italic;'>${message}</div>
+                            <h3 style='color: #f8fafc; margin-bottom: 15px; margin-top: 35px; font-size: 16px; font-weight: 600;'>Project Details / Message:</h3>
+                            <div style='background-color: #020617; padding: 25px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05); color: #cbd5e1; white-space: pre-wrap; font-style: italic; font-size: 15px; line-height: 1.8;'>"${message}"</div>
                         </div>
-                        <div style='margin-top: 40px; text-align: center; font-size: 12px; color: #64748b; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;'>
-                            You can reply directly to this email to contact ${name}.<br>
-                            &copy; ${new Date().getFullYear()} HDL Perma Code TECH System.
+
+                        <!-- Footer Section -->
+                        <div style='background-color: #020617; padding: 40px 30px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05);'>
+                            <img src="https://hdlpermacodetech.com/images/HDL_HexShield_Icon.png" alt="Shield Icon" style="height: 35px; width: auto; border: 0; outline: none; text-decoration: none; display: inline-block; margin-bottom: 20px; opacity: 0.8;">
+                            
+                            <p style='margin: 0 0 25px; color: #38bdf8; font-size: 14px; font-weight: 500; letter-spacing: 0.5px;'>Building Secure. Scalable. Professional Web Solutions.</p>
+                            
+                            <div style='margin-bottom: 25px;'>
+                                <a href="https://hdlpermacodetech.com/privacy-policy" style='color: #64748b; text-decoration: none; font-size: 12px; margin: 0 10px; transition: color 0.2s;'>Privacy Policy</a>
+                                <span style='color: #334155;'>|</span>
+                                <a href="https://hdlpermacodetech.com/safety-and-security" style='color: #64748b; text-decoration: none; font-size: 12px; margin: 0 10px; transition: color 0.2s;'>Safety & Security</a>
+                                <span style='color: #334155;'>|</span>
+                                <a href="https://hdlpermacodetech.com/terms-of-service" style='color: #64748b; text-decoration: none; font-size: 12px; margin: 0 10px; transition: color 0.2s;'>Terms & Conditions</a>
+                            </div>
+                            
+                            <p style='margin: 0; font-size: 12px; color: #475569;'>&copy; ${new Date().getFullYear()} HDL Perma Code TECH. All rights reserved.</p>
                         </div>
                     </div>
                 </div>
@@ -147,32 +177,57 @@ app.post('/send-project-brief', async (req, res) => {
                 <meta charset='utf-8'>
                 <meta name='viewport' content='width=device-width, initial-scale=1.0'>
             </head>
-            <body style="margin: 0; padding: 0; background-color: #020617; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #f8fafc;">
+            <body style="margin: 0; padding: 0; background-color: #020617; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #f8fafc; -webkit-font-smoothing: antialiased;">
                 <div style='background-color: #020617; padding: 40px 20px; width: 100%; box-sizing: border-box;'>
-                    <div style='max-width: 600px; margin: 0 auto; background-color: #0f172a; padding: 40px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);'>
-                        <div style='text-align: center; margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px;'>
-                            <div style='text-align: center; margin-bottom: 20px;'>
-                                <img src="https://hdlpermacodetech.com/images/hdlpermacodetech.png" alt="HDL Perma Code TECH Logo" style="height: 50px; max-width: 100%; border: 0; outline: none; text-decoration: none; display: inline-block;">
-                            </div>
+                    <div style='max-width: 600px; margin: 0 auto; background-color: #0f172a; padding: 0; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); overflow: hidden; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);'>
+                        
+                        <!-- Header Section -->
+                        <div style='text-align: center; padding: 40px 20px 30px; background: linear-gradient(180deg, rgba(15,23,42,1) 0%, rgba(2,6,23,1) 100%); border-bottom: 1px solid rgba(255,255,255,0.05);'>
+                            <img src="https://hdlpermacodetech.com/images/HDL_HexShield_Icon.png" alt="Shield Icon" style="height: 55px; width: auto; border: 0; outline: none; text-decoration: none; display: block; margin: 0 auto 15px;">
+                            <img src="https://hdlpermacodetech.com/images/hdlpermacodetech.png" alt="HDL Perma Code TECH" style="height: 24px; width: auto; max-width: 100%; border: 0; outline: none; text-decoration: none; display: block; margin: 0 auto;">
                         </div>
-                        <div style='line-height: 1.6; color: #cbd5e1;'>
-                            <h2 style='color: #f8fafc; margin-top: 0;'>Hi ${name},</h2>
-                            <p style='color: #cbd5e1;'>Thank you for reaching out and submitting your project brief. We have successfully received your inquiry and our team is already reviewing the details.</p>
-                            <p style='color: #cbd5e1;'>At HDL Perma Code TECH, we take pride in engineering high-performance, conversion-optimized digital experiences. We're excited about the possibility of building your next big project.</p>
+
+                        <!-- Body Section -->
+                        <div style='padding: 40px; line-height: 1.6; color: #cbd5e1;'>
+                            <h2 style='color: #f8fafc; margin-top: 0; font-size: 22px; font-weight: 600; letter-spacing: -0.5px;'>Hi ${name},</h2>
+                            <p style='color: #94a3b8; font-size: 15px; margin-bottom: 20px;'>Thank you for reaching out and submitting your project brief. We have successfully received your inquiry, and our team is already reviewing the details.</p>
+                            <p style='color: #94a3b8; font-size: 15px;'>At HDL Perma Code TECH, we take pride in engineering high-performance, conversion-optimized digital experiences. We're excited about the possibility of building your next big project.</p>
                             
-                            <div style='background-color: #1e293b; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #38bdf8;'>
-                                <strong style='color: #38bdf8;'>Your Submission Summary:</strong>
-                                <p style='margin: 5px 0; color: #f8fafc;'><strong style='color: #38bdf8;'>Inquiry Type:</strong> ${readableInquiry}</p>
-                                <p style='margin: 5px 0; color: #f8fafc;'><strong style='color: #38bdf8;'>Estimated Budget:</strong> ${readableBudget}</p>
+                            <div style='background-color: #1e293b; padding: 25px; border-radius: 10px; margin: 30px 0; border-left: 4px solid #38bdf8; box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);'>
+                                <strong style='color: #38bdf8; display: block; margin-bottom: 15px; font-size: 16px; letter-spacing: 0.5px;'>Your Submission Summary</strong>
+                                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin: 0; padding: 0;">
+                                    <tr>
+                                        <td style='padding: 6px 0; width: 140px;'><span style='color: #94a3b8; font-size: 14px;'>Inquiry Type:</span></td>
+                                        <td style='padding: 6px 0; color: #f8fafc; font-size: 15px; font-weight: 500;'>${readableInquiry}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style='padding: 6px 0;'><span style='color: #94a3b8; font-size: 14px;'>Estimated Budget:</span></td>
+                                        <td style='padding: 6px 0; color: #f8fafc; font-size: 15px; font-weight: 500;'>${readableBudget}</td>
+                                    </tr>
+                                </table>
                             </div>
                             
-                            <p style='color: #cbd5e1;'>One of our lead developers will review your requirements and follow up with you within 24-48 hours to discuss the next steps.</p>
-                            <p style='color: #cbd5e1;'>Best regards,<br>
-                            <strong style='color: #f8fafc;'>The HDL Perma Code TECH Team</strong></p>
+                            <p style='color: #94a3b8; font-size: 15px; margin-bottom: 25px;'>One of our lead developers will review your requirements and follow up with you within 24-48 hours to discuss the next steps.</p>
+                            
+                            <p style='margin: 0; color: #cbd5e1; font-size: 15px;'>Best regards,<br>
+                            <strong style='color: #f8fafc; display: block; margin-top: 5px;'>The HDL Perma Code TECH Team</strong></p>
                         </div>
-                        <div style='margin-top: 40px; text-align: center; font-size: 12px; color: #64748b; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;'>
-                            Questions? Reply directly to this email or contact us at ${myEmail}<br>
-                            &copy; ${new Date().getFullYear()} HDL Perma Code TECH. All rights reserved.
+
+                        <!-- Footer Section -->
+                        <div style='background-color: #020617; padding: 40px 30px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05);'>
+                            <img src="https://hdlpermacodetech.com/images/HDL_HexShield_Icon.png" alt="Shield Icon" style="height: 35px; width: auto; border: 0; outline: none; text-decoration: none; display: inline-block; margin-bottom: 20px; opacity: 0.8;">
+                            
+                            <p style='margin: 0 0 25px; color: #38bdf8; font-size: 14px; font-weight: 500; letter-spacing: 0.5px;'>Building Secure. Scalable. Professional Web Solutions.</p>
+                            
+                            <div style='margin-bottom: 25px;'>
+                                <a href="https://hdlpermacodetech.com/privacy-policy" style='color: #64748b; text-decoration: none; font-size: 12px; margin: 0 10px; transition: color 0.2s;'>Privacy Policy</a>
+                                <span style='color: #334155;'>|</span>
+                                <a href="https://hdlpermacodetech.com/safety-and-security" style='color: #64748b; text-decoration: none; font-size: 12px; margin: 0 10px; transition: color 0.2s;'>Safety & Security</a>
+                                <span style='color: #334155;'>|</span>
+                                <a href="https://hdlpermacodetech.com/terms-of-service" style='color: #64748b; text-decoration: none; font-size: 12px; margin: 0 10px; transition: color 0.2s;'>Terms & Conditions</a>
+                            </div>
+                            
+                            <p style='margin: 0; font-size: 12px; color: #475569;'>&copy; ${new Date().getFullYear()} HDL Perma Code TECH. All rights reserved.</p>
                         </div>
                     </div>
                 </div>
