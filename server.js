@@ -161,6 +161,8 @@ app.post('/send-project-brief', async (req, res) => {
                         </div>
                     </div>
                 </div>
+                <!-- Anti-Gmail Trim HACK: Forces unique string to stop message threading -->
+                <span style="opacity: 0; color: transparent; display: none; font-size: 0px; line-height: 0px; max-height: 0px; max-width: 0px; overflow: hidden; height: 0px; width: 0px;">Reference ID: ${Date.now()}_${Math.random().toString(36).substring(2, 9)}</span>
             </body>
             </html>
         `;
@@ -231,6 +233,8 @@ app.post('/send-project-brief', async (req, res) => {
                         </div>
                     </div>
                 </div>
+                <!-- Anti-Gmail Trim HACK: Forces unique string to stop message threading -->
+                <span style="opacity: 0; color: transparent; display: none; font-size: 0px; line-height: 0px; max-height: 0px; max-width: 0px; overflow: hidden; height: 0px; width: 0px;">Reference ID: ${Date.now()}_${Math.random().toString(36).substring(2, 9)}</span>
             </body>
             </html>
         `;
