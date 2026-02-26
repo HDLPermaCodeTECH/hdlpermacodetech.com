@@ -107,11 +107,8 @@ app.post('/send-project-brief', async (req, res) => {
                 <div style='background-color: #020617; padding: 40px 20px; width: 100%; box-sizing: border-box;'>
                     <div style='max-width: 600px; margin: 0 auto; background-color: #0f172a; padding: 40px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);'>
                         <div style='text-align: center; margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px;'>
-                            <div style='font-size: 24px; font-weight: 900; color: #ffffff; letter-spacing: -1px;'>
-                                <img src="https://hdlpermacodetech.com/images/HDL_HexShield_Icon.png" alt="HDL Perma Code TECH Logo" style="height: 60px; max-width: 100%; border: 0; outline: none; text-decoration: none; display: inline-block; vertical-align: middle;">
-                                <span style="display: inline-block; vertical-align: middle; margin-left: 10px;">
-                                    HDL<span style="font-weight: 300; color: #cbd5e1;">Perma</span><span style="font-weight: 700; color: #38bdf8;">Code</span><span style="font-weight: 900; color: #818cf8;">TECH</span>
-                                </span>
+                            <div style='text-align: center; margin-bottom: 20px;'>
+                                <img src="https://hdlpermacodetech.com/images/hdlpermacodetech.png" alt="HDL Perma Code TECH Logo" style="height: 50px; max-width: 100%; border: 0; outline: none; text-decoration: none; display: inline-block;">
                             </div>
                         </div>
                         <div style='line-height: 1.6; color: #cbd5e1;'>
@@ -154,11 +151,8 @@ app.post('/send-project-brief', async (req, res) => {
                 <div style='background-color: #020617; padding: 40px 20px; width: 100%; box-sizing: border-box;'>
                     <div style='max-width: 600px; margin: 0 auto; background-color: #0f172a; padding: 40px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);'>
                         <div style='text-align: center; margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px;'>
-                            <div style='font-size: 24px; font-weight: 900; color: #ffffff; letter-spacing: -1px;'>
-                                <img src="https://hdlpermacodetech.com/images/HDL_HexShield_Icon.png" alt="HDL Perma Code TECH Logo" style="height: 60px; max-width: 100%; border: 0; outline: none; text-decoration: none; display: inline-block; vertical-align: middle;">
-                                <span style="display: inline-block; vertical-align: middle; margin-left: 10px;">
-                                    HDL<span style="font-weight: 300; color: #cbd5e1;">Perma</span><span style="font-weight: 700; color: #38bdf8;">Code</span><span style="font-weight: 900; color: #818cf8;">TECH</span>
-                                </span>
+                            <div style='text-align: center; margin-bottom: 20px;'>
+                                <img src="https://hdlpermacodetech.com/images/hdlpermacodetech.png" alt="HDL Perma Code TECH Logo" style="height: 50px; max-width: 100%; border: 0; outline: none; text-decoration: none; display: inline-block;">
                             </div>
                         </div>
                         <div style='line-height: 1.6; color: #cbd5e1;'>
