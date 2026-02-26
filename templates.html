@@ -120,6 +120,19 @@
             display: flex;
             gap: 1rem;
         }
+
+        /* Mobile specific adjustments to ensure photos are centered properly */
+        @media (max-width: 768px) {
+            .template-preview img {
+                object-position: center;
+            }
+
+            .template-card:hover .template-preview img {
+                object-position: center;
+                transform: none;
+                /* Disable scroll animation on mobile phones since tap vs hover behaves unexpectedly */
+            }
+        }
     </style>
 </head>
 
