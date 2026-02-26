@@ -67,11 +67,14 @@ $devMessage = "
 </html>
 ";
 
-// Headers for Developer Email
-$devHeaders = "MIME-Version: 1.0" . "\r\n";
-$devHeaders .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-$devHeaders .= "From: HDL Website <noreply@hdlpermacodetech.com>" . "\r\n";
-$devHeaders .= "Reply-To: $email" . "\r\n";
+// Headers for Developer Email (Using Array for PHP 7.2+ compatibility)
+$devHeaders = [
+    'MIME-Version' => '1.0',
+    'Content-type' => 'text/html; charset=UTF-8',
+    'From' => 'HDL Website <noreply@hdlpermacodetech.com>',
+    'Reply-To' => $email,
+    'X-Mailer' => 'PHP/' . phpversion()
+];
 
 // Client Auto-Reply Content
 $clientSubject = "We received your project brief! - HDL Perma Code TECH";
@@ -127,11 +130,14 @@ $clientMessage = "
 </html>
 ";
 
-// Headers for Client Auto-Reply
-$clientHeaders = "MIME-Version: 1.0" . "\r\n";
-$clientHeaders .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-$clientHeaders .= "From: HDL Perma Code TECH <developer@hdlpermacodetech.com>" . "\r\n";
-$clientHeaders .= "Reply-To: developer@hdlpermacodetech.com" . "\r\n";
+// Headers for Client Auto-Reply (Using Array for PHP 7.2+ compatibility)
+$clientHeaders = [
+    'MIME-Version' => '1.0',
+    'Content-type' => 'text/html; charset=UTF-8',
+    'From' => 'HDL Perma Code TECH <developer@hdlpermacodetech.com>',
+    'Reply-To' => 'developer@hdlpermacodetech.com',
+    'X-Mailer' => 'PHP/' . phpversion()
+];
 
 // Send Emails
 $devMailSent = mail($to, $subject, $devMessage, $devHeaders);
@@ -139,7 +145,8 @@ $clientMailSent = mail($email, $clientSubject, $clientMessage, $clientHeaders);
 
 if ($devMailSent) {
     echo json_encode(['success' => true, 'message' => 'Project brief sent successfully.']);
-} else {
+}
+else {
     echo json_encode(['success' => false, 'message' => 'Failed to send email. Please try again later.']);
 }
 ?>
