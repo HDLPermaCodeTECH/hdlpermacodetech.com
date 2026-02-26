@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 // Send AJAX Request: Use Node.js locally (since PHP is not installed locally), and send.php on Hostinger
                 const isLocal = window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-                const backendUrl = isLocal ? 'http://localhost:5000/send-project-brief' : 'send.php';
+                const backendUrl = isLocal ? 'http://localhost:5000/send-project-brief' : 'https://hdlpermacodetech.com/send.php';
 
                 const response = await fetch(backendUrl, {
                     method: 'POST',
