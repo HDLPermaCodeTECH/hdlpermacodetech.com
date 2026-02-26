@@ -121,7 +121,7 @@ app.post('/send-project-brief', async (req, res) => {
                         <!-- Header Section -->
                         <div style='text-align: center; padding: 40px 20px 30px; background: linear-gradient(180deg, rgba(15,23,42,1) 0%, rgba(2,6,23,1) 100%); border-bottom: 1px solid rgba(255,255,255,0.05);'>
                             <img src="https://hdlpermacodetech.com/images/HDL_HexShield_Icon.png" alt="Shield Icon" style="height: 55px; width: auto; border: 0; outline: none; text-decoration: none; display: block; margin: 0 auto 15px;">
-                            <img src="https://hdlpermacodetech.com/images/HDLPermaCodeTECH_Logo.png" alt="HDL Perma Code TECH" style="height: 35px; width: auto; max-width: 100%; border: 0; outline: none; text-decoration: none; display: block; margin: 0 auto;">
+                            <img src="https://hdlpermacodetech.com/images/HDLPermaCodeTECH_Logo.png" alt="HDL Perma Code TECH" style="height: 35px; width: auto; max-width: 100%; border: 0; outline: none; text-decoration: none; display: inline-block; margin-left: 17px;">
                         </div>
 
                         <!-- Body Section -->
@@ -208,7 +208,7 @@ app.post('/send-project-brief', async (req, res) => {
                         <!-- Header Section -->
                         <div style='text-align: center; padding: 40px 20px 30px; background: linear-gradient(180deg, rgba(15,23,42,1) 0%, rgba(2,6,23,1) 100%); border-bottom: 1px solid rgba(255,255,255,0.05);'>
                             <img src="https://hdlpermacodetech.com/images/HDL_HexShield_Icon.png" alt="Shield Icon" style="height: 55px; width: auto; border: 0; outline: none; text-decoration: none; display: block; margin: 0 auto 15px;">
-                            <img src="https://hdlpermacodetech.com/images/HDLPermaCodeTECH_Logo.png" alt="HDL Perma Code TECH" style="height: 35px; width: auto; max-width: 100%; border: 0; outline: none; text-decoration: none; display: block; margin: 0 auto;">
+                            <img src="https://hdlpermacodetech.com/images/HDLPermaCodeTECH_Logo.png" alt="HDL Perma Code TECH" style="height: 35px; width: auto; max-width: 100%; border: 0; outline: none; text-decoration: none; display: inline-block; margin-left: 17px;">
                         </div>
 
                         <!-- Body Section -->
