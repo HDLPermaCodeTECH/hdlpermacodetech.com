@@ -121,24 +121,7 @@ app.post('/send-project-brief', async (req, res) => {
                         <!-- Header Section -->
                         <div style='text-align: center; padding: 40px 20px 30px; background: linear-gradient(180deg, rgba(15,23,42,1) 0%, rgba(2,6,23,1) 100%); border-bottom: 1px solid rgba(255,255,255,0.05);'>
                             <img src="https://hdlpermacodetech.com/images/HDL_HexShield_Icon.png" alt="Shield Icon" style="height: 55px; width: auto; border: 0; outline: none; text-decoration: none; display: block; margin: 0 auto 15px;">
-                            <svg viewBox="100 0 700 140" xmlns="http://www.w3.org/2000/svg" style="height: 35px; width: auto; max-width: 100%; display: block; margin: 0 auto;">
-                                <g transform="translate(10, 10)">
-                                    <text x="120" y="78" class="logo-text">
-                                        <tspan class="fw-900 fill-white">HDL</tspan>
-                                        <tspan dx="-8" class="fw-100 fill-slate">Perma</tspan>
-                                        <tspan dx="-8" class="fw-700 fill-cyan">Code</tspan>
-                                        <tspan dx="-8" class="fw-900 fill-indigo">TECH</tspan>
-                                    </text>
-                                    <rect x="120" y="95" width="650" height="5" fill="url(#nav_line_grad)" rx="2.5" />
-                                    <defs>
-                                        <linearGradient id="nav_line_grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                                            <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
-                                            <stop offset="60%" style="stop-color:#818cf8;stop-opacity:1" />
-                                            <stop offset="100%" style="stop-color:#38bdf8;stop-opacity:0" />
-                                        </linearGradient>
-                                    </defs>
-                                </g>
-                            </svg>
+                            <img src="https://hdlpermacodetech.com/images/HDLPermaCodeTECH_Logo.png" alt="HDL Perma Code TECH" style="height: 35px; width: auto; max-width: 100%; border: 0; outline: none; text-decoration: none; display: block; margin: 0 auto;">
                         </div>
 
                         <!-- Body Section -->
@@ -225,24 +208,7 @@ app.post('/send-project-brief', async (req, res) => {
                         <!-- Header Section -->
                         <div style='text-align: center; padding: 40px 20px 30px; background: linear-gradient(180deg, rgba(15,23,42,1) 0%, rgba(2,6,23,1) 100%); border-bottom: 1px solid rgba(255,255,255,0.05);'>
                             <img src="https://hdlpermacodetech.com/images/HDL_HexShield_Icon.png" alt="Shield Icon" style="height: 55px; width: auto; border: 0; outline: none; text-decoration: none; display: block; margin: 0 auto 15px;">
-                            <svg viewBox="100 0 700 140" xmlns="http://www.w3.org/2000/svg" style="height: 35px; width: auto; max-width: 100%; display: block; margin: 0 auto;">
-                                <g transform="translate(10, 10)">
-                                    <text x="120" y="78" class="logo-text">
-                                        <tspan class="fw-900 fill-white">HDL</tspan>
-                                        <tspan dx="-8" class="fw-100 fill-slate">Perma</tspan>
-                                        <tspan dx="-8" class="fw-700 fill-cyan">Code</tspan>
-                                        <tspan dx="-8" class="fw-900 fill-indigo">TECH</tspan>
-                                    </text>
-                                    <rect x="120" y="95" width="650" height="5" fill="url(#nav_line_grad)" rx="2.5" />
-                                    <defs>
-                                        <linearGradient id="nav_line_grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                                            <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
-                                            <stop offset="60%" style="stop-color:#818cf8;stop-opacity:1" />
-                                            <stop offset="100%" style="stop-color:#38bdf8;stop-opacity:0" />
-                                        </linearGradient>
-                                    </defs>
-                                </g>
-                            </svg>
+                            <img src="https://hdlpermacodetech.com/images/HDLPermaCodeTECH_Logo.png" alt="HDL Perma Code TECH" style="height: 35px; width: auto; max-width: 100%; border: 0; outline: none; text-decoration: none; display: block; margin: 0 auto;">
                         </div>
 
                         <!-- Body Section -->
