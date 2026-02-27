@@ -205,59 +205,285 @@
                 <li>Request correction of your personal data.</li>
                 <li>Request erasure of your personal data.</li>
                 <li>Object to processing of your personal data.</li>
-                <li>Request restriction of processing your personal data.</li>
-                <li>Request transfer of your personal data.</li>
-                <li>Right to withdraw consent.</li>
-            </ul>
+                rel="stylesheet">
+                <link rel="icon" type="image/png" href="images/HDL_HexShield_Icon.png">
+                <link rel="apple-touch-icon" href="images/HDL_HexShield_Icon.png">
+                <link rel="stylesheet" href="styles.css">
+                <style>
+                    .legal-content {
+                        padding: 10rem 5% 5rem;
+                        max-width: 900px;
+                        margin: 0 auto;
+                    }
 
-            <h2>7. Contact Us</h2>
-            <p>If you have any questions about this privacy policy or our privacy practices, please contact us at:</p>
-            <p><strong>Email:</strong> <a href="mailto:client@hdlpermacodetech.com">client@hdlpermacodetech.com</a></p>
-        </div>
-    </main>
+                    .legal-header {
+                        text-align: center;
+                        margin-bottom: 4rem;
+                    }
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-col footer-brand">
-                <a href="index.html" class="footer-logo-container">
-                    <img src="images/HDL_HexShield_Icon.png" alt="Shield Icon" class="footer-shield-icon">
-                    <img src="images/HDLPermaCodeTECH_Logo.png" alt="HDL Perma Code TECH" class="footer-text-logo">
-                </a>
-                <p>Architecting high-performance, conversion-optimized digital experiences for ambitious brands scaling
-                    globally.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Platform</h4>
-                <div class="footer-links">
-                    <a href="index.html">Home</a>
-                    <a href="about.html">About Developer</a>
-                    <a href="services.html">Services & Specialities</a>
-                    <a href="pricing.html">Pricing Packages</a>
-                    <a href="templates.html">Premium Templates</a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <div class="footer-links">
-                    <a href="mailto:client@hdlpermacodetech.com"
-                        style="display:flex; align-items:center; gap:0.5rem;">Email Us</a>
-                    <a href="start-a-project.html"
-                        style="display:flex; align-items:center; gap:0.5rem; color:var(--accent-cyan); margin-top:0.5rem;">Start
-                        a Project &rarr;</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 HDL Perma Code TECH. All rights reserved.</p>
-            <div style="display:flex; gap:1.5rem;">
-                <a href="privacy-policy.html" style="color:var(--accent-cyan); text-decoration:none;">Privacy Policy</a>
-                <a href="terms-of-service.html" style="color:var(--text-muted); text-decoration:none;">Terms of
-                    Service</a>
-            </div>
-        </div>
-    </footer>
+                    .legal-header p {
+                        color: var(--text-muted);
+                        margin-top: 1rem;
+                    }
 
-    <script src="script.js"></script>
-</body>
+                    .legal-section {
+                        margin-bottom: 3rem;
+                        background: var(--bg-surface);
+                        padding: 3rem;
+                        border-radius: 12px;
+                        border: 1px solid var(--glass-border);
+                    }
+
+                    .legal-section h2 {
+                        font-family: var(--font-heading);
+                        color: var(--accent-cyan);
+                        margin-bottom: 1.5rem;
+                        font-size: 1.8rem;
+                    }
+
+                    .legal-section h3 {
+                        font-family: var(--font-heading);
+                        color: var(--text-main);
+                        margin-bottom: 1rem;
+                        margin-top: 2rem;
+                        font-size: 1.2rem;
+                    }
+
+                    .legal-section p,
+                    .legal-section li {
+                        color: var(--text-muted);
+                        line-height: 1.8;
+                        margin-bottom: 1rem;
+                    }
+
+                    .legal-section ul {
+                        padding-left: 1.5rem;
+                        margin-bottom: 1.5rem;
+                    }
+
+                    .legal-section li {
+                        margin-bottom: 0.5rem;
+                    }
+
+                    .legal-section a {
+                        color: var(--accent-cyan);
+                        text-decoration: none;
+                        transition: color 0.3s ease;
+                    }
+
+                    .legal-section a:hover {
+                        color: var(--accent-pink);
+                    }
+                </style>
+                </head>
+
+                <body>
+                    <!-- Premium Initial Preloader -->
+                    <div id="hdl-preloader" class="hdl-preloader">
+                        <div class="preloader-content">
+                            <img src="images/HDL_HexShield_Icon.png" alt="HDL Shield" class="preloader-shield">
+                            <div class="preloader-glow"></div>
+                        </div>
+                    </div>
+
+                    <!-- Custom Cursor -->
+                    <div class="custom-cursor-dot" id="cursorDot"></div>
+                    <div class="custom-cursor-ring" id="cursorRing"></div>
+
+                    <canvas id="bgCanvas"></canvas>
+
+                    <nav class="navbar" id="navbar">
+                        <div class="nav-container">
+                            <a href="index.html" class="nav-logo">
+                                <svg viewBox="0 0 950 140" class="nav-logo-svg" xmlns="http://www.w3.org/2000/svg">
+                                    <g transform="translate(10, 10)">
+                                        <path d="M45 5 L85 28 L85 72 L45 95 L5 72 L5 28 Z" fill="none"
+                                            stroke="url(#nav_hex_grad)" stroke-width="8" stroke-linejoin="round" />
+                                        <path d="M25 35 L25 65" stroke="#ffffff" stroke-width="7"
+                                            stroke-linecap="round" />
+                                        <path d="M65 35 L65 65" stroke="#ffffff" stroke-width="7"
+                                            stroke-linecap="round" />
+                                        <path d="M25 50 H65" stroke="#ffffff" stroke-width="7" stroke-linecap="round"
+                                            opacity="0.3" />
+                                        <path d="M52 28 L38 72" stroke="#38bdf8" stroke-width="7"
+                                            stroke-linecap="round" />
+                                        <circle cx="52" cy="28" r="3" fill="#38bdf8" />
+                                        <circle cx="38" cy="72" r="3" fill="#38bdf8" />
+                                        <defs>
+                                            <linearGradient id="nav_hex_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
+                                                <stop offset="100%" style="stop-color:#818cf8;stop-opacity:1" />
+                                            </linearGradient>
+                                        </defs>
+                                    </g>
+                                    <text x="120" y="78" class="logo-text">
+                                        <tspan class="fw-900 fill-white">HDL</tspan>
+                                        <tspan dx="-8" class="fw-100 fill-slate">Perma</tspan>
+                                        <tspan dx="-8" class="fw-700 fill-cyan">Code</tspan>
+                                        <tspan dx="-8" class="fw-900 fill-indigo">TECH</tspan>
+                                    </text>
+                                    <rect x="120" y="95" width="650" height="5" fill="url(#nav_line_grad)" rx="2.5" />
+                                    <defs>
+                                        <linearGradient id="nav_line_grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                            <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
+                                            <stop offset="60%" style="stop-color:#818cf8;stop-opacity:1" />
+                                            <stop offset="100%" style="stop-color:#38bdf8;stop-opacity:0" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </a>
+                            <div class="nav-links">
+                                <a href="index.html">Home</a>
+                                <a href="about.html">About</a>
+                                <a href="services.html">Services</a>
+                                <a href="pricing.html">Pricing</a>
+                                <a href="templates.html">Templates</a>
+                                <a href="index.html#portfolio">Work</a>
+                                <a href="start-a-project.html" class="btn btn-outline">Start a Project</a>
+                            </div>
+                            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                                <span></span><span></span><span></span>
+                            </button>
+                        </div>
+                    </nav>
+
+                    <main class="legal-content">
+                        <div class="legal-header reveal">
+                            <h1 class="massive-title">Privacy <span class="text-gradient">Policy</span></h1>
+                            <p>Last Updated: February 2026</p>
+                        </div>
+
+                        <div class="legal-section reveal delay-1">
+                            <h2>1. Introduction</h2>
+                            <p>At HDL Perma Code TECH, we respect your privacy and are committed to protecting your
+                                personal data. This
+                                privacy policy will inform you as to how we look after your personal data when you visit
+                                our website
+                                (regardless of where you visit it from) and tell you about your privacy rights and how
+                                the law protects
+                                you.</p>
+
+                            <h2>2. The Data We Collect</h2>
+                            <p>We may collect, use, store and transfer different kinds of personal data about you which
+                                we have grouped
+                                together as follows:</p>
+                            <ul>
+                                <li><strong>Identity Data</strong> includes first name, last name, username or similar
+                                    identifier.</li>
+                                <li><strong>Contact Data</strong> includes email address, billing address, and telephone
+                                    numbers.</li>
+                                <li><strong>Technical Data</strong> includes internet protocol (IP) address, your login
+                                    data, browser
+                                    type and version, time zone setting and location, browser plug-in types and
+                                    versions, operating
+                                    system and platform, and other technology on the devices you use to access this
+                                    website.</li>
+                                <li><strong>Usage Data</strong> includes information about how you use our website,
+                                    products and
+                                    services.</li>
+                            </ul>
+
+                            <h2>3. How We Use Your Data</h2>
+                            <p>We will only use your personal data when the law allows us to. Most commonly, we will use
+                                your personal
+                                data in the following circumstances:</p>
+                            <ul>
+                                <li>Where we need to perform the contract we are about to enter into or have entered
+                                    into with you
+                                    (e.g., building a website).</li>
+                                <li>Where it is necessary for our legitimate interests (or those of a third party) and
+                                    your interests
+                                    and fundamental rights do not override those interests.</li>
+                                <li>Where we need to comply with a legal obligation.</li>
+                            </ul>
+
+                            <h2>4. Data Security</h2>
+                            <p>We have put in place appropriate security measures to prevent your personal data from
+                                being accidentally
+                                lost, used or accessed in an unauthorized way, altered or disclosed. In addition, we
+                                limit access to
+                                your personal data to those employees, agents, contractors and other third parties who
+                                have a business
+                                need to know.</p>
+
+                            <h2>5. International Transfers</h2>
+                            <p>As a global development firm, we may process and store your data on servers located
+                                outside of your home
+                                country. Whenever we transfer your personal data out of your jurisdiction, we ensure a
+                                similar degree of
+                                protection is afforded to it by ensuring appropriate safeguards are implemented in
+                                accordance with
+                                global data protection standards.</p>
+
+                            <h2>6. Your Legal Rights</h2>
+                            <p>Under certain circumstances, you have rights under data protection laws in relation to
+                                your personal
+                                data, including the right to:</p>
+                            <ul>
+                                <li>Request access to your personal data.</li>
+                                <li>Request correction of your personal data.</li>
+                                <li>Request erasure of your personal data.</li>
+                                <li>Object to processing of your personal data.</li>
+                                <li>Request restriction of processing your personal data.</li>
+                                <li>Request transfer of your personal data.</li>
+                                <li>Right to withdraw consent.</li>
+                            </ul>
+
+                            <h2>7. Contact Us</h2>
+                            <p>If you have any questions about this privacy policy or our privacy practices, please
+                                contact us at:</p>
+                            <p><strong>Email:</strong> <a
+                                    href="mailto:developer@hdlpermacodetech.com">developer@hdlpermacodetech.com</a></p>
+                        </div>
+                    </main>
+
+                    <footer class="footer">
+                        <div class="footer-content">
+                            <div class="footer-col footer-brand">
+                                <a href="index.html" class="footer-logo-container">
+                                    <img src="images/HDL_HexShield_Icon.png" alt="Shield Icon"
+                                        class="footer-shield-icon">
+                                    <img src="images/HDLPermaCodeTECH_Logo.png" alt="HDL Perma Code TECH"
+                                        class="footer-text-logo">
+                                </a>
+                                <p>Architecting high-performance, conversion-optimized digital experiences for ambitious
+                                    brands scaling
+                                    globally.</p>
+                            </div>
+                            <div class="footer-col">
+                                <h4>Platform</h4>
+                                <div class="footer-links">
+                                    <a href="index.html">Home</a>
+                                    <a href="about.html">About Developer</a>
+                                    <a href="services.html">Services & Specialities</a>
+                                    <a href="pricing.html">Pricing Packages</a>
+                                    <a href="templates.html">Premium Templates</a>
+                                </div>
+                            </div>
+                            <div class="footer-col">
+                                <h4>Contact</h4>
+                                <div class="footer-links">
+                                    <a href="mailto:developer@hdlpermacodetech.com"
+                                        style="display:flex; align-items:center; gap:0.5rem;">Email Us</a>
+                                    <a href="start-a-project.html"
+                                        style="display:flex; align-items:center; gap:0.5rem; color:var(--accent-cyan); margin-top:0.5rem;">Start
+                                        a Project &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-bottom">
+                            <p>&copy; 2026 HDL Perma Code TECH. All rights reserved.</p>
+                            <div style="display:flex; gap:1.5rem;">
+                                <a href="privacy-policy.html"
+                                    style="color:var(--accent-cyan); text-decoration:none;">Privacy Policy</a>
+                                <a href="terms-of-service.html"
+                                    style="color:var(--text-muted); text-decoration:none;">Terms of
+                                    Service</a>
+                            </div>
+                        </div>
+                    </footer>
+
+                    <script src="script.js"></script>
+                </body>
 
 </html>
