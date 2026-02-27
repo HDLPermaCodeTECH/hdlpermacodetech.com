@@ -254,6 +254,9 @@ a {
 
 .nav-links a {
     position: relative;
+}
+
+.nav-links a:not(.btn) {
     padding: 0.5rem 0;
 }
 
