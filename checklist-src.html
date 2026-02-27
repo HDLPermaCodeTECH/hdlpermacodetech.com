@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Audit Checklist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Outfit:wght@300;500;800&display=swap"
+        rel="stylesheet">
+    <style>
+        /* A4 Size Print Setup */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #020617;
+            color: #f8fafc;
+            line-height: 1.6;
+        }
+
+        .page {
+            min-height: 100vh;
+            padding: 20mm;
+            position: relative;
+            background-color: #020617;
+            page-break-after: always;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page:last-child {
+            page-break-after: auto;
+        }
+
+        /* Branding Colors */
+        .text-gradient {
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-cyan {
+            color: #38bdf8;
+        }
+
+        .text-slate {
+            color: #94a3b8;
+        }
+
+        .bg-slate {
+            background-color: #0f172a;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            font-weight: 800;
+        }
+
+        /* Abstract Glow Effects */
+        .glow-blob-1,
+        .glow-blob-2 {
+            position: absolute;
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .glow-blob-1 {
+            width: 400px;
+            height: 400px;
+            background: rgba(56, 189, 248, 0.15);
+            top: -100px;
+            right: -100px;
+        }
+
+        .glow-blob-2 {
+            width: 500px;
+            height: 500px;
+            background: rgba(129, 140, 248, 0.1);
+            bottom: -150px;
+            left: -150px;
+        }
+
+        /* Container for content above glows */
+        .content {
+            position: relative;
+            z-index: 10;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header / Logo */
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20mm;
+        }
+
+        .header-center {
+            justify-content: center;
+            margin-bottom: 0;
+            margin-top: 20mm;
+        }
+
+        .logo-shield {
+            width: 45px;
+            height: auto;
+        }
+
+        .logo-text {
+            width: auto;
+            height: 30px;
+        }
+
+        .logo-large .logo-shield {
+            width: 80px;
+        }
+
+        .logo-large .logo-text {
+            height: 50px;
+        }
+
+        /* Cover Page */
+        .cover-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .cover-pill {
+            background: rgba(56, 189, 248, 0.1);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .cover-title {
+            font-size: 58px;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            letter-spacing: -1px;
+        }
+
+        .cover-subtitle {
+            font-size: 22px;
+            color: #cbd5e1;
+            font-weight: 300;
+            max-width: 80%;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+
+        /* Intro Page */
+        .page-title {
+            font-size: 42px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid rgba(56, 189, 248, 0.3);
+            padding-bottom: 15px;
+            display: inline-block;
+        }
+
+        .intro-text {
+            font-size: 18px;
+            color: #cbd5e1;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .intro-text p {
+            margin-bottom: 25px;
+        }
+
+        .intro-bullets {
+            background: #0f172a;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .intro-bullets ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .intro-bullets li {
+            font-size: 18px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .intro-bullets li::before {
+            content: '✓';
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.15);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Checklist Page */
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .check-category {
+            background: #0f172a;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 15px;
+        }
+
+        .category-icon {
+            font-size: 24px;
+        }
+
+        .category-title {
+            font-size: 20px;
+            color: #f8fafc;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .checkbox {
+            width: 22px;
+            height: 22px;
+            border: 2px solid #38bdf8;
+            border-radius: 6px;
+            background: transparent;
+            display: inline-block;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .check-text {
+            font-size: 15px;
+            color: #cbd5e1;
+            font-weight: 400;
+        }
+
+        /* CTA Page */
+        .cta-container {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(129, 140, 248, 0.1));
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            margin-top: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-title {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .cta-text {
+            font-size: 18px;
+            color: #cbd5e1;
+            margin-bottom: 40px;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            color: #020617;
+            text-decoration: none;
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.3);
+        }
+
+        /* Footer inside pages */
+        .page-footer {
+            margin-top: auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        .url-text {
+            color: #38bdf8;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PAGE 1: COVER -->
+    <div class="page">
+        <div class="glow-blob-1"></div>
+        <div class="glow-blob-2"></div>
+
+        <div class="content cover-content">
+            <div class="header header-center logo-large">
+                <img src="images/HDL_HexShield_Icon.png" class="logo-shield" alt="Shield">
+                <img src="images/HDLPermaCodeTECH_Logo.png" class="logo-text" alt="Logo Text">
+            </div>
+
+            <div style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+                <div class="cover-pill">Free Audit Resource</div>
+                <h1 class="cover-title">Website Audit<br><span class="text-gradient">Checklist</span></h1>
+                <p class="cover-subtitle">Discover the 10 Proven Steps to Instantly Improve Your Website’s Conversion
+                    Rate and SEO Performance</p>
+                <p class="text-slate"
+                    style="font-weight:300; letter-spacing: 1px; text-transform:uppercase; font-size:14px;">A
+                    Professional 10-Step Framework Used by Web Experts</p>
+            </div>
+        </div>
+
+        <div class="page-footer" style="justify-content: center;">
+            <span class="url-text" style="font-size: 14px;">hdlpermacodetech.com</span>
+        </div>
+    </div>
+
+    <!-- PAGE 2: INTRODUCTION -->
+    <div class="page">
+        <div class="glow-blob-1" style="top:auto; bottom:-100px; left:-100px; width:300px; height:300px;"></div>
+
+        <div class="content">
+            <div class="header">
+                <img src="images/HDL_HexShield_Icon.png" class="logo-shield" alt="Shield">
+                <img src="images/HDLPermaCodeTECH_Logo.png" class="logo-text" alt="Logo Text">
+            </div>
+
+            <h2 class="page-title">Why Website <span class="text-gradient">Auditing Matters</span></h2>
+
+            <div class="intro-text">
+                <p>In today's fiercely competitive digital landscape, having a website that just "looks good" is no
+                    longer enough. Your website is the core engine of your business online, and its performance directly
+                    dictates your bottom line.</p>
+
+                <p>A professional website audit is a systematic examination of your site's health, designed to uncover
+                    hidden bottlenecks that are quietly costing you leads, sales, and valuable search engine rankings.
+                </p>
+
+                <div class="intro-bullets">
+                    <h3 style="color:#fff; margin-bottom:20px; font-size:22px;">Key Pillars of a High-Performing
+                        Website:</h3>
+                    <ul>
+                        <li><strong>Speed & Performance:</strong> A 1-second delay reduces conversions by 7%.</li>
+                        <li><strong>SEO Ranking:</strong> Unoptimized structures make you invisible to Google.</li>
+                        <li><strong>Conversion Optimization:</strong> Friction in user flow abandons carts and forms.
+                        </li>
+                        <li><strong>User Experience (UX):</strong> Broken layouts erode brand trust immediately.</li>
+                        <li><strong>Military-Grade Security:</strong> Protecting client data is non-negotiable.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <span>Free Website Audit Checklist</span>
+            <span class="url-text">hdlpermacodetech.com</span>
+        </div>
+    </div>
+
+    <!-- PAGE 3: CHECKLIST -->
+    <div class="page">
+        <div class="glow-blob-2" style="top:-100px; right:-100px; left:auto; width:400px; height:400px;"></div>
+
+        <div class="content">
+            <div class="header" style="margin-bottom: 10px;">
+                <img src="images/HDL_HexShield_Icon.png" class="logo-shield" alt="Shield">
+                <img src="images/HDLPermaCodeTECH_Logo.png" class="logo-text" alt="Logo Text">
+            </div>
+
+            <h2 class="page-title" style="font-size: 32px; margin-bottom:10px;">The 10-Step <span
+                    class="text-gradient">Audit Framework</span></h2>
+
+            <div class="checklist-grid">
+
+                <!-- Category 1 -->
+                <div class="check-category">
+                    <div class="category-header">
+                        <span class="category-icon">⚡</span>
+                        <h3 class="category-title">Performance Optimization</h3>
+                    </div>
+                    <div class="check-item">
+                        <div class="checkbox"></div>
+                        <div class="check-text"><strong>Website loads under 3 seconds:</strong> Test via Google
+                            PageSpeed Insights.</div>
+                    </div>
+                    <div class="check-item">
+                        <div class="checkbox"></div>
+                        <div class="check-text"><strong>Images are optimized:</strong> Compress to WebP formats without
+                            quality loss.</div>
+                    </div>
+                    <div class="check-item">
+                        <div class="checkbox"></div>
+                        <div class="check-text"><strong>CSS & JS are minified:</strong> Remove unnecessary code spacing
+                            to reduce file sizes.</div>
+                    </div>
+                </div>
+
+                <!-- Category 2 -->
+                <div class="check-category">
+                    <div class="category-header">
+                        <span class="category-icon">📱</span>
+                        <h3 class="category-title">Mobile Responsiveness</h3>
+                    </div>
+                    <div class="check-item">
+                        <div class="checkbox"></div>
+                        <div class="check-text"><strong>Fully responsive:</strong> Layout adapts perfectly to phones,
+                            tablets, and distinct desktop resolutions.</div>
+                    </div>
+                    <div class="check-item">
+                        <div class="checkbox"></div>
+                        <div class="check-text"><strong>Mobile navigation:</strong> Ensure the hamburger menu is
+                            accessible and touch-friendly (minimum 44x44px tap targets).</div>
+                    </div>
+                </div>
+
+                <!-- Category 3 -->
+                <div class="check-category">
+                    <div class="category-header">
+                        <span class="category-icon">🎨</span>
+                        <h3 class="category-title">Design & UX</h3>
+                    </div>
+                    <div class="check-item">
+                        <div class="checkbox"></div>
+                        <div class="check-text"><strong>Clear Call-To-Action:</strong> CTA buttons have high contrast
+                            and clear instructional text.</div>
+                    </div>
+                    <div class="check-item">
+                        <div class="checkbox"></div>
+                        <div class="check-text"><strong>Consistent Branding:</strong> Typography and color palettes
+                            strict match brand guidelines.</div>
+                    </div>
+                </div>
+
+                <!-- Category 4 -->
+                <div class="check-category">
+                    <div class="category-header">
+                        <span class="category-icon">🚀</span>
+                        <h3 class="category-title">SEO & Security</h3>
+                    </div>
+                    <div class="check-item">
+                        <div class="checkbox"></div>
+                        <div class="check-text"><strong>Optimized Meta Tags:</strong> Every page has a unique title and
+                            compelling meta description.</div>
+                    </div>
+                    <div class="check-item">
+                        <div class="checkbox"></div>
+                        <div class="check-text"><strong>SSL Activation (HTTPS):</strong> Connection is secure to protect
+                            user data and boost SEO.</div>
+                    </div>
+                    <div class="check-item">
+                        <div class="checkbox"></div>
+                        <div class="check-text"><strong>Anti-Spam Forms:</strong> Forms are protected by invisible
+                            CAPTCHA to prevent targeted bot attacks.</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <span>Free Website Audit Checklist</span>
+            <span class="url-text">hdlpermacodetech.com</span>
+        </div>
+    </div>
+
+    <!-- PAGE 4: CTA -->
+    <div class="page">
+        <div class="glow-blob-1"
+            style="top:50%; left:50%; transform:translate(-50%, -50%); width:600px; height:600px; opacity:0.5;"></div>
+
+        <div class="content" style="justify-content: center; align-items: center;">
+            <div class="header logo-large" style="margin-bottom: 0;">
+                <img src="images/HDL_HexShield_Icon.png" class="logo-shield" alt="Shield">
+                <img src="images/HDLPermaCodeTECH_Logo.png" class="logo-text" alt="Logo Text">
+            </div>
+
+            <div class="cta-container">
+                <h2 class="cta-title">Need a <span class="text-gradient">Professional Audit?</span></h2>
+                <p class="cta-text">Running an audit yourself can be time-consuming, and finding the technical
+                    bottlenecks hidden deeply within your website's architecture requires expert insight.</p>
+                <p class="cta-text" style="margin-bottom: 50px;">Let me handle the heavy lifting. Request a
+                    comprehensive, tailored audit report of your website from a premium global developer.</p>
+
+                <a href="https://hdlpermacodetech.com/start-a-project.html" class="cta-button">Request Your Free Website
+                    Audit</a>
+
+                <p style="margin-top: 30px; font-size:16px; color:#cbd5e1;">
+                    Or email directly at:<br>
+                    <a href="mailto:client@hdlpermacodetech.com"
+                        style="color:#38bdf8; text-decoration:none; font-weight:600; margin-top:5px; display:inline-block;">client@hdlpermacodetech.com</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="page-footer" style="justify-content: center;">
+            <span class="url-text" style="font-size: 14px;">hdlpermacodetech.com</span>
+        </div>
+    </div>
+
+</body>
+
+</html>
