@@ -31,12 +31,16 @@ function createPDF() {
 
         // --- Helper: Header ---
         function drawHeader(yPos = 50) {
-            // Placeholder for logo since we can't reliably load remote images in pdfkit easily without fetch
-            // Let's use text for the logo to avoid missing local files on their server
-            doc.fillColor(textWhite)
-                .fontSize(16)
-                .font('Helvetica-Bold')
-                .text('HDL Perma Code TECH', 50, yPos, { align: 'center' });
+            try {
+                // Attempt to load the actual logo locally
+                doc.image('./images/HDLPermaCodeTECH_Logo.png', doc.page.width / 2 - 100, yPos - 15, { width: 200 });
+            } catch (e) {
+                // Fallback to text if missing
+                doc.fillColor(textWhite)
+                    .fontSize(16)
+                    .font('Helvetica-Bold')
+                    .text('HDL Perma Code TECH', 50, yPos, { align: 'center' });
+            }
 
             // Subtle line under logo
             doc.moveTo(doc.page.width / 2 - 50, yPos + 25)
@@ -159,11 +163,11 @@ function createPDF() {
             .text('The 10-Step Audit Framework', 50, 130);
         doc.moveTo(50, 170).lineTo(150, 170).lineWidth(3).strokeColor(accentCyan).stroke();
 
-        let currentY = 210;
+        let currentY = 195;
 
         function drawSection(title, items) {
             doc.fillColor(accentCyan).fontSize(16).font('Helvetica-Bold').text(title, 50, currentY);
-            currentY += 35;
+            currentY += 25;
 
             doc.font('Helvetica').fontSize(12);
             for (const item of items) {
@@ -178,9 +182,11 @@ function createPDF() {
                     .fillColor('#cbd5e1')
                     .text(` - ${item.text}`, { width: 400, lineGap: 4 });
 
-                currentY += 45;
+                // calculate the height of the item text wrapper to prevent overlap
+                const textHeight = doc.heightOfString(` - ${item.text}`, { width: 400 });
+                currentY += Math.max(25, textHeight + 10);
             }
-            currentY += 20;
+            currentY += 15;
         }
 
         drawSection('Performance Optimization', [
