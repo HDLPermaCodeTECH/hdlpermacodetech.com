@@ -1247,7 +1247,23 @@ section {
     .footer-logo-container {
         flex-direction: column;
         justify-content: center;
+        align-items: center;
         gap: 15px;
+        width: 100%;
+    }
+
+    .footer-shield-icon {
+        height: 65px;
+        width: auto;
+        max-width: 100%;
+        object-fit: contain;
+    }
+
+    .footer-text-logo {
+        height: 40px;
+        width: auto;
+        max-width: 100%;
+        object-fit: contain;
     }
 
     .footer-col {
