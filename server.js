@@ -155,11 +155,11 @@ app.post('/send-project-brief', async (req, res) => {
                             <p style='margin: 0 0 25px; color: #38bdf8; font-size: 14px; font-weight: 500; letter-spacing: 0.5px;'>Building Secure. Scalable. Professional Web Solutions.</p>
                             
                             <div style='margin-bottom: 25px;'>
-                                <a href="https://hdlpermacodetech.com/privacy-policy" style='color: #64748b; text-decoration: none; font-size: 12px; margin: 0 10px; transition: color 0.2s;'>Privacy Policy</a>
+                                <a href="https://hdlpermacodetech.com/privacy-policy.html" style='color: #64748b; text-decoration: none; font-size: 12px; margin: 0 10px; transition: color 0.2s;'>Privacy Policy</a>
                                 <span style='color: #334155;'>|</span>
-                                <a href="https://hdlpermacodetech.com/safety-and-security" style='color: #64748b; text-decoration: none; font-size: 12px; margin: 0 10px; transition: color 0.2s;'>Safety & Security</a>
+                                <a href="https://hdlpermacodetech.com/terms-of-service.html" style='color: #64748b; text-decoration: none; font-size: 12px; margin: 0 10px; transition: color 0.2s;'>Safety & Security</a>
                                 <span style='color: #334155;'>|</span>
-                                <a href="https://hdlpermacodetech.com/terms-of-service" style='color: #64748b; text-decoration: none; font-size: 12px; margin: 0 10px; transition: color 0.2s;'>Terms & Conditions</a>
+                                <a href="https://hdlpermacodetech.com/terms-of-service.html" style='color: #64748b; text-decoration: none; font-size: 12px; margin: 0 10px; transition: color 0.2s;'>Terms & Conditions</a>
                             </div>
                             
                             <p style='margin: 0; font-size: 12px; color: #475569;'>&copy; ${new Date().getFullYear()} HDL Perma Code TECH. All rights reserved.</p>
@@ -242,11 +242,11 @@ app.post('/send-project-brief', async (req, res) => {
                                                         <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 25px;">
                                                             <tr>
                                                                 <td align="center" style="font-size: 12px; color: #334155;">
-                                                                    <a href="https://hdlpermacodetech.com/privacy-policy" style="color: #64748b; text-decoration: none; margin: 0 10px;">Privacy Policy</a>
+                                                                    <a href="https://hdlpermacodetech.com/privacy-policy.html" style="color: #64748b; text-decoration: none; margin: 0 10px;">Privacy Policy</a>
                                                                     |
-                                                                    <a href="https://hdlpermacodetech.com/safety-and-security" style="color: #64748b; text-decoration: none; margin: 0 10px;">Safety & Security</a>
+                                                                    <a href="https://hdlpermacodetech.com/terms-of-service.html" style="color: #64748b; text-decoration: none; margin: 0 10px;">Safety & Security</a>
                                                                     |
-                                                                    <a href="https://hdlpermacodetech.com/terms-of-service" style="color: #64748b; text-decoration: none; margin: 0 10px;">Terms & Conditions</a>
+                                                                    <a href="https://hdlpermacodetech.com/terms-of-service.html" style="color: #64748b; text-decoration: none; margin: 0 10px;">Terms & Conditions</a>
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -422,11 +422,11 @@ app.post('/send-lead-magnet', async (req, res) => {
                                                                         <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 25px;">
                                                                             <tr>
                                                                                 <td align="center" style="font-size: 12px; color: #334155;">
-                                                                                    <a href="https://hdlpermacodetech.com/privacy-policy" style="color: #64748b; text-decoration: none; margin: 0 10px;">Privacy Policy</a>
+                                                                                    <a href="https://hdlpermacodetech.com/privacy-policy.html" style="color: #64748b; text-decoration: none; margin: 0 10px;">Privacy Policy</a>
                                                                                     |
-                                                                                    <a href="https://hdlpermacodetech.com/safety-and-security" style="color: #64748b; text-decoration: none; margin: 0 10px;">Safety & Security</a>
+                                                                                    <a href="https://hdlpermacodetech.com/terms-of-service.html" style="color: #64748b; text-decoration: none; margin: 0 10px;">Safety & Security</a>
                                                                                     |
-                                                                                    <a href="https://hdlpermacodetech.com/terms-of-service" style="color: #64748b; text-decoration: none; margin: 0 10px;">Terms & Conditions</a>
+                                                                                    <a href="https://hdlpermacodetech.com/terms-of-service.html" style="color: #64748b; text-decoration: none; margin: 0 10px;">Terms & Conditions</a>
                                                                                 </td>
                                                                             </tr>
                                                                         </table>
