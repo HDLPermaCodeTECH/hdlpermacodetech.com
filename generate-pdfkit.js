@@ -245,9 +245,12 @@ function createPDF() {
             .text('Let me handle the heavy lifting. Request a comprehensive, tailored audit report of your website from a premium global developer.', 100, 340, { align: 'center', lineGap: 8 });
 
         // CTA Button Design
-        doc.roundedRect(doc.page.width / 2 - 175, 430, 350, 60, 8)
+        const ctaBoxWidth = 350;
+        const ctaBoxX = doc.page.width / 2 - (ctaBoxWidth / 2);
+
+        doc.roundedRect(ctaBoxX, 430, ctaBoxWidth, 60, 8)
             .fill(bgCard);
-        doc.roundedRect(doc.page.width / 2 - 175, 430, 350, 60, 8)
+        doc.roundedRect(ctaBoxX, 430, ctaBoxWidth, 60, 8)
             .lineWidth(2)
             .strokeColor(accentCyan)
             .stroke();
@@ -255,9 +258,7 @@ function createPDF() {
         doc.fillColor(accentCyan)
             .fontSize(16)
             .font('Helvetica-Bold')
-            // We use an underline or color to show it's clickable, but since we can't link easily,
-            // we just suggest they click it in their mind or visit the site.
-            .text('REQUEST YOUR FREE WEBSITE AUDIT', 0, 452, { align: 'center' });
+            .text('REQUEST YOUR FREE WEBSITE AUDIT', ctaBoxX, 452, { width: ctaBoxWidth, align: 'center' });
 
         doc.fillColor(textMuted)
             .fontSize(12)
@@ -265,7 +266,7 @@ function createPDF() {
             .text('Or email me directly at:', 0, 540, { align: 'center' });
 
         doc.fillColor(accentCyan)
-            .text('client@hdlpermacodetech.com', 0, 565, { align: 'center' });
+            .text('developer@hdlpermacodetech.com', 0, 565, { align: 'center' });
 
         drawFooter();
 
