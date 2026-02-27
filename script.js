@@ -544,16 +544,69 @@ document.addEventListener('DOMContentLoaded', () => {
         // Handle form submission
         const leadForm = document.getElementById('leadMagnetForm');
         if (leadForm) {
-            leadForm.addEventListener('submit', (e) => {
+            leadForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
-                const btn = leadForm.querySelector('button');
+                const btn = document.getElementById('leadSubmitBtn');
                 const originalText = btn.innerText;
-                btn.innerText = 'Sending to your email...';
-                setTimeout(() => {
-                    btn.innerText = 'Check Your Inbox!';
-                    btn.style.backgroundColor = '#25D366'; // Success Green
-                    setTimeout(closeModal, 2000);
-                }, 1500);
+                const emailInput = document.getElementById('leadEmail').value;
+                const notification = document.getElementById('leadFormNotification');
+
+                btn.innerText = 'Sending...';
+                btn.style.opacity = '0.7';
+                btn.style.pointerEvents = 'none';
+                notification.style.display = 'none';
+
+                try {
+                    const response = await fetch('/lead.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ email: emailInput })
+                    });
+
+                    const responseText = await response.text();
+                    let result;
+                    try {
+                        result = JSON.parse(responseText);
+                    } catch (err) {
+                        throw new Error("Server returned an invalid response.");
+                    }
+
+                    if (result.success) {
+                        btn.innerText = 'Check Your Inbox!';
+                        btn.style.background = '#10b981'; // Success Green
+
+                        notification.innerText = 'Success! Your checklist is on the way.';
+                        notification.style.color = '#10b981';
+                        notification.style.border = '1px solid #10b981';
+                        notification.style.background = 'rgba(16, 185, 129, 0.1)';
+                        notification.style.display = 'block';
+
+                        leadForm.reset();
+                        setTimeout(closeModal, 3000);
+                    } else {
+                        throw new Error(result.message || 'Something went wrong.');
+                    }
+                } catch (error) {
+                    btn.innerText = 'Failed';
+                    btn.style.background = '#ef4444'; // Red
+
+                    notification.innerText = error.message || 'Error connecting to server. Please try again.';
+                    notification.style.color = '#ef4444';
+                    notification.style.border = '1px solid #ef4444';
+                    notification.style.background = 'rgba(239, 68, 68, 0.1)';
+                    notification.style.display = 'block';
+                } finally {
+                    setTimeout(() => {
+                        if (btn.innerText === 'Failed') {
+                            btn.innerText = originalText;
+                            btn.style.background = '';
+                            btn.style.opacity = '1';
+                            btn.style.pointerEvents = 'auto';
+                        }
+                    }, 4000);
+                }
             });
         }
     }
