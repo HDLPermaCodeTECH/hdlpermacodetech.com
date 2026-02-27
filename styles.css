@@ -1145,15 +1145,19 @@ section {
 }
 
 .footer-shield-icon {
-    height: 55px;
+    height: 55px !important;
     width: auto;
-    display: inline-block;
+    max-width: 120px;
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
 .footer-text-logo {
-    height: 35px;
+    height: 35px !important;
     width: auto;
-    display: inline-block;
+    max-width: 300px;
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
 .footer-links {
@@ -1253,14 +1257,14 @@ section {
     }
 
     .footer-shield-icon {
-        height: 65px;
+        height: 65px !important;
         width: auto;
         max-width: 100%;
         object-fit: contain;
     }
 
     .footer-text-logo {
-        height: 40px;
+        height: 40px !important;
         width: auto;
         max-width: 100%;
         object-fit: contain;
