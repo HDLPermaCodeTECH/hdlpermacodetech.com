@@ -557,7 +557,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 notification.style.display = 'none';
 
                 try {
-                    const response = await fetch('/lead.php', {
+                    const response = await fetch('/send-lead-magnet', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
