@@ -33,14 +33,14 @@ function createPDF() {
         function drawHeader(yPos = 50) {
             try {
                 const centerX = doc.page.width / 2;
-                // Draw Shield Image
-                doc.image('./images/HDL_HexShield_Icon.png', centerX - 140, yPos - 12, { height: 30 });
+                // Draw Shield Image centered on top
+                doc.image('./images/HDL_HexShield_Icon.png', centerX - 25, yPos - 25, { height: 50 });
 
-                // Draw White glowing brand text exactly like the website header
+                // Draw White glowing brand text below it
                 doc.fillColor(textWhite)
-                    .fontSize(18)
+                    .fontSize(16)
                     .font('Helvetica-Bold')
-                    .text('HDL', centerX - 100, yPos - 5, { continued: true, lineBreak: false })
+                    .text('HDL', centerX - 100, yPos + 35, { continued: true, lineBreak: false })
                     .fillColor(accentCyan)
                     .text('Perma', { continued: true, lineBreak: false })
                     .fillColor(textWhite)
