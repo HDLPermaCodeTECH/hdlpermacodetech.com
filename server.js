@@ -397,7 +397,7 @@ app.post('/send-lead-magnet', async (req, res) => {
                                                                                 <table border="0" cellspacing="0" cellpadding="0">
                                                                                     <tr>
                                                                                         <td align="center" style="border-radius: 6px; background-color: #38bdf8;">
-                                                                                            <a href="https://hdlpermacodetech.com/" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #020617; font-weight: bold; text-decoration: none; border-radius: 6px; padding: 12px 24px; border: 1px solid #38bdf8; display: inline-block;">Download Checklist Now</a>
+                                                                                            <a href="https://hdlpermacodetech.com/downloads/Website_Audit_Checklist.pdf" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #020617; font-weight: bold; text-decoration: none; border-radius: 6px; padding: 12px 24px; border: 1px solid #38bdf8; display: inline-block;">Download Checklist Now</a>
                                                                                         </td>
                                                                                     </tr>
                                                                                 </table>
