@@ -5,7 +5,7 @@ function createPDF() {
     return new Promise((resolve, reject) => {
         const doc = new PDFDocument({
             size: 'A4',
-            margin: 50,
+            margins: { top: 50, bottom: 0, left: 50, right: 50 },
             info: {
                 Title: 'Free Website Audit Checklist',
                 Author: 'HDL Perma Code TECH'
@@ -32,8 +32,21 @@ function createPDF() {
         // --- Helper: Header ---
         function drawHeader(yPos = 50) {
             try {
-                // Attempt to load the actual logo locally
-                doc.image('./images/HDLPermaCodeTECH_Logo.png', doc.page.width / 2 - 100, yPos - 15, { width: 200 });
+                const centerX = doc.page.width / 2;
+                // Draw Shield Image
+                doc.image('./images/HDL_HexShield_Icon.png', centerX - 140, yPos - 12, { height: 30 });
+
+                // Draw White glowing brand text exactly like the website header
+                doc.fillColor(textWhite)
+                    .fontSize(18)
+                    .font('Helvetica-Bold')
+                    .text('HDL', centerX - 100, yPos - 5, { continued: true, lineBreak: false })
+                    .fillColor(accentCyan)
+                    .text('Perma', { continued: true, lineBreak: false })
+                    .fillColor(textWhite)
+                    .text('Code', { continued: true, lineBreak: false })
+                    .fillColor(accentIndigo)
+                    .text('TECH', { lineBreak: false });
             } catch (e) {
                 // Fallback to text if missing
                 doc.fillColor(textWhite)
@@ -52,7 +65,7 @@ function createPDF() {
 
         // --- Helper: Footer ---
         function drawFooter() {
-            const footerY = doc.page.height - 50;
+            const footerY = doc.page.height - 40;
             doc.moveTo(50, footerY - 10)
                 .lineTo(doc.page.width - 50, footerY - 10)
                 .lineWidth(1)
@@ -62,10 +75,10 @@ function createPDF() {
             doc.fillColor(textMuted)
                 .fontSize(10)
                 .font('Helvetica')
-                .text('Free Website Audit Checklist', 50, footerY);
+                .text('Free Website Audit Checklist', 50, footerY, { lineBreak: false });
 
             doc.fillColor(accentCyan)
-                .text('hdlpermacodetech.com', 50, footerY, { align: 'right' });
+                .text('hdlpermacodetech.com', 50, footerY, { align: 'right', lineBreak: false });
         }
 
 
