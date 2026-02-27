@@ -1137,6 +1137,25 @@ section {
     max-width: 300px;
 }
 
+.footer-logo-container {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    text-decoration: none;
+}
+
+.footer-shield-icon {
+    height: 55px;
+    width: auto;
+    display: inline-block;
+}
+
+.footer-text-logo {
+    height: 35px;
+    width: auto;
+    display: inline-block;
+}
+
 .footer-links {
     display: flex;
     flex-direction: column;
@@ -1223,6 +1242,12 @@ section {
     .footer-content {
         grid-template-columns: 1fr;
         gap: 2.5rem;
+    }
+
+    .footer-logo-container {
+        flex-direction: column;
+        justify-content: center;
+        gap: 15px;
     }
 
     .footer-col {
