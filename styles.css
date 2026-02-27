@@ -1261,6 +1261,7 @@ section {
         width: auto;
         max-width: 100%;
         object-fit: contain;
+        align-self: center !important;
     }
 
     .footer-text-logo {
@@ -1268,6 +1269,7 @@ section {
         width: auto;
         max-width: 100%;
         object-fit: contain;
+        align-self: center !important;
     }
 
     .footer-col {
