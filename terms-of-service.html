@@ -203,284 +203,60 @@
             <p>In no event shall HDL Perma Code TECH be liable for any consequential or indirect damages (including data
                 loss or profit loss) arising out of the use or inability to use the materials on our secure
                 environments.</p>
-            <link
-                href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&family=Outfit:wght@300;500;800&display=swap"
-                rel="stylesheet">
-            <link rel="icon" type="image/png" href="images/HDL_HexShield_Icon.png">
-            <link rel="apple-touch-icon" href="images/HDL_HexShield_Icon.png">
-            <link rel="stylesheet" href="styles.css">
-            <style>
-                .legal-content {
-                    padding: 10rem 5% 5rem;
-                    max-width: 900px;
-                    margin: 0 auto;
-                }
 
-                .legal-header {
-                    text-align: center;
-                    margin-bottom: 4rem;
-                }
+            <h2>6. Governing Law</h2>
+            <p>Any claim relating to HDL Perma Code TECH's website or services shall be governed by the laws of our
+                operating jurisdiction without regard to its conflict of law provisions.</p>
 
-                .legal-header p {
-                    color: var(--text-muted);
-                    margin-top: 1rem;
-                }
+            <h2>7. Contact Information</h2>
+            <p>If you have any questions or concerns regarding our terms of service, please reach out to our legal
+                support team:</p>
+            <p><strong>Email:</strong> <a href="mailto:developer@hdlpermacodetech.com">developer@hdlpermacodetech.com</a></p>
+        </div>
+    </main>
 
-                .legal-section {
-                    margin-bottom: 3rem;
-                    background: var(--bg-surface);
-                    padding: 3rem;
-                    border-radius: 12px;
-                    border: 1px solid var(--glass-border);
-                }
-
-                .legal-section h2 {
-                    font-family: var(--font-heading);
-                    color: var(--accent-cyan);
-                    margin-bottom: 1.5rem;
-                    font-size: 1.8rem;
-                }
-
-                .legal-section h3 {
-                    font-family: var(--font-heading);
-                    color: var(--text-main);
-                    margin-bottom: 1rem;
-                    margin-top: 2rem;
-                    font-size: 1.2rem;
-                }
-
-                .legal-section p,
-                .legal-section li {
-                    color: var(--text-muted);
-                    line-height: 1.8;
-                    margin-bottom: 1rem;
-                }
-
-                .legal-section ul {
-                    padding-left: 1.5rem;
-                    margin-bottom: 1.5rem;
-                }
-
-                .legal-section li {
-                    margin-bottom: 0.5rem;
-                }
-
-                .legal-section a {
-                    color: var(--accent-cyan);
-                    text-decoration: none;
-                    transition: color 0.3s ease;
-                }
-
-                .legal-section a:hover {
-                    color: var(--accent-pink);
-                }
-            </style>
-            </head>
-
-            <body>
-                <!-- Premium Initial Preloader -->
-                <div id="hdl-preloader" class="hdl-preloader">
-                    <div class="preloader-content">
-                        <img src="images/HDL_HexShield_Icon.png" alt="HDL Shield" class="preloader-shield">
-                        <div class="preloader-glow"></div>
-                    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-col footer-brand">
+                <a href="index.html" class="footer-logo-container">
+                    <img src="images/HDL_HexShield_Icon.png" alt="Shield Icon" class="footer-shield-icon">
+                    <img src="images/HDLPermaCodeTECH_Logo.png" alt="HDL Perma Code TECH" class="footer-text-logo">
+                </a>
+                <p>Architecting high-performance, conversion-optimized digital experiences for ambitious brands scaling
+                    globally.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Platform</h4>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Developer</a>
+                    <a href="services.html">Services & Specialities</a>
+                    <a href="pricing.html">Pricing Packages</a>
+                    <a href="templates.html">Premium Templates</a>
                 </div>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <div class="footer-links">
+                    <a href="mailto:developer@hdlpermacodetech.com"
+                        style="display:flex; align-items:center; gap:0.5rem;">Email Us</a>
+                    <a href="start-a-project.html"
+                        style="display:flex; align-items:center; gap:0.5rem; color:var(--accent-cyan); margin-top:0.5rem;">Start
+                        a Project &rarr;</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 HDL Perma Code TECH. All rights reserved.</p>
+            <div style="display:flex; gap:1.5rem;">
+                <a href="privacy-policy.html" style="color:var(--text-muted); text-decoration:none;">Privacy Policy</a>
+                <a href="terms-of-service.html" style="color:var(--accent-cyan); text-decoration:none;">Terms of
+                    Service</a>
+            </div>
+        </div>
+    </footer>
 
-                <!-- Custom Cursor -->
-                <div class="custom-cursor-dot" id="cursorDot"></div>
-                <div class="custom-cursor-ring" id="cursorRing"></div>
-
-                <canvas id="bgCanvas"></canvas>
-
-                <nav class="navbar" id="navbar">
-                    <div class="nav-container">
-                        <a href="index.html" class="nav-logo">
-                            <svg viewBox="0 0 950 140" class="nav-logo-svg" xmlns="http://www.w3.org/2000/svg">
-                                <g transform="translate(10, 10)">
-                                    <path d="M45 5 L85 28 L85 72 L45 95 L5 72 L5 28 Z" fill="none"
-                                        stroke="url(#nav_hex_grad)" stroke-width="8" stroke-linejoin="round" />
-                                    <path d="M25 35 L25 65" stroke="#ffffff" stroke-width="7" stroke-linecap="round" />
-                                    <path d="M65 35 L65 65" stroke="#ffffff" stroke-width="7" stroke-linecap="round" />
-                                    <path d="M25 50 H65" stroke="#ffffff" stroke-width="7" stroke-linecap="round"
-                                        opacity="0.3" />
-                                    <path d="M52 28 L38 72" stroke="#38bdf8" stroke-width="7" stroke-linecap="round" />
-                                    <circle cx="52" cy="28" r="3" fill="#38bdf8" />
-                                    <circle cx="38" cy="72" r="3" fill="#38bdf8" />
-                                    <defs>
-                                        <linearGradient id="nav_hex_grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                            <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
-                                            <stop offset="100%" style="stop-color:#818cf8;stop-opacity:1" />
-                                        </linearGradient>
-                                    </defs>
-                                </g>
-                                <text x="120" y="78" class="logo-text">
-                                    <tspan class="fw-900 fill-white">HDL</tspan>
-                                    <tspan dx="-8" class="fw-100 fill-slate">Perma</tspan>
-                                    <tspan dx="-8" class="fw-700 fill-cyan">Code</tspan>
-                                    <tspan dx="-8" class="fw-900 fill-indigo">TECH</tspan>
-                                </text>
-                                <rect x="120" y="95" width="650" height="5" fill="url(#nav_line_grad)" rx="2.5" />
-                                <defs>
-                                    <linearGradient id="nav_line_grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
-                                        <stop offset="60%" style="stop-color:#818cf8;stop-opacity:1" />
-                                        <stop offset="100%" style="stop-color:#38bdf8;stop-opacity:0" />
-                                    </linearGradient>
-                                </defs>
-                            </svg>
-                        </a>
-                        <div class="nav-links">
-                            <a href="index.html">Home</a>
-                            <a href="about.html">About</a>
-                            <a href="services.html">Services</a>
-                            <a href="pricing.html">Pricing</a>
-                            <a href="templates.html">Templates</a>
-                            <a href="index.html#portfolio">Work</a>
-                            <a href="start-a-project.html" class="btn btn-outline">Start a Project</a>
-                        </div>
-                        <button class="mobile-menu-btn" id="mobileMenuBtn">
-                            <span></span><span></span><span></span>
-                        </button>
-                    </div>
-                </nav>
-
-                <main class="legal-content">
-                    <div class="legal-header reveal">
-                        <h1 class="massive-title">Terms of <span class="text-gradient">Service</span></h1>
-                        <p>Last Updated: February 2026</p>
-                    </div>
-
-                    <div class="legal-section reveal delay-1">
-                        <h2>1. Agreement to Terms</h2>
-                        <p>By accessing and using the website and services provided by HDL Perma Code TECH ("we," "us,"
-                            or "our"),
-                            you accept and agree to be bound by the terms and provision of this agreement. In addition,
-                            when using
-                            these particular services, you shall be subject to any posted guidelines or rules applicable
-                            to such
-                            services.</p>
-
-                        <h2>2. Design and Development Services</h2>
-                        <p>We provide premium web design, custom engineering, and digital architecture solutions. The
-                            specifics of
-                            any development project—including scope, timelines, deliverables, and payment
-                            milestones—will be
-                            outlined in a separate Statement of Work (SOW) or formal client contract.</p>
-                        <ul>
-                            <li><strong>Revisions:</strong> Unless otherwise specified in the SOW, standard projects
-                                include up to
-                                three rounds of reasonable revisions.</li>
-                            <li><strong>Timeline:</strong> Estimated delivery times are provided in good faith but are
-                                not legally
-                                binding deadlines unless explicitly stated in your individual contract.</li>
-                            <li><strong>Client Responsibilities:</strong> Delays in client feedback, content delivery,
-                                or approvals
-                                may result in corresponding delays to project completion.</li>
-                        </ul>
-
-                        <h2>3. Intellectual Property Rights</h2>
-                        <p>Unless otherwise stated, HDL Perma Code TECH and/or its licensors own the intellectual
-                            property rights
-                            for all code, designs, architectures, and templates generated during the course of our
-                            engagement.</p>
-                        <ul>
-                            <li><strong>Custom Code:</strong> Upon final payment of all owed invoices, full intellectual
-                                property
-                                rights for bespoke code and designs are transferred to the client, unless the contract
-                                stipulates a
-                                licensing arrangement.</li>
-                            <li><strong>Templates & Pre-builts:</strong> If the project utilizes our proprietary premium
-                                templates
-                                or baseline frameworks, we grant you a non-exclusive, non-transferable license to use
-                                those elements
-                                for your specific website. You may not resell or redistribute our core frameworks.</li>
-                        </ul>
-
-                        <h2>4. Payment and Fees</h2>
-                        <p>All pricing packages, recurring maintenance plans, and individual project invoices must be
-                            paid according
-                            to the terms specified at checkout or within your individual contract.</p>
-                        <ul>
-                            <li>Initial deposits are strictly non-refundable once architectural or development work has
-                                commenced.
-                            </li>
-                            <li>Failure to pay milestone invoices may result in the suspension of development services
-                                or web
-                                hosting.</li>
-                        </ul>
-
-                        <h2>5. Warranties and Liability</h2>
-                        <p>Our services and templates are provided "as is". We make no warranties, expressed or implied,
-                            and hereby
-                            disclaim and negate all other warranties including, without limitation, implied warranties
-                            or conditions
-                            of merchantability, fitness for a particular purpose, or non-infringement of intellectual
-                            property.</p>
-                        <p>In no event shall HDL Perma Code TECH be liable for any consequential or indirect damages
-                            (including data
-                            loss or profit loss) arising out of the use or inability to use the materials on our secure
-                            environments.</p>
-
-                        <h2>6. Governing Law</h2>
-                        <p>Any claim relating to HDL Perma Code TECH's website or services shall be governed by the laws
-                            of our
-                            operating jurisdiction without regard to its conflict of law provisions.</p>
-
-                        <h2>7. Contact Information</h2>
-                        <p>If you have any questions or concerns regarding our terms of service, please reach out to our
-                            legal
-                            support team:</p>
-                        <p><strong>Email:</strong> <a
-                                href="mailto:developer@hdlpermacodetech.com">developer@hdlpermacodetech.com</a></p>
-                    </div>
-                </main>
-
-                <footer class="footer">
-                    <div class="footer-content">
-                        <div class="footer-col footer-brand">
-                            <a href="index.html" class="footer-logo-container">
-                                <img src="images/HDL_HexShield_Icon.png" alt="Shield Icon" class="footer-shield-icon">
-                                <img src="images/HDLPermaCodeTECH_Logo.png" alt="HDL Perma Code TECH"
-                                    class="footer-text-logo">
-                            </a>
-                            <p>Architecting high-performance, conversion-optimized digital experiences for ambitious
-                                brands scaling
-                                globally.</p>
-                        </div>
-                        <div class="footer-col">
-                            <h4>Platform</h4>
-                            <div class="footer-links">
-                                <a href="index.html">Home</a>
-                                <a href="about.html">About Developer</a>
-                                <a href="services.html">Services & Specialities</a>
-                                <a href="pricing.html">Pricing Packages</a>
-                                <a href="templates.html">Premium Templates</a>
-                            </div>
-                        </div>
-                        <div class="footer-col">
-                            <h4>Contact</h4>
-                            <div class="footer-links">
-                                <a href="mailto:developer@hdlpermacodetech.com"
-                                    style="display:flex; align-items:center; gap:0.5rem;">Email Us</a>
-                                <a href="start-a-project.html"
-                                    style="display:flex; align-items:center; gap:0.5rem; color:var(--accent-cyan); margin-top:0.5rem;">Start
-                                    a Project &rarr;</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="footer-bottom">
-                        <p>&copy; 2026 HDL Perma Code TECH. All rights reserved.</p>
-                        <div style="display:flex; gap:1.5rem;">
-                            <a href="privacy-policy.html" style="color:var(--text-muted); text-decoration:none;">Privacy
-                                Policy</a>
-                            <a href="terms-of-service.html"
-                                style="color:var(--accent-cyan); text-decoration:none;">Terms of
-                                Service</a>
-                        </div>
-                    </div>
-                </footer>
-
-                <script src="script.js"></script>
-            </body>
+    <script src="script.js"></script>
+</body>
 
 </html>
