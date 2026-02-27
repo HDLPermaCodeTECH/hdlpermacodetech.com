@@ -25,6 +25,8 @@ const transporter = nodemailer.createTransport({
     host: process.env.EMAIL_HOST || "smtp.hostinger.com",
     port: parseInt(process.env.EMAIL_PORT) || 465,
     secure: true, // true for 465, false for 587 (uses STARTTLS)
+    pool: true,
+    maxConnections: 1,
     auth: {
         user: process.env.EMAIL_USER || "developer@hdlpermacodetech.com",
         pass: process.env.EMAIL_PASS || "Nitro19960422."
@@ -34,7 +36,9 @@ const transporter = nodemailer.createTransport({
     },
     connectionTimeout: 10000,
     greetingTimeout: 5000,
-    socketTimeout: 10000
+    socketTimeout: 10000,
+    logger: true,
+    debug: true
 });
 
 // Verify connection configuration
