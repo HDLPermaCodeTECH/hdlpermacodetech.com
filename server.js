@@ -160,6 +160,8 @@ app.post('/send-project-brief', async (req, res) => {
                                 <a href="https://hdlpermacodetech.com/terms-of-service.html" style='color: #64748b; text-decoration: none; font-size: 12px; margin: 0 10px; transition: color 0.2s;'>Safety & Security</a>
                                 <span style='color: #334155;'>|</span>
                                 <a href="https://hdlpermacodetech.com/terms-of-service.html" style='color: #64748b; text-decoration: none; font-size: 12px; margin: 0 10px; transition: color 0.2s;'>Terms & Conditions</a>
+                                <span style='color: #334155;'>|</span>
+                                <a href="https://www.facebook.com/hdlpermacodetech/" style='color: #64748b; text-decoration: none; font-size: 12px; margin: 0 10px; transition: color 0.2s;'>Facebook</a>
                             </div>
                             
                             <p style='margin: 0; font-size: 12px; color: #475569;'>&copy; ${new Date().getFullYear()} HDL Perma Code TECH. All rights reserved.</p>
@@ -247,6 +249,8 @@ app.post('/send-project-brief', async (req, res) => {
                                                                     <a href="https://hdlpermacodetech.com/terms-of-service.html" style="color: #64748b; text-decoration: none; margin: 0 10px;">Safety & Security</a>
                                                                     |
                                                                     <a href="https://hdlpermacodetech.com/terms-of-service.html" style="color: #64748b; text-decoration: none; margin: 0 10px;">Terms & Conditions</a>
+                                                                    |
+                                                                    <a href="https://www.facebook.com/hdlpermacodetech/" style="color: #64748b; text-decoration: none; margin: 0 10px;">Facebook</a>
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -427,6 +431,8 @@ app.post('/send-lead-magnet', async (req, res) => {
                                                                                     <a href="https://hdlpermacodetech.com/terms-of-service.html" style="color: #64748b; text-decoration: none; margin: 0 10px;">Safety & Security</a>
                                                                                     |
                                                                                     <a href="https://hdlpermacodetech.com/terms-of-service.html" style="color: #64748b; text-decoration: none; margin: 0 10px;">Terms & Conditions</a>
+                                                                                    |
+                                                                                    <a href="https://www.facebook.com/hdlpermacodetech/" style="color: #64748b; text-decoration: none; margin: 0 10px;">Facebook</a>
                                                                                 </td>
                                                                             </tr>
                                                                         </table>
