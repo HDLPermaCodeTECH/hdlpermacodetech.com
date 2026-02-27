@@ -23,8 +23,8 @@ app.use(express.static(__dirname));
 // --- NODEMAILER CONFIGURATION ---
 const transporter = nodemailer.createTransport({
     host: process.env.EMAIL_HOST || "smtp.hostinger.com",
-    port: parseInt(process.env.EMAIL_PORT) || 587,
-    secure: false, // true for 465, false for 587 (uses STARTTLS)
+    port: parseInt(process.env.EMAIL_PORT) || 465,
+    secure: true, // true for 465, false for 587 (uses STARTTLS)
     auth: {
         user: process.env.EMAIL_USER || "developer@hdlpermacodetech.com",
         pass: process.env.EMAIL_PASS || "Nitro19960422."
