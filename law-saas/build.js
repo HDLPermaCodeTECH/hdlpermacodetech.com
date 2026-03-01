@@ -24,7 +24,21 @@ fs.cpSync(publicDir, outDir, { recursive: true });
 const renderView = async (ejsPathRel, outName, data = {}) => {
     try {
         const ejsFile = path.join(viewsDir, ejsPathRel);
-        const html = await ejs.renderFile(ejsFile, { ...mockData, ...data }, { views: [viewsDir] });
+        let html = await ejs.renderFile(ejsFile, { ...mockData, ...data }, { views: [viewsDir] });
+
+        // Convert Node.js absolute paths to local file system relative paths for static preview
+        html = html.replace(/href="\/css\/style\.css"/g, 'href="css/style.css"');
+        html = html.replace(/src="\/js\/main\.js"/g, 'src="js/main.js"');
+        html = html.replace(/href="\/"/g, 'href="index.html"');
+        html = html.replace(/href="\/about"/g, 'href="about.html"');
+        html = html.replace(/href="\/practice-areas"/g, 'href="practice-areas.html"');
+        html = html.replace(/href="\/attorneys"/g, 'href="attorneys.html"');
+        html = html.replace(/href="\/results"/g, 'href="results.html"');
+        html = html.replace(/href="\/insights"/g, 'href="insights.html"');
+        html = html.replace(/href="\/booking"/g, 'href="booking.html"');
+        html = html.replace(/href="\/portal\/login"/g, 'href="login-client.html"');
+        html = html.replace(/href="\/auth\/admin"/g, 'href="login-admin.html"');
+
         fs.writeFileSync(path.join(outDir, outName), html);
         console.log(`Successfully compiled: ${outName}`);
     } catch (err) {
