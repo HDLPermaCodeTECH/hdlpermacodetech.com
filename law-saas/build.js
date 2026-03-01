@@ -39,6 +39,9 @@ const renderView = async (ejsPathRel, outName, data = {}) => {
         html = html.replace(/href="\/portal\/login"/g, 'href="login-client.html"');
         html = html.replace(/href="\/auth\/admin"/g, 'href="login-admin.html"');
 
+        // Return navigation for static previews
+        html = html.replace(/href="\/templates\.html"/g, 'href="../../templates.html"');
+
         fs.writeFileSync(path.join(outDir, outName), html);
         console.log(`Successfully compiled: ${outName}`);
     } catch (err) {
