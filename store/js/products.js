@@ -31,24 +31,26 @@ function renderProductGrid(containerId, products, limit = null) {
         }
 
         const html = `
-            <article class="product-card reveal" style="transition-delay: ${index * 0.1}s">
+            <article class="product-card reveal" style="display:flex; flex-direction:column; height:100%; transition-delay: ${index * 0.1}s">
                 ${badgesHtml}
-                <div style="position:relative; overflow:hidden;" class="product-image-wrap">
+                <div style="position:relative; overflow:hidden; aspect-ratio:4/5; flex-shrink:0;" class="product-image-wrap">
                     <a href="store-product.html?id=${product.id}" style="display:block; width:100%; height:100%;">
                         <img src="${product.images[0]}" alt="${product.name}" class="main-img" style="width:100%; height:100%; object-fit:cover; transition:var(--transition-slow);">
                         ${product.images[1] ? `<img src="${product.images[1]}" alt="${product.name} alternate" class="hover-img" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:var(--transition-slow);">` : ''}
                     </a>
                 </div>
-                <div class="product-info" style="padding-top:1.5rem; text-align:center;">
-                    <p style="color:#777; font-size:0.7rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:0.5rem;">${product.brand}</p>
-                    <a href="store-product.html?id=${product.id}">
-                        <h3 class="product-title" style="font-size:1rem; margin-bottom:0.5rem;">${product.name}</h3>
-                    </a>
-                    <div style="display:flex; justify-content:center; align-items:center; gap:0.75rem; margin-top:0.5rem;">
-                        <span class="product-price" style="font-weight:500;">$${product.price.toFixed(2)}</span>
-                        ${product.compare_price > product.price ? `<span style="text-decoration:line-through; color:#999; font-size:0.85rem;">$${product.compare_price.toFixed(2)}</span>` : ''}
+                <div class="product-info" style="padding-top:1.5rem; text-align:center; display:flex; flex-direction:column; flex-grow:1;">
+                    <div>
+                        <p style="color:#777; font-size:0.7rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:0.5rem;">${product.brand}</p>
+                        <a href="store-product.html?id=${product.id}">
+                            <h3 class="product-title" style="font-size:1rem; margin-bottom:0.5rem;">${product.name}</h3>
+                        </a>
+                        <div style="display:flex; justify-content:center; align-items:center; gap:0.75rem; margin-top:0.5rem;">
+                            <span class="product-price" style="font-weight:500;">$${product.price.toFixed(2)}</span>
+                            ${product.compare_price > product.price ? `<span style="text-decoration:line-through; color:#999; font-size:0.85rem;">$${product.compare_price.toFixed(2)}</span>` : ''}
+                        </div>
                     </div>
-                    <button class="btn btn-outline add-to-cart-btn" style="width:100%; margin-top:1.5rem;" 
+                    <button class="btn btn-outline add-to-cart-btn" style="width:100%; margin-top:auto;" 
                         data-id="${product.id}" 
                         data-name="${product.name}" 
                         data-price="${product.price}" 
