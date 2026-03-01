@@ -2,7 +2,7 @@
   "name": "hdlpermacodetech",
   "version": "1.0.0",
   "description": "HDL Perma Code TECH Official Website",
-  "main": "index.html",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "build": "echo 'Build completed'"

@@ -1,0 +1,27 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "server.js",
+            "use": "@vercel/node"
+        },
+        {
+            "src": "**/*.{html,css,js,png,jpg,jpeg,svg,webp,ico,gif,json}",
+            "use": "@vercel/static"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/send-project-brief",
+            "dest": "/server.js"
+        },
+        {
+            "src": "/send-lead-magnet",
+            "dest": "/server.js"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/$1"
+        }
+    ]
+}

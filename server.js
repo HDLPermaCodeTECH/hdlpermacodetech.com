@@ -18,7 +18,11 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 // Serve static HTML/CSS files from the current directory
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname)));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 // --- NODEMAILER CONFIGURATION ---
 const transporter = nodemailer.createTransport({
