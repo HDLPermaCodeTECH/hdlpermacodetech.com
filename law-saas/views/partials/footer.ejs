@@ -1,0 +1,81 @@
+<!-- Global Footer -->
+<footer
+    style="background: var(--clr-bg); border-top: 1px solid var(--clr-border); padding: 5rem 0 2rem; margin-top: 5rem;">
+    <div class="container"
+        style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 4rem; margin-bottom: 4rem;">
+
+        <!-- Branding -->
+        <div>
+            <a href="/" class="brand-logo" style="margin-bottom: 1.5rem; display:block;">
+                <%= firmName %>
+            </a>
+            <p style="color:var(--clr-text-muted); font-size: 0.95rem; margin-bottom: 2rem; max-width: 320px;">
+                An elite advisory providing sophisticated legal counsel to enterprises, innovators, and private wealth.
+            </p>
+            <div style="display:flex; gap:1.25rem; font-size: 1.25rem;">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+
+        <!-- Directory -->
+        <div>
+            <h4
+                style="font-family: var(--font-sans); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem;">
+                Expertise</h4>
+            <ul
+                style="display:flex; flex-direction:column; gap:0.85rem; color:var(--clr-text-muted); font-size:0.95rem;">
+                <li><a href="/practice-areas/corporate">Corporate Governance</a></li>
+                <li><a href="/practice-areas/intellectual-property">Intellectual Property</a></li>
+                <li><a href="/practice-areas/litigation">Commercial Litigation</a></li>
+                <li><a href="/practice-areas/private-wealth">Private Wealth Services</a></li>
+            </ul>
+        </div>
+
+        <!-- Links -->
+        <div>
+            <h4
+                style="font-family: var(--font-sans); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem;">
+                Platform</h4>
+            <ul
+                style="display:flex; flex-direction:column; gap:0.85rem; color:var(--clr-text-muted); font-size:0.95rem;">
+                <li><a href="/portal/login">Client Login</a></li>
+                <li><a href="/auth/admin">Attorney Login</a></li>
+                <li><a href="/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/terms">Terms &amp; Conditions</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+            <h4
+                style="font-family: var(--font-sans); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem;">
+                Headquarters</h4>
+            <ul
+                style="display:flex; flex-direction:column; gap:0.85rem; color:var(--clr-text-muted); font-size:0.95rem;">
+                <li><i class="fas fa-map-marker-alt" style="width:20px; color:var(--clr-primary);"></i> 100 Legal Way,
+                    New York, NY</li>
+                <li><i class="fas fa-envelope" style="width:20px; color:var(--clr-primary);"></i>
+                    <%= firmEmail %>
+                </li>
+                <li><i class="fas fa-phone" style="width:20px; color:var(--clr-primary);"></i>
+                    <%= firmPhone %>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="container"
+        style="border-top: 1px solid var(--clr-border); padding-top: 2rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; font-size:0.8rem; color:var(--clr-text-muted);">
+        <span>&copy; <%= currentYear %>
+                <%= firmName %>. All rights reserved.</span>
+        <span><i class="fas fa-shield-alt"></i> Zero-Trust Secured Platform</span>
+    </div>
+</footer>
+
+<!-- Global Scripts -->
+<script src="/js/main.js"></script>
+</body>
+
+</html>

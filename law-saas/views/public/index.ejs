@@ -1,0 +1,207 @@
+<%- include('../partials/header') %>
+
+    <!-- 1. HERO SECTION -->
+    <header
+        style="min-height: 90vh; display:flex; align-items:center; position:relative; overflow:hidden; background: var(--clr-surface-alt);">
+
+        <!-- Abstract minimal background shape -->
+        <div
+            style="position:absolute; top:-10%; right:-10%; width:50%; height:100%; background: linear-gradient(135deg, rgba(197, 160, 89, 0.05), transparent); border-radius:50%; filter:blur(100px); z-index:0;">
+        </div>
+
+        <div class="container"
+            style="position:relative; z-index:1; display:grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items:center;">
+
+            <div style="padding-right: 2rem;">
+                <span
+                    style="display:inline-block; font-size: 0.85rem; text-transform:uppercase; letter-spacing: 2px; color: var(--clr-accent); font-weight: 600; margin-bottom: 1.5rem;">
+                    <i class="fas fa-balance-scale"></i> Premium Legal Counsel
+                </span>
+                <h1 class="editorial-title" style="margin-bottom: 2rem;">Commanding <br><i
+                        style="color:var(--clr-text-muted);">Results.</i></h1>
+                <p
+                    style="font-size: 1.15rem; color: var(--clr-text-muted); margin-bottom: 2.5rem; max-width: 500px; line-height: 1.8;">
+                    Elite representation for complex corporate litigation, intellectual property security, and private
+                    wealth structuring.
+                </p>
+                <div style="display:flex; gap: 1rem; align-items:center;">
+                    <a href="/booking" class="btn btn-primary" style="padding: 1rem 2.5rem;">Consult with a Partner</a>
+                    <a href="/practice-areas" class="btn btn-outline"
+                        style="padding: 1rem 2.5rem; border:none; border-bottom:1px solid var(--clr-primary);">Our
+                        Expertise</a>
+                </div>
+            </div>
+
+            <!-- High-End Editorial Image Placeholder -->
+            <div style="position:relative; height: 600px;">
+                <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=800"
+                    alt="Law Library"
+                    style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%) contrast(1.1);">
+                <!-- Trust Badge Overlay -->
+                <div
+                    style="position:absolute; bottom: -2rem; left: -2rem; background: var(--clr-primary); color: #fff; padding: 2.5rem; max-width: 300px;">
+                    <h3
+                        style="color:#fff; font-family: var(--font-sans); font-size: 3rem; margin-bottom: 0.5rem; font-weight:300;">
+                        $2.4B+</h3>
+                    <p
+                        style="font-size: 0.85rem; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,0.7);">
+                        In verdicts, settlements, and governed acquisitions.</p>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- 2. TRUST MARKERS & LOGOS -->
+    <section style="padding: 4rem 0; border-bottom: 1px solid var(--clr-border);">
+        <div class="container" style="text-align:center;">
+            <p
+                style="font-size: 0.75rem; text-transform:uppercase; letter-spacing:2px; color:var(--clr-text-muted); margin-bottom: 2rem;">
+                Trusted by industry leaders</p>
+            <div
+                style="display:flex; justify-content:center; gap: 4rem; opacity: 0.4; flex-wrap:wrap; font-size: 1.5rem; color: var(--clr-primary);">
+                <i class="fab fa-aws"></i>
+                <i class="fab fa-apple"></i>
+                <i class="fab fa-microsoft"></i>
+                <i class="fab fa-stripe"></i>
+                <i class="fab fa-salesforce"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. PRACTICE AREAS (MINIMAL GRID) -->
+    <section style="padding: 8rem 0; background: var(--clr-surface);">
+        <div class="container">
+            <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom: 5rem;">
+                <div style="max-width: 600px;">
+                    <h2 class="section-title">Specialized Domains</h2>
+                    <p style="color:var(--clr-text-muted); font-size:1.1rem;">We focus our resources on distinct
+                        practice areas where our depth of knowledge provides an undeniable strategic advantage.</p>
+                </div>
+                <a href="/practice-areas"
+                    style="font-size:0.9rem; text-transform:uppercase; letter-spacing:1px; font-weight:600; color:var(--clr-accent); border-bottom: 1px solid var(--clr-accent); padding-bottom: 4px;">View
+                    All Areas</a>
+            </div>
+
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+
+                <div style="border: 1px solid var(--clr-border); padding: 3rem 2.5rem; transition: transform 0.3s, box-shadow 0.3s; cursor:pointer;"
+                    onmouseover="this.style.boxShadow='0 20px 40px rgba(0,0,0,0.05)'; this.style.transform='translateY(-5px)';"
+                    onmouseout="this.style.boxShadow='none'; this.style.transform='none';">
+                    <i class="fas fa-building"
+                        style="font-size: 2rem; color:var(--clr-accent); margin-bottom: 1.5rem;"></i>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Corporate Governance</h3>
+                    <p style="color:var(--clr-text-muted); font-size: 0.95rem; margin-bottom: 2rem;">M&A structuring,
+                        regulatory compliance, and board-level risk mitigation.</p>
+                    <a href="/practice-areas/corporate"
+                        style="font-weight:600; font-size:0.85rem; text-transform:uppercase; letter-spacing:1px;">Explore
+                        &rarr;</a>
+                </div>
+
+                <div style="border: 1px solid var(--clr-border); padding: 3rem 2.5rem; transition: transform 0.3s, box-shadow 0.3s; cursor:pointer;"
+                    onmouseover="this.style.boxShadow='0 20px 40px rgba(0,0,0,0.05)'; this.style.transform='translateY(-5px)';"
+                    onmouseout="this.style.boxShadow='none'; this.style.transform='none';">
+                    <i class="fas fa-fingerprint"
+                        style="font-size: 2rem; color:var(--clr-accent); margin-bottom: 1.5rem;"></i>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Intellectual Property</h3>
+                    <p style="color:var(--clr-text-muted); font-size: 0.95rem; margin-bottom: 2rem;">Patent portfolios,
+                        advanced trademark litigation, and trade secret defense.</p>
+                    <a href="/practice-areas/ip"
+                        style="font-weight:600; font-size:0.85rem; text-transform:uppercase; letter-spacing:1px;">Explore
+                        &rarr;</a>
+                </div>
+
+                <div style="border: 1px solid var(--clr-border); padding: 3rem 2.5rem; background: var(--clr-primary); color:#fff; transition: transform 0.3s;"
+                    onmouseover="this.style.transform='translateY(-5px)';" onmouseout="this.style.transform='none';">
+                    <i class="fas fa-gavel"
+                        style="font-size: 2rem; color:var(--clr-accent); margin-bottom: 1.5rem;"></i>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color:#fff;">Commercial Litigation</h3>
+                    <p style="color:rgba(255,255,255,0.7); font-size: 0.95rem; margin-bottom: 2rem;">High-stakes dispute
+                        resolution for Fortune 500 entities and executives.</p>
+                    <a href="/practice-areas/litigation"
+                        style="font-weight:600; font-size:0.85rem; text-transform:uppercase; letter-spacing:1px; color:#fff;">Explore
+                        &rarr;</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. ZERO-TRUST & TECHNOLOGY HIGHLIGHT -->
+    <section
+        style="padding: 8rem 0; background: var(--clr-surface-alt); border-top:1px solid var(--clr-border); border-bottom:1px solid var(--clr-border);">
+        <div class="container" style="display:grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items:center;">
+
+            <div>
+                <span
+                    style="display:inline-block; font-size: 0.75rem; text-transform:uppercase; letter-spacing: 2px; color: var(--clr-accent); font-weight: 600; margin-bottom: 1.5rem;">
+                    <i class="fas fa-shield-alt"></i> Enterprise SaaS Architecture
+                </span>
+                <h2 class="section-title">Beyond counsel. <br>A secure legal infrastructure.</h2>
+                <p style="color:var(--clr-text-muted); font-size:1.1rem; margin-bottom: 1.5rem;">
+                    Our proprietary Client Portal employs a zero-trust security model. We encrypt communications,
+                    e-signatures, and sensitive case files end-to-end.
+                </p>
+                <ul style="list-style:none; padding:0; margin-bottom: 2.5rem;">
+                    <li style="margin-bottom:0.75rem; color:var(--clr-text-muted);"><i class="fas fa-check"
+                            style="color:var(--clr-accent); margin-right:10px;"></i> Advanced AI Legal Research tools
+                    </li>
+                    <li style="margin-bottom:0.75rem; color:var(--clr-text-muted);"><i class="fas fa-check"
+                            style="color:var(--clr-accent); margin-right:10px;"></i> Seamless Video Consultations via
+                        Zoom</li>
+                    <li style="margin-bottom:0.75rem; color:var(--clr-text-muted);"><i class="fas fa-check"
+                            style="color:var(--clr-accent); margin-right:10px;"></i> Immutable E-Signature tracking</li>
+                </ul>
+                <a href="/portal/login" class="btn btn-primary" style="padding: 1rem 2rem;">Access Client Portal</a>
+            </div>
+
+            <div
+                style="position:relative; background: #fff; padding: 2rem; box-shadow: 0 30px 60px rgba(0,0,0,0.08); border: 1px solid var(--clr-border);">
+                <!-- Mock UI abstract graphic -->
+                <div
+                    style="display:flex; justify-content:space-between; border-bottom:1px solid var(--clr-border); padding-bottom:1rem; margin-bottom:1.5rem;">
+                    <h4 style="font-family:var(--font-sans); font-size:0.9rem;">Dashboard Analytics</h4>
+                    <span class="badge badge-success"><i class="fas fa-lock"></i> Encrypted</span>
+                </div>
+
+                <div style="display:flex; gap:1rem; margin-bottom: 1.5rem;">
+                    <div
+                        style="flex:1; background:var(--clr-surface-alt); padding:1.5rem; border:1px solid var(--clr-border);">
+                        <span style="font-size:0.75rem; text-transform:uppercase; color:var(--clr-text-muted);">Active
+                            Cases</span>
+                        <h3 style="font-family:var(--font-sans); font-size:2rem; margin-top:0.5rem;">24</h3>
+                    </div>
+                    <div
+                        style="flex:1; background:var(--clr-surface-alt); padding:1.5rem; border:1px solid var(--clr-border);">
+                        <span
+                            style="font-size:0.75rem; text-transform:uppercase; color:var(--clr-text-muted);">Signatures
+                            Pending</span>
+                        <h3
+                            style="font-family:var(--font-sans); font-size:2rem; margin-top:0.5rem; color:var(--clr-error);">
+                            3</h3>
+                    </div>
+                </div>
+                <div
+                    style="height:120px; background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(197, 160, 89, 0.05) 10px, rgba(197, 160, 89, 0.05) 20px);">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5. CTA SECTION -->
+    <section style="padding: 8rem 0; text-align:center; background: var(--clr-primary); color: #fff;">
+        <div class="container" style="max-width: 800px;">
+            <h2 style="color:#fff; font-size:clamp(2.5rem, 5vw, 4rem); margin-bottom: 1.5rem;">Request a Consultation
+            </h2>
+            <p style="font-size: 1.25rem; color: rgba(255,255,255,0.7); margin-bottom: 3rem;">
+                Whether negotiating an acquisition or preparing for litigation, speak directly with a partner to discuss
+                strategy.
+            </p>
+            <a href="/booking" class="btn btn-outline"
+                style="border-color:var(--clr-accent); color:#fff; padding: 1.25rem 3rem; font-size: 1rem;">Schedule
+                Appointment</a>
+        </div>
+    </section>
+
+    <%- include('../partials/footer') %>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %> | <%= firmName %>
+    </title>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body style="background: var(--clr-surface-alt);">
+
+    <!-- Admin Sidebar Navigation -->
+    <aside class="sidebar" style="background:#000;">
+        <div class="sidebar-logo">
+            <a href="/" style="color:#fff;">
+                <%= firmName %>
+            </a>
+        </div>
+        <div
+            style="padding: 0 2rem 2rem; color: rgba(255,255,255,0.5); font-size: 0.8rem; text-transform:uppercase; letter-spacing:1px; color:#c5a059;">
+            Partner Access</div>
+        <nav class="sidebar-menu">
+            <a href="/admin/dashboard" class="active">
+                <i class="fas fa-chart-line" style="width: 20px;"></i> Master Dashboard
+            </a>
+            <a href="/admin/crm">
+                <i class="fas fa-users" style="width: 20px;"></i> Client Roster
+            </a>
+            <a href="/admin/matters">
+                <i class="fas fa-gavel" style="width: 20px;"></i> Active Matters
+            </a>
+            <a href="/admin/financials">
+                <i class="fas fa-coins" style="width: 20px;"></i> Retainers & Billing
+            </a>
+            <a href="/admin/settings" style="margin-top: 2rem;">
+                <i class="fas fa-cog" style="width: 20px;"></i> Firm Settings
+            </a>
+            <a href="/auth/logout" style="color: #fca5a5;">
+                <i class="fas fa-lock" style="width: 20px;"></i> End Session
+            </a>
+        </nav>
+    </aside>
+
+    <main class="dash-main">
+
+        <header
+            style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 3rem; border-bottom: 1px solid var(--clr-border); padding-bottom: 2rem;">
+            <div>
+                <span class="badge badge-success" style="margin-bottom: 0.5rem; display:inline-block;"><i
+                        class="fas fa-check-circle"></i> ISO 27001 Secure Node</span>
+                <h1
+                    style="font-family:var(--font-sans); font-size: 2rem; color: var(--clr-primary); margin-bottom: 0.25rem;">
+                    Enterprise Analytics</h1>
+                <p style="color:var(--clr-text-muted); font-size: 0.95rem;">Partner Level ID: <%= user.id %>
+                </p>
+            </div>
+
+            <div style="display:flex; gap: 1rem;">
+                <button class="btn btn-outline" style="padding:0.5rem 1rem;"><i class="fas fa-download"></i> Export
+                    Data</button>
+                <button class="btn btn-primary" style="padding:0.5rem 1rem;"><i class="fas fa-plus"></i> New
+                    Matter</button>
+            </div>
+        </header>
+
+        <!-- Executive Summary Cards -->
+        <div
+            style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+
+            <div
+                style="background:#fff; padding: 2.5rem 2rem; border:1px solid var(--clr-border); box-shadow: 0 10px 20px rgba(0,0,0,0.02); display:flex; justify-content:space-between; align-items:flex-end;">
+                <div>
+                    <span
+                        style="font-size:0.75rem; text-transform:uppercase; color:var(--clr-text-muted); font-weight:600; letter-spacing:1px;">Firm
+                        Retainers (MTD)</span>
+                    <h3
+                        style="font-family:var(--font-sans); font-size:3rem; margin-top:0.5rem; color:var(--clr-primary);">
+                        $<%= (stats.monthlyRevenue / 1000).toFixed(0) %>k</h3>
+                </div>
+                <div style="color:var(--clr-success); font-weight:600; font-size: 0.9rem;">
+                    <i class="fas fa-arrow-up"></i> 14%
+                </div>
+            </div>
+
+            <div
+                style="background:#fff; padding: 2.5rem 2rem; border:1px solid var(--clr-border); box-shadow: 0 10px 20px rgba(0,0,0,0.02); display:flex; justify-content:space-between; align-items:flex-end;">
+                <div>
+                    <span
+                        style="font-size:0.75rem; text-transform:uppercase; color:var(--clr-text-muted); font-weight:600; letter-spacing:1px;">Active
+                        Cases</span>
+                    <h3
+                        style="font-family:var(--font-sans); font-size:3rem; margin-top:0.5rem; color:var(--clr-primary);">
+                        <%= stats.openCases %>
+                    </h3>
+                </div>
+                <div style="color:var(--clr-text-muted); font-size: 0.9rem;">
+                    Across <%= stats.activeClients %> Entities
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Activity Feed Network -->
+        <div style="background:#fff; border:1px solid var(--clr-border); display:grid; grid-template-columns: 2fr 1fr;">
+
+            <div style="padding: 2.5rem; border-right: 1px solid var(--clr-border);">
+                <h3
+                    style="font-family:var(--font-sans); font-size: 1.1rem; color: var(--clr-primary); margin-bottom: 2rem;">
+                    Real-Time Audit Trail</h3>
+
+                <ul style="list-style:none;">
+                    <% stats.recentActivity.forEach(act=> { %>
+                        <li style="margin-bottom: 1.5rem; display:flex; gap: 1rem; align-items:flex-start;">
+                            <div
+                                style="width:10px; height:10px; border-radius:50%; background:var(--clr-accent); margin-top: 6px;">
+                            </div>
+                            <div>
+                                <p style="font-size: 0.95rem; margin-bottom:0.25rem;">
+                                    <%= act.log %>
+                                </p>
+                                <span style="font-size: 0.75rem; color:var(--clr-text-muted);"><i
+                                        class="far fa-clock"></i>
+                                    <%= act.time %>
+                                </span>
+                            </div>
+                        </li>
+                        <% }) %>
+                </ul>
+            </div>
+
+            <div style="padding: 2.5rem; background: var(--clr-surface-alt);">
+                <h3
+                    style="font-family:var(--font-sans); font-size: 1.1rem; color: var(--clr-primary); margin-bottom: 2rem;">
+                    Quick Operations</h3>
+
+                <button class="btn btn-outline"
+                    style="width:100%; margin-bottom: 1rem; justify-content:flex-start; font-size:0.8rem;"><i
+                        class="fas fa-robot" style="width:20px; color:var(--clr-accent);"></i> AI Case
+                    Summarizer</button>
+                <button class="btn btn-outline"
+                    style="width:100%; margin-bottom: 1rem; justify-content:flex-start; font-size:0.8rem;"><i
+                        class="fas fa-file-contract" style="width:20px;"></i> Dispatch E-Signature</button>
+                <button class="btn btn-outline"
+                    style="width:100%; margin-bottom: 1rem; justify-content:flex-start; font-size:0.8rem;"><i
+                        class="fab fa-stripe-s" style="width:20px; color:#635bff;"></i> Issue Stripe Invoice</button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>
