@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Enterprise Nexus</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .dashboard-layout {
+            display: flex;
+            min-height: calc(100vh - var(--header-height));
+        }
+
+        .sidebar {
+            width: 260px;
+            background: var(--bg-surface);
+            border-right: 1px solid var(--border-color);
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .sidebar-link {
+            padding: 0.75rem 1rem;
+            color: var(--text-muted);
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .sidebar-link:hover,
+        .sidebar-link.active {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+        }
+
+        .dashboard-main {
+            flex-grow: 1;
+            padding: 3rem 5%;
+        }
+
+        .page-header {
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 2rem;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Purchases Grid */
+        .purchase-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            align-items: center;
+        }
+
+        .purchase-img {
+            width: 150px;
+            height: 100px;
+            border-radius: var(--radius-sm);
+            object-fit: cover;
+        }
+
+        .purchase-details {
+            flex-grow: 1;
+        }
+
+        .purchase-details h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .purchase-details p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .license-box {
+            background: var(--bg-base);
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-sm);
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: var(--accent-emerald);
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .purchase-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            min-width: 140px;
+        }
+
+        @media(max-width: 768px) {
+            .dashboard-layout {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                flex-direction: row;
+                overflow-x: auto;
+            }
+
+            .sidebar-link {
+                white-space: nowrap;
+            }
+
+            .purchase-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="nexus-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"></div> Nexus
+            </a>
+
+            <nav class="nav-links">
+                <a href="index.html">Marketplace</a>
+                <a href="pricing.html">Pricing</a>
+            </nav>
+
+            <div class="header-actions">
+                <div style="display:flex; align-items:center; gap:1rem;">
+                    <span id="userGreeting" style="font-size:0.9rem; font-weight:500;"></span>
+                    <button id="logoutBtn" class="btn btn-outline" style="font-size:0.8rem; padding:0.4rem 1rem;">Sign
+                        Out</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-layout fade-up">
+        <aside class="sidebar">
+            <a href="dashboard.html" class="sidebar-link active">
+                Purchases & Licenses
+            </a>
+            <a href="#" class="sidebar-link">
+                Billing History
+            </a>
+            <a href="#" class="sidebar-link">
+                Account Settings
+            </a>
+            <a href="admin.html" class="sidebar-link" id="adminLink" style="display:none; color:var(--accent-blue);">
+                Admin Portal
+            </a>
+        </aside>
+
+        <main class="dashboard-main">
+            <div class="page-header">
+                <h1>Purchases & Licenses</h1>
+                <p style="color:var(--text-muted);">Manage your downloaded templates and subscription keys.</p>
+            </div>
+
+            <!-- Hardcoded Mock Purchases for Demo Purposes -->
+            <div class="purchase-card">
+                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800" alt="Aura Retail"
+                    class="purchase-img">
+                <div class="purchase-details">
+                    <h3>Aura Luxury Retail</h3>
+                    <p>Purchased on Jan 14, 2026</p>
+                    <div class="license-box">KEY: NEXUS-XY19B-2026AURA</div>
+                </div>
+                <div class="purchase-actions">
+                    <button class="btn btn-primary">Download .ZIP</button>
+                    <button class="btn btn-outline">Documentation</button>
+                </div>
+            </div>
+
+            <div class="purchase-card">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800" alt="FinFlow Capital"
+                    class="purchase-img">
+                <div class="purchase-details">
+                    <h3>FinFlow Capital</h3>
+                    <p>Purchased on Dec 03, 2025</p>
+                    <div class="license-box">KEY: NEXUS-ZZ92M-2025FINFLOW</div>
+                </div>
+                <div class="purchase-actions">
+                    <button class="btn btn-primary">Download .ZIP</button>
+                    <button class="btn btn-outline">Documentation</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const user = NexusAPI.getUser();
+            if (!user) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            document.getElementById('userGreeting').innerText = user.email || user.name;
+
+            if (user.role === 'admin') {
+                document.getElementById('adminLink').style.display = 'flex';
+            }
+
+            document.getElementById('logoutBtn').addEventListener('click', () => {
+                NexusAPI.logout();
+            });
+        });
+    </script>
+</body>
+
+</html>

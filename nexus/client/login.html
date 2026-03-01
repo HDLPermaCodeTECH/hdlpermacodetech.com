@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | Enterprise Nexus</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 5%;
+        }
+
+        .auth-box {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 440px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .auth-header h1 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .auth-header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .form-group-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group-flex a {
+            font-size: 0.85rem;
+            color: var(--accent-blue);
+        }
+
+        .auth-footer {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .auth-footer a {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .error-msg {
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+            padding: 0.75rem;
+            border-radius: var(--radius-sm);
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="auth-container fade-up">
+        <div class="auth-box">
+            <div class="auth-header">
+                <a href="index.html" class="logo" style="justify-content:center; margin-bottom:1.5rem;">
+                    <div class="logo-icon"></div> Nexus
+                </a>
+                <h1>Sign in to your account</h1>
+                <p>Access your templates, licenses, and billing.</p>
+            </div>
+
+            <div id="errorBox" class="error-msg"></div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Email address</label>
+                    <input type="email" id="email" class="form-control" placeholder="admin@nexus.com" required
+                        value="admin@nexus.com">
+                </div>
+
+                <div class="form-group" style="margin-bottom:2rem;">
+                    <div class="form-group-flex">
+                        <label style="margin:0;">Password</label>
+                        <a href="#">Forgot password?</a>
+                    </div>
+                    <input type="password" id="password" class="form-control" placeholder="••••••••" required
+                        value="password123">
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width:100%; padding:0.75rem; font-size:1rem;"
+                    id="loginBtn">Sign in</button>
+            </form>
+
+            <div class="auth-footer">
+                Don't have an account? <a href="register.html">Create an account</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('loginBtn');
+            const err = document.getElementById('errorBox');
+
+            err.style.display = 'none';
+            btn.innerHTML = 'Signing in...';
+            btn.style.opacity = '0.7';
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const res = await NexusAPI.login(email, password);
+
+            if (res.success) {
+                // If there's a redirect intent (like from Pricing)
+                const urlParams = new URLSearchParams(window.location.search);
+                if (urlParams.get('redirect') === 'subscribe') {
+                    window.location.href = 'index.html'; // Or a dedicated checkout page
+                } else {
+                    window.location.href = 'dashboard.html';
+                }
+            } else {
+                err.innerHTML = res.error || 'Invalid credentials';
+                err.style.display = 'block';
+                btn.innerHTML = 'Sign in';
+                btn.style.opacity = '1';
+            }
+        });
+    </script>
+</body>
+
+</html>

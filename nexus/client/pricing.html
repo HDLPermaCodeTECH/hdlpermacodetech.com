@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing | Enterprise Nexus</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .pricing-hero {
+            padding: 6rem 5% 4rem;
+            text-align: center;
+        }
+
+        .pricing-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto 8rem;
+        }
+
+        .pricing-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .pricing-card.premium {
+            border-color: var(--accent-blue);
+            background: linear-gradient(180deg, rgba(37, 99, 235, 0.05) 0%, var(--bg-surface) 100%);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-blue);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .plan-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        .plan-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 3rem;
+            flex-grow: 1;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .feature-icon {
+            color: var(--accent-emerald);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="nexus-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"></div> Nexus
+            </a>
+
+            <nav class="nav-links">
+                <a href="index.html">Marketplace</a>
+                <a href="pricing.html" class="active">Pricing</a>
+                <a href="#">Documentation</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="#" id="auth-btn" class="btn btn-primary">Sign In</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container fade-up">
+        <section class="pricing-hero">
+            <h1>Simple, transparent pricing</h1>
+            <p style="color:var(--text-muted); font-size:1.15rem;">Unlock the complete SaaS library or purchase
+                individual templates.</p>
+        </section>
+
+        <section class="pricing-grid">
+            <div class="pricing-card">
+                <h3 class="plan-name">Pay As You Go</h3>
+                <div class="plan-price">$59+ <span>/ template</span></div>
+                <p class="plan-desc">Perfect for single project builders.</p>
+
+                <ul class="feature-list">
+                    <li class="feature-item"><span class="feature-icon">✓</span> Lifetime access to specific template
+                    </li>
+                    <li class="feature-item"><span class="feature-icon">✓</span> 6 months technical support</li>
+                    <li class="feature-item"><span class="feature-icon">✓</span> Standard License</li>
+                </ul>
+
+                <a href="index.html" class="btn btn-outline" style="width:100%; padding:0.75rem;">Browse Templates</a>
+            </div>
+
+            <div class="pricing-card premium">
+                <div class="popular-badge">Most Popular</div>
+                <h3 class="plan-name">Creator Pro (SaaS)</h3>
+                <div class="plan-price">$29 <span>/ month</span></div>
+                <p class="plan-desc">Unlimited access for agencies and serial founders.</p>
+
+                <ul class="feature-list">
+                    <li class="feature-item"><span class="feature-icon">✓</span> Access ALL current and future templates
+                    </li>
+                    <li class="feature-item"><span class="feature-icon">✓</span> Priority 24/7 technical support</li>
+                    <li class="feature-item"><span class="feature-icon">✓</span> Extended Agency License</li>
+                    <li class="feature-item"><span class="feature-icon">✓</span> Cancel anytime</li>
+                </ul>
+
+                <a href="login.html?redirect=subscribe" class="btn btn-primary"
+                    style="width:100%; padding:0.75rem;">Subscribe Now</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/api.js"></script>
+</body>
+
+</html>
