@@ -756,7 +756,109 @@
             }
         }
     </style>
+
+    <!-- Mobile Responsive Overrides for Demos -->
+    <style>
+        @media (max-width: 768px) {
+            body { 
+                height: auto !important; 
+                overflow-y: auto !important; 
+                flex-direction: column !important;
+            }
+            main { 
+                flex-direction: column !important; 
+                height: auto !important;
+                padding: 1rem !important;
+            }
+            header {
+                flex-direction: column !important;
+                text-align: center;
+                gap: 1rem;
+                padding: 1rem !important;
+            }
+            .stats-sidebar { 
+                width: 100% !important; 
+                flex-direction: row !important; 
+                flex-wrap: wrap !important; 
+            }
+            .stat-box {
+                flex: 1 1 100%;
+            }
+            .chart-container { 
+                width: 100% !important; 
+                padding: 1rem !important; 
+                min-height: 300px;
+                box-sizing: border-box;
+            }
+            #canvas-container {
+                min-height: 50vh;
+            }
+            .ui-panel { 
+                width: 100% !important; 
+                height: auto !important; 
+                padding: 1.5rem !important; 
+                box-sizing: border-box;
+            }
+            .store-nav { 
+                flex-wrap: wrap; 
+                flex-direction: column; 
+                gap: 1rem; 
+            }
+            .store-links { 
+                display: flex; 
+                flex-wrap: wrap; 
+                justify-content: center; 
+                gap: 0.5rem; 
+            }
+            .store-links a { 
+                margin: 0 0.5rem !important; 
+            }
+            .store-hero { 
+                flex-direction: column !important; 
+                padding: 2rem 1rem !important; 
+                text-align: center !important; 
+            }
+            .store-hero-text { 
+                padding-right: 0 !important; 
+            }
+            .store-hero-images { 
+                justify-content: center !important; 
+                flex-wrap: wrap !important; 
+                margin-top: 2rem !important; 
+            }
+            .category-grid, .footer-grid { 
+                grid-template-columns: 1fr !important; 
+            }
+            .bento-grid { 
+                grid-template-columns: 1fr !important; 
+                grid-auto-rows: minmax(280px, auto) !important; 
+            }
+            .bento-large, .bento-wide, .bento-tall { 
+                grid-column: span 1 !important; 
+                grid-row: span 1 !important; 
+            }
+            .pricing-grid, .product-grid, .cs-stats-grid, .cs-tech-grid { 
+                grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)) !important; 
+            }
+            .store-benefits {
+                grid-template-columns: 1fr 1fr !important;
+            }
+            .benefit-item {
+                padding: 0.5rem !important;
+            }
+            .marquee-content {
+                font-size: 0.75rem !important;
+            }
+            .chat-container {
+                padding: 0 0.5rem !important;
+            }
+            .message {
+                max-width: 95% !important;
+            }
+        }
+    </style>
 </head>
+
 
 <body>
 
