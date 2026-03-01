@@ -46,10 +46,15 @@ const transporter = nodemailer.createTransport({
 
 const sendEmail = async (to, subject, htmlContent, replyTo) => {
     const fromEmail = process.env.EMAIL_USER || "developer@hdlpermacodetech.com";
+
+    // Generate a simple plain text version to avoid spam filters
+    const textContent = htmlContent.replace(/<[^>]*>?/gm, '').replace(/\s\s+/g, ' ').trim();
+
     const mailOptions = {
         from: `"HDL Perma Code TECH" <${fromEmail}>`,
         to: to,
         subject: subject,
+        text: textContent,
         html: htmlContent,
     };
 
@@ -172,8 +177,6 @@ app.post('/send-project-brief', async (req, res) => {
                         </div>
                     </div>
                 </div>
-                <!-- Anti-Gmail Trim HACK: Forces unique string to stop message threading -->
-                <span style="opacity: 0; color: transparent; display: none; font-size: 0px; line-height: 0px; max-height: 0px; max-width: 0px; overflow: hidden; height: 0px; width: 0px;">Reference ID: ${Date.now()}_${Math.random().toString(36).substring(2, 9)}</span>
             </body>
             </html>
         `;
@@ -265,8 +268,6 @@ app.post('/send-project-brief', async (req, res) => {
                                         </table>
                                     </td>
                                 </tr>
-                            </table>
-                            <span style="opacity: 0; color: transparent; display: none; font-size: 0px; line-height: 0px; max-height: 0px; max-width: 0px; overflow: hidden; height: 0px; width: 0px;">Reference ID: ${Date.now()}_${Math.random().toString(36).substring(2, 9)}</span>
                         </body>
                     </html>`;
 
@@ -344,8 +345,6 @@ app.post('/send-lead-magnet', async (req, res) => {
                                                 </table>
                                             </td>
                                         </tr>
-                                    </table>
-                                    <span style="opacity: 0; color: transparent; display: none; font-size: 0px; line-height: 0px; max-height: 0px; max-width: 0px; overflow: hidden; height: 0px; width: 0px;">Reference ID: ${Date.now()}_${Math.random().toString(36).substring(2, 9)}</span>
                                 </body>
                             </html>`;
 
@@ -448,8 +447,6 @@ app.post('/send-lead-magnet', async (req, res) => {
                                                     </td>
                                                 </tr>
                                             </table>
-                                            <!-- Anti-Gmail Trim HACK: Forces unique string to stop message threading -->
-                                            <span style="opacity: 0; color: transparent; display: none; font-size: 0px; line-height: 0px; max-height: 0px; max-width: 0px; overflow: hidden; height: 0px; width: 0px;">Reference ID: ${Date.now()}_${Math.random().toString(36).substring(2, 9)}</span>
                                         </body>
                                     </html>`;
 
