@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Visionary Glass</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- Core Glass CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .page-hero {
+            padding: 10rem 5% 4rem;
+            text-align: center;
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            padding: 2rem 5% 8rem;
+        }
+
+        .contact-info {
+            padding: 3rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-block {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .info-block i {
+            color: var(--gold-highlight);
+            font-size: 1.25rem;
+            margin-top: 4px;
+        }
+
+        .info-block p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .contact-form {
+            padding: 3rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media(max-width: 768px) {
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sticky Glass Navbar -->
+    <nav class="glass-nav">
+        <div class="container nav-container">
+            <a href="index.html" class="brand-logo">Visionary.</a>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="properties.html">Properties</a>
+                <a href="services.html">Services</a>
+                <a href="about.html">About</a>
+                <a href="contact.html" class="active">Contact</a>
+            </div>
+            <a href="contact.html" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">Schedule
+                Tour</a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="page-hero fade-in reveal">
+            <h1 style="font-size: 3.5rem; margin-bottom: 1rem;">Get in Touch</h1>
+            <p style="font-size: 1.15rem; color: var(--text-secondary);">Direct inquiries to our principal brokers.</p>
+        </section>
+
+        <section class="container contact-layout">
+            <div class="contact-info glass-panel reveal postpone-1">
+                <h3>Global Offices</h3>
+
+                <div class="info-block">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong style="color:var(--navy-accent); display:block; margin-bottom:0.25rem;">New York
+                            HQ</strong>
+                        <p>100 Prestige Blvd, Manhattan, NY 10001</p>
+                    </div>
+                </div>
+
+                <div class="info-block">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <strong style="color:var(--navy-accent); display:block; margin-bottom:0.25rem;">Direct
+                            Line</strong>
+                        <p>+1 (800) 555-0199</p>
+                    </div>
+                </div>
+
+                <div class="info-block">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong style="color:var(--navy-accent); display:block; margin-bottom:0.25rem;">Email</strong>
+                        <p>estates@visionary.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form glass-panel reveal postpone-2">
+                <h3 style="font-size: 1.75rem; margin-bottom: 2rem;">Send a Message</h3>
+
+                <form id="leadForm"
+                    onsubmit="event.preventDefault(); alert('Inquiry sent successfully. An agent will be in touch shortly.'); this.reset();">
+                    <div class="form-row">
+                        <div>
+                            <label style="display:block; margin-bottom:0.5rem; font-size:0.9rem; font-weight:500;">First
+                                Name *</label>
+                            <input type="text" class="form-input" required>
+                        </div>
+                        <div>
+                            <label style="display:block; margin-bottom:0.5rem; font-size:0.9rem; font-weight:500;">Last
+                                Name *</label>
+                            <input type="text" class="form-input" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row" style="margin-bottom: 1.5rem;">
+                        <div>
+                            <label style="display:block; margin-bottom:0.5rem; font-size:0.9rem; font-weight:500;">Email
+                                Address *</label>
+                            <input type="email" class="form-input" required>
+                        </div>
+                        <div>
+                            <label
+                                style="display:block; margin-bottom:0.5rem; font-size:0.9rem; font-weight:500;">Interest
+                                *</label>
+                            <select class="form-input" required style="appearance:none;">
+                                <option value="buying">Buying a Property</option>
+                                <option value="selling">Selling a Property</option>
+                                <option value="other">General Inquiry</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <label
+                            style="display:block; margin-bottom:0.5rem; font-size:0.9rem; font-weight:500;">Message</label>
+                        <textarea class="form-input" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width:100%;">Submit Inquiry</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer
+        style="background: var(--navy-accent); color: rgba(255,255,255,0.7); padding: 4rem 5% 2rem; margin-top:auto;">
+        <div class="container"
+            style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+            <div>
+                <a href="index.html" class="brand-logo"
+                    style="color: #fff; margin-bottom: 1rem; display:block;">Visionary.</a>
+            </div>
+        </div>
+        <div class="container"
+            style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; text-align:center; font-size:0.85rem;">
+            &copy; 2026 Visionary Canvas Architecture.
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

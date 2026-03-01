@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Properties | Visionary Glass</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- Core Glass CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .properties-layout {
+            display: flex;
+            align-items: flex-start;
+            gap: 3rem;
+            padding-top: calc(var(--header-height) + 4rem);
+            padding-bottom: 6rem;
+        }
+
+        /* Filter Sidebar */
+        .filter-sidebar {
+            flex: 0 0 320px;
+            position: sticky;
+            top: calc(var(--header-height) + 2rem);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-height: calc(100vh - var(--header-height) - 4rem);
+            overflow-y: auto;
+        }
+
+        /* Custom Scrollbar for Sidebar */
+        .filter-sidebar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .filter-sidebar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .filter-sidebar::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .filter-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--navy-accent);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .filter-group select,
+        .filter-group input {
+            width: 100%;
+            padding: 0.85rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: var(--radius-sm);
+            background: rgba(255, 255, 255, 0.6);
+            color: var(--navy-accent);
+            font-family: var(--font-sans);
+            outline: outline;
+            transition: var(--transition);
+        }
+
+        .filter-group select:focus,
+        .filter-group input:focus {
+            background: #fff;
+            border-color: var(--navy-accent);
+        }
+
+        .price-inputs {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .price-inputs span {
+            color: var(--text-secondary);
+        }
+
+        /* Results Area */
+        .results-area {
+            flex-grow: 1;
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Mobile Adjustments */
+        .mobile-filter-toggle {
+            display: none;
+        }
+
+        @media(max-width: 1024px) {
+            .properties-layout {
+                flex-direction: column;
+            }
+
+            .filter-sidebar {
+                flex: none;
+                width: 100%;
+                position: static;
+                max-height: none;
+                display: none;
+            }
+
+            .filter-sidebar.active {
+                display: flex;
+            }
+
+            .mobile-filter-toggle {
+                display: inline-flex;
+                margin-bottom: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sticky Glass Navbar -->
+    <nav class="glass-nav">
+        <div class="container nav-container">
+            <a href="index.html" class="brand-logo">Visionary.</a>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="properties.html" class="active">Properties</a>
+                <a href="services.html">Services</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <a href="contact.html" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">Schedule
+                Tour</a>
+        </div>
+    </nav>
+
+    <!-- Main Layout -->
+    <main class="container properties-layout fade-in reveal">
+
+        <!-- Mobile Filter Toggle -->
+        <button class="btn btn-glass mobile-filter-toggle" id="filterToggleBtn">
+            <i class="fas fa-sliders-h"></i> &nbsp;Toggle Filters
+        </button>
+
+        <!-- Sidebar Panel -->
+        <aside class="glass-panel filter-sidebar" id="filterSidebar">
+            <h3 style="margin-bottom: 0.5rem; display:flex; justify-content:space-between; align-items:center;">
+                Filters
+                <button id="resetBtn"
+                    style="background:none; border:none; color:var(--text-secondary); font-size:0.8rem; cursor:pointer; text-decoration:underline;">Reset</button>
+            </h3>
+
+            <!-- Search -->
+            <div class="filter-group">
+                <label>Keyword / Location</label>
+                <input type="text" id="filterKeyword" placeholder="e.g. Aspen, Modern...">
+            </div>
+
+            <!-- Status -->
+            <div class="filter-group">
+                <label>Status</label>
+                <select id="filterStatus">
+                    <option value="All">All Statuses</option>
+                    <option value="For Sale">For Sale</option>
+                    <option value="For Rent">For Rent</option>
+                </select>
+            </div>
+
+            <!-- Type -->
+            <div class="filter-group">
+                <label>Property Type</label>
+                <select id="filterType">
+                    <option value="All">All Types</option>
+                    <option value="House">House</option>
+                    <option value="Condo">Condo</option>
+                    <option value="Apartment">Apartment</option>
+                    <option value="Commercial">Commercial</option>
+                </select>
+            </div>
+
+            <!-- Price -->
+            <div class="filter-group">
+                <label>Price Range ($)</label>
+                <div class="price-inputs">
+                    <input type="number" id="filterMinPrice" placeholder="Min" min="0">
+                    <span>-</span>
+                    <input type="number" id="filterMaxPrice" placeholder="Max" min="0">
+                </div>
+            </div>
+
+            <!-- Beds & Baths -->
+            <div class="filter-group" style="display:flex; gap:1rem;">
+                <div style="flex:1;">
+                    <label>Beds (Min)</label>
+                    <select id="filterBeds">
+                        <option value="0">Any</option>
+                        <option value="1">1+</option>
+                        <option value="2">2+</option>
+                        <option value="3">3+</option>
+                        <option value="4">4+</option>
+                        <option value="5">5+</option>
+                    </select>
+                </div>
+                <div style="flex:1;">
+                    <label>Baths (Min)</label>
+                    <select id="filterBaths">
+                        <option value="0">Any</option>
+                        <option value="1">1+</option>
+                        <option value="2">2+</option>
+                        <option value="3">3+</option>
+                        <option value="4">4+</option>
+                    </select>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Right Side: Results -->
+        <section class="results-area">
+            <div class="results-header">
+                <div>
+                    <h1 style="font-size: 2.5rem;">Properties</h1>
+                    <p style="color:var(--text-secondary);" id="resultsCount">Showing all listings...</p>
+                </div>
+
+                <div style="display:flex; align-items:center; gap:0.5rem;">
+                    <label style="color:var(--navy-accent); font-weight:500; font-size:0.9rem;">Sort by</label>
+                    <select id="sortOption"
+                        style="padding:0.5rem; border-radius:var(--radius-sm); border:1px solid rgba(0,0,0,0.1); background:var(--glass-bg);">
+                        <option value="newest">Newest</option>
+                        <option value="price_asc">Price (Low to High)</option>
+                        <option value="price_desc">Price (High to Low)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Dynamic Grid -->
+            <div class="properties-grid" id="propertiesGrid">
+                <!-- Data fetched and appended by properties.js -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer
+        style="background: var(--navy-accent); color: rgba(255,255,255,0.7); padding: 4rem 5% 2rem; margin-top: auto;">
+        <div class="container"
+            style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+            <div>
+                <a href="index.html" class="brand-logo"
+                    style="color: #fff; margin-bottom: 1rem; display:block;">Visionary.</a>
+                <p style="margin-bottom: 1.5rem; font-size: 0.95rem;">Curating the world's most exceptional real estate
+                    properties since 2010.</p>
+                <div style="display:flex; gap:1rem; font-size: 1.25rem;">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="color:#fff; margin-bottom: 1.5rem; font-family:var(--font-sans);">Quick Links</h4>
+                <ul style="display:flex; flex-direction:column; gap:0.75rem;">
+                    <li><a href="properties.html">Search Properties</a></li>
+                    <li><a href="services.html">Seller Services</a></li>
+                    <li><a href="about.html">Our Agency</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 style="color:#fff; margin-bottom: 1.5rem; font-family:var(--font-sans);">Contact</h4>
+                <ul style="display:flex; flex-direction:column; gap:0.75rem;">
+                    <li><i class="fas fa-map-marker-alt"></i> 100 Prestige Blvd, NY</li>
+                    <li><i class="fas fa-phone"></i> +1 (800) 555-0199</li>
+                    <li><i class="fas fa-envelope"></i> estates@visionary.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container"
+            style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; text-align:center; font-size:0.85rem;">
+            &copy; 2026 Visionary Canvas Architecture. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/properties.js"></script>
+</body>
+
+</html>

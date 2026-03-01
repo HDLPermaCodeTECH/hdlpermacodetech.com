@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visionary Canvas | Luxury Real Estate</title>
+    <meta name="description" content="Premium real estate offerings with unparalleled aesthetic layouts.">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- Core Glass CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Hero Section Parallax Setup */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: var(--header-height);
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            /* Parallax effect */
+            z-index: -2;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(244, 245, 248, 0.95) 0%, rgba(244, 245, 248, 0.4) 100%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero-anim {
+            transform: translateY(30px);
+            opacity: 0;
+            transition: var(--transition-slow);
+        }
+
+        .hero-anim.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+        }
+
+        /* Quick Search Mini-Panel */
+        .quick-search-panel {
+            padding: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: fit-content;
+        }
+
+        .quick-search-panel input {
+            min-width: 250px;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Stats / Trust Banner */
+        .trust-banner {
+            padding: 4rem 0;
+            background: var(--navy-accent);
+            color: #fff;
+            margin-top: -60px;
+            /* Overlap hero */
+            position: relative;
+            z-index: 10;
+        }
+
+        .trust-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .trust-stat h3 {
+            color: var(--gold-highlight);
+            font-size: 2.5rem;
+            font-family: var(--font-sans);
+            margin-bottom: 0.5rem;
+        }
+
+        .trust-stat p {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Featured Section */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @media(max-width: 768px) {
+            .hero-bg {
+                background-attachment: scroll;
+            }
+
+            /* Disable heavy parallax on mobile */
+            .quick-search-panel {
+                flex-direction: column;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .quick-search-panel input {
+                width: 100%;
+            }
+
+            .quick-search-panel .btn {
+                width: 100%;
+            }
+
+            .trust-grid {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sticky Glass Navbar -->
+    <nav class="glass-nav">
+        <div class="container nav-container">
+            <a href="index.html" class="brand-logo">Visionary.</a>
+
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="properties.html">Properties</a>
+                <a href="services.html">Services</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <a href="contact.html" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">Schedule
+                Tour</a>
+        </div>
+    </nav>
+
+    <!-- Parallax Hero -->
+    <header class="hero-section">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-anim"
+                    style="color:var(--gold-highlight); font-weight:600; letter-spacing:3px; text-transform:uppercase; margin-bottom:1rem; font-size:0.85rem;">
+                    Exclusive Portfolio</div>
+                <h1 class="hero-title hero-anim">Discover architectures<br>that define legacy.</h1>
+                <p class="hero-subtitle hero-anim">Browse our curated collection of visionary estates, minimalist modern
+                    homes, and premium commercial spaces.</p>
+
+                <form action="properties.html" method="GET" class="glass-panel quick-search-panel hero-anim">
+                    <input type="text" name="q" class="form-input" placeholder="Search by location or ZIP...">
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i>&nbsp; Find
+                        Property</button>
+                    <a href="properties.html"
+                        style="font-size: 0.9rem; color: var(--navy-accent); font-weight:500; text-decoration: underline;">Advanced
+                        Search</a>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <!-- Trust Indicators -->
+    <section class="trust-banner fade-in reveal">
+        <div class="container trust-grid">
+            <div class="trust-stat">
+                <h3>$2B+</h3>
+                <p>Volume Sold</p>
+            </div>
+            <div class="trust-stat">
+                <h3>150+</h3>
+                <p>Exclusive Listings</p>
+            </div>
+            <div class="trust-stat">
+                <h3>12</h3>
+                <p>Global Offices</p>
+            </div>
+            <div class="trust-stat">
+                <h3>99%</h3>
+                <p>Client Satisfaction</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Properties Snippet -->
+    <section class="container" style="padding: 8rem 5%;">
+        <div class="section-header reveal">
+            <h2>Featured Estates</h2>
+            <p>Our most sought-after properties, hand-picked by our visionary directors for their architectural
+                significance.</p>
+        </div>
+
+        <div class="properties-grid" id="featured-root">
+            <!-- Hardcoded Mock For Home Page Preview -->
+
+            <article class="property-card glass-panel reveal postpone-1">
+                <div class="card-badge">For Sale</div>
+                <div class="card-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1613490908578-812e96030991?w=800&q=80" alt="Villa Nova">
+                </div>
+                <div class="card-content">
+                    <div class="card-price">$4,250,000</div>
+                    <h3 class="card-title">The Nova Residence</h3>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Beverly Hills, CA</p>
+
+                    <div class="card-metrics">
+                        <div class="metric"><i class="fas fa-bed"></i> 4 Beds</div>
+                        <div class="metric"><i class="fas fa-bath"></i> 5 Baths</div>
+                        <div class="metric"><i class="fas fa-vector-square"></i> 5,200 sqft</div>
+                    </div>
+
+                    <a href="properties.html" class="btn btn-glass"
+                        style="width: 100%; margin-top: 1.5rem; justify-content:center;">View Details</a>
+                </div>
+            </article>
+
+            <article class="property-card glass-panel reveal postpone-2">
+                <div class="card-badge">For Sale</div>
+                <div class="card-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80"
+                        alt="Glass House">
+                </div>
+                <div class="card-content">
+                    <div class="card-price">$8,900,000</div>
+                    <h3 class="card-title">Glass House Retreat</h3>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Aspen, CO</p>
+
+                    <div class="card-metrics">
+                        <div class="metric"><i class="fas fa-bed"></i> 6 Beds</div>
+                        <div class="metric"><i class="fas fa-bath"></i> 7 Baths</div>
+                        <div class="metric"><i class="fas fa-vector-square"></i> 8,100 sqft</div>
+                    </div>
+
+                    <a href="properties.html" class="btn btn-glass"
+                        style="width: 100%; margin-top: 1.5rem; justify-content:center;">View Details</a>
+                </div>
+            </article>
+
+            <article class="property-card glass-panel reveal postpone-3">
+                <div class="card-badge" style="background:rgba(15, 23, 42, 0.8); color:#fff;">For Rent</div>
+                <div class="card-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"
+                        alt="Modern Minimal">
+                </div>
+                <div class="card-content">
+                    <div class="card-price">$25,000 <span
+                            style="font-size:0.9rem; color:var(--text-secondary); font-family:var(--font-sans); font-weight:400;">/
+                            mo</span></div>
+                    <h3 class="card-title">Minimalist Penthouse</h3>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Manhattan, NY</p>
+
+                    <div class="card-metrics">
+                        <div class="metric"><i class="fas fa-bed"></i> 3 Beds</div>
+                        <div class="metric"><i class="fas fa-bath"></i> 3.5 Baths</div>
+                        <div class="metric"><i class="fas fa-vector-square"></i> 3,400 sqft</div>
+                    </div>
+
+                    <a href="properties.html" class="btn btn-glass"
+                        style="width: 100%; margin-top: 1.5rem; justify-content:center;">View Details</a>
+                </div>
+            </article>
+        </div>
+
+        <div style="text-align:center; margin-top: 4rem;" class="reveal">
+            <a href="properties.html" class="btn btn-primary" style="padding: 1rem 3rem;">Explore All Properties</a>
+        </div>
+    </section>
+
+    <!-- Global Footer -->
+    <footer
+        style="background: var(--navy-accent); color: rgba(255,255,255,0.7); padding: 4rem 5% 2rem; margin-top: 4rem;">
+        <div class="container"
+            style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+            <div>
+                <a href="index.html" class="brand-logo"
+                    style="color: #fff; margin-bottom: 1rem; display:block;">Visionary.</a>
+                <p style="margin-bottom: 1.5rem; font-size: 0.95rem;">Curating the world's most exceptional real estate
+                    properties since 2010.</p>
+                <div style="display:flex; gap:1rem; font-size: 1.25rem;">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="color:#fff; margin-bottom: 1.5rem; font-family:var(--font-sans);">Quick Links</h4>
+                <ul style="display:flex; flex-direction:column; gap:0.75rem;">
+                    <li><a href="properties.html">Search Properties</a></li>
+                    <li><a href="services.html">Seller Services</a></li>
+                    <li><a href="about.html">Our Agency</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 style="color:#fff; margin-bottom: 1.5rem; font-family:var(--font-sans);">Contact</h4>
+                <ul style="display:flex; flex-direction:column; gap:0.75rem;">
+                    <li><i class="fas fa-map-marker-alt"></i> 100 Prestige Blvd, NY</li>
+                    <li><i class="fas fa-phone"></i> +1 (800) 555-0199</li>
+                    <li><i class="fas fa-envelope"></i> estates@visionary.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container"
+            style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; text-align:center; font-size:0.85rem;">
+            &copy; 2026 Visionary Canvas Architecture. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

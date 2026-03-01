@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Visionary Glass</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- Core Glass CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .page-hero {
+            padding: 12rem 5% 6rem;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(212, 175, 55, 0.05) 0%, transparent 100%);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 4rem 5% 8rem;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 500px;
+            border-radius: var(--radius-lg);
+            object-fit: cover;
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.15);
+        }
+
+        @media(max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-image {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sticky Glass Navbar -->
+    <nav class="glass-nav">
+        <div class="container nav-container">
+            <a href="index.html" class="brand-logo">Visionary.</a>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="properties.html">Properties</a>
+                <a href="services.html">Services</a>
+                <a href="about.html" class="active">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <a href="contact.html" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">Schedule
+                Tour</a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="page-hero fade-in reveal">
+            <h1 style="font-size: 4rem; margin-bottom: 1rem;">Our Legacy</h1>
+            <p style="font-size: 1.25rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto;">Redefining
+                luxury real estate through architectural excellence and unparalleled client discretion.</p>
+        </section>
+
+        <section class="container about-grid reveal postpone-1">
+            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&q=80" alt="Team"
+                class="about-image glass-panel" style="padding:0.5rem;">
+
+            <div class="about-text">
+                <h2>A curated approach to modern living.</h2>
+                <p>Founded in 2010, Visionary Canvas architecture emerged from a distinct need: pairing
+                    ultra-high-net-worth individuals with properties of significant design pedigree.</p>
+                <p>We do not deal in volume. We deal in exclusivity. Our portfolio is strictly invite-only for sellers,
+                    ensuring that every property listed meets our rigorous standards for design, location, and
+                    structural brilliance.</p>
+
+                <div
+                    style="display:grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(0,0,0,0.1);">
+                    <div>
+                        <h4 style="font-size: 1.5rem; color: var(--gold-highlight); font-family:var(--font-sans);">2010
+                        </h4>
+                        <span
+                            style="font-size: 0.9rem; text-transform:uppercase; letter-spacing:1px; color:var(--text-secondary);">Founded</span>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 1.5rem; color: var(--gold-highlight); font-family:var(--font-sans);">
+                            Beverly Hills</h4>
+                        <span
+                            style="font-size: 0.9rem; text-transform:uppercase; letter-spacing:1px; color:var(--text-secondary);">Headquarters</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer style="background: var(--navy-accent); color: rgba(255,255,255,0.7); padding: 4rem 5% 2rem;">
+        <div class="container"
+            style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+            <div>
+                <a href="index.html" class="brand-logo"
+                    style="color: #fff; margin-bottom: 1rem; display:block;">Visionary.</a>
+                <p style="margin-bottom: 1.5rem; font-size: 0.95rem;">Curating the world's most exceptional real estate
+                    properties since 2010.</p>
+                <div style="display:flex; gap:1rem; font-size: 1.25rem;">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="color:#fff; margin-bottom: 1.5rem; font-family:var(--font-sans);">Quick Links</h4>
+                <ul style="display:flex; flex-direction:column; gap:0.75rem;">
+                    <li><a href="properties.html">Search Properties</a></li>
+                    <li><a href="services.html">Seller Services</a></li>
+                    <li><a href="about.html">Our Agency</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 style="color:#fff; margin-bottom: 1.5rem; font-family:var(--font-sans);">Contact</h4>
+                <ul style="display:flex; flex-direction:column; gap:0.75rem;">
+                    <li><i class="fas fa-map-marker-alt"></i> 100 Prestige Blvd, NY</li>
+                    <li><i class="fas fa-phone"></i> +1 (800) 555-0199</li>
+                    <li><i class="fas fa-envelope"></i> estates@visionary.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container"
+            style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; text-align:center; font-size:0.85rem;">
+            &copy; 2026 Visionary Canvas Architecture. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
