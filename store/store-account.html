@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account | Aura Heritage</title>
+    <!-- Core Assets -->
+    <link rel="stylesheet" href="css/store.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        .account-page {
+            max-width: 1200px;
+            margin: 4rem auto 8rem;
+            padding: 0 5%;
+            display: flex;
+            gap: 4rem;
+        }
+
+        .account-sidebar {
+            width: 250px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .account-sidebar a {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--lux-border);
+            transition: color 0.3s;
+        }
+
+        .account-sidebar a.active,
+        .account-sidebar a:hover {
+            color: var(--lux-text);
+            font-weight: 600;
+        }
+
+        .account-main {
+            flex-grow: 1;
+        }
+
+        .account-panel {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .account-panel.active {
+            display: block;
+        }
+
+        .order-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        .order-table th,
+        .order-table td {
+            text-align: left;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--lux-border);
+        }
+
+        .order-table th {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+            font-weight: 500;
+        }
+
+        .status-badge {
+            background: #eee;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .status-badge.shipped {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        /* Login view overlay */
+        .auth-view {
+            max-width: 500px;
+            margin: 6rem auto 10rem;
+            padding: 0 5%;
+            text-align: center;
+        }
+
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            text-align: left;
+            margin-top: 3rem;
+        }
+
+        .auth-form input {
+            padding: 1rem;
+            border: 1px solid var(--lux-border);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            background: transparent;
+            outline: none;
+        }
+
+        .auth-form input:focus {
+            border-color: var(--lux-text);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media(max-width: 768px) {
+            .account-page {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .account-sidebar {
+                width: 100%;
+                flex-direction: row;
+                overflow-x: auto;
+                padding-bottom: 1rem;
+                border-bottom: 1px solid var(--lux-border);
+                gap: 1.5rem;
+            }
+
+            .account-sidebar a {
+                border: none;
+                padding: 0;
+                white-space: nowrap;
+            }
+
+            .order-table th {
+                display: none;
+            }
+
+            .order-table td {
+                display: block;
+                padding: 0.5rem 0;
+                border: none;
+            }
+
+            .order-table tr {
+                border-bottom: 1px solid var(--lux-border);
+                padding: 1.5rem 0;
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <header class="lux-header">
+        <div class="container header-container">
+            <button class="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
+            <nav class="nav-links left">
+                <a href="store-shop.html">The Collection</a>
+                <a href="store-shop.html">New Arrivals</a>
+            </nav>
+            <a href="store-home.html" class="logo">AURA</a>
+            <nav class="nav-links right">
+                <a href="store-home.html">Our Story</a>
+                <a href="store-home.html">Journal</a>
+            </nav>
+            <div class="header-icons">
+                <button class="header-btn"><i class="fas fa-search"></i></button>
+                <button class="header-btn"><i class="far fa-user"></i></button>
+                <a href="store-cart.html" class="header-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- State 1: Login/Register (Shown by default for demo) -->
+    <div class="auth-view" id="auth-view">
+        <h1 style="font-size: 2.5rem;">Access Aura</h1>
+        <p style="color:#888; font-size:1rem; margin-top:1rem;">Enter your email and password to access your secure
+            client portal.</p>
+
+        <form class="auth-form" onsubmit="event.preventDefault(); loginDemo();">
+            <input type="email" placeholder="Email" required value="client@hdlpermacodetech.com">
+            <input type="password" placeholder="Password" required value="password123">
+            <button type="submit" class="btn btn-primary">Sign In</button>
+            <div style="display:flex; justify-content:center; gap:1rem; font-size:0.85rem; margin-top:1rem;">
+                <a href="#" style="text-decoration:underline; color:#888;">Create Account</a>
+                <a href="#" style="text-decoration:underline; color:#888;">Forgot Password?</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- State 2: Member Dashboard -->
+    <main class="account-page" id="dashboard-view" style="display:none;">
+        <aside class="account-sidebar">
+            <h3 style="font-size:1.5rem; margin-bottom:1rem; font-family:var(--font-heading);">Welcome, Client</h3>
+            <a href="#" class="tab-btn active" data-target="orders">Order History</a>
+            <a href="#" class="tab-btn" data-target="profile">Profile Details</a>
+            <a href="#" class="tab-btn" data-target="addresses">Address Book</a>
+            <a href="#" onclick="logoutDemo();" style="margin-top: 2rem; color: #ff4444;">Sign Out</a>
+        </aside>
+
+        <section class="account-main">
+            <!-- Orders Tab -->
+            <div class="account-panel active" id="orders">
+                <h2 style="font-size:2rem; margin-bottom:2rem;">Order History</h2>
+                <table class="order-table">
+                    <thead>
+                        <tr>
+                            <th>Order</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Total</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight:600;">#AUR-10928</td>
+                            <td>Oct 12, 2025</td>
+                            <td><span class="status-badge shipped">Shipped</span></td>
+                            <td>$450.00</td>
+                            <td style="text-align:right;"><a href="#"
+                                    style="text-decoration:underline; color:#888; font-size:0.85rem;">View Invoice</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:600;">#AUR-08912</td>
+                            <td>Aug 04, 2025</td>
+                            <td><span class="status-badge">Processing</span></td>
+                            <td>$185.00</td>
+                            <td style="text-align:right;"><a href="#"
+                                    style="text-decoration:underline; color:#888; font-size:0.85rem;">View Invoice</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Profile Tab -->
+            <div class="account-panel" id="profile">
+                <h2 style="font-size:2rem; margin-bottom:2rem;">Profile Details</h2>
+                <div style="max-width:500px; display:flex; flex-direction:column; gap:1.5rem;">
+                    <div>
+                        <label
+                            style="font-size:0.8rem; text-transform:uppercase; letter-spacing:1px; color:#888; display:block; margin-bottom:0.5rem;">Full
+                            Name</label>
+                        <input type="text" value="Demo Client"
+                            style="width:100%; padding:1rem; border:1px solid var(--lux-border); font-family:var(--font-body); outline:none;">
+                    </div>
+                    <div>
+                        <label
+                            style="font-size:0.8rem; text-transform:uppercase; letter-spacing:1px; color:#888; display:block; margin-bottom:0.5rem;">Email
+                            Address</label>
+                        <input type="email" value="client@example.com"
+                            style="width:100%; padding:1rem; border:1px solid var(--lux-border); font-family:var(--font-body); outline:none;">
+                    </div>
+                    <button class="btn btn-primary" style="margin-top:1rem; align-self:flex-start;">Update
+                        Profile</button>
+                </div>
+            </div>
+
+            <!-- Addresses Tab -->
+            <div class="account-panel" id="addresses">
+                <h2 style="font-size:2rem; margin-bottom:2rem;">Address Book</h2>
+                <div style="border:1px solid var(--lux-border); padding:2rem; max-width:400px; position:relative;">
+                    <span
+                        style="position:absolute; top:1rem; right:1rem; font-size:0.7rem; text-transform:uppercase; letter-spacing:1px; background:var(--lux-text); color:var(--lux-bg); padding:0.2rem 0.6rem;">Default</span>
+                    <h4 style="margin-bottom:0.5rem;">Demo Client</h4>
+                    <p style="color:#666; font-size:0.95rem; line-height:1.6;">123 Prestige Avenue<br>Suite 400<br>New
+                        York, NY 10001<br>United States</p>
+                    <div style="margin-top:1.5rem; display:flex; gap:1rem; font-size:0.85rem;">
+                        <a href="#" style="text-decoration:underline;">Edit</a>
+                        <a href="#" style="text-decoration:underline; color:#ff4444;">Delete</a>
+                    </div>
+                </div>
+                <button class="btn btn-outline" style="margin-top:2rem;">Add New Address</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="lux-footer" style="margin-top:4rem;">
+        <div class="container" style="text-align:center;">
+            <div class="footer-brand" style="margin-bottom:1rem;">AURA</div>
+            <p style="font-size:0.85rem; color:#888; text-transform:uppercase; letter-spacing:2px;">Architecting
+                high-performance aesthetics.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/store.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Tab switching logic
+            const tabs = document.querySelectorAll('.tab-btn');
+            const panels = document.querySelectorAll('.account-panel');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    tabs.forEach(t => t.classList.remove('active'));
+                    panels.forEach(p => p.classList.remove('active'));
+
+                    tab.classList.add('active');
+                    document.getElementById(tab.dataset.target).classList.add('active');
+                });
+            });
+        });
+
+        // Simple auth simulation
+        function loginDemo() {
+            document.getElementById('auth-view').style.display = 'none';
+            document.getElementById('dashboard-view').style.display = 'flex';
+        }
+        function logoutDemo() {
+            document.getElementById('auth-view').style.display = 'block';
+            document.getElementById('dashboard-view').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

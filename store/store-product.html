@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | Aura Heritage</title>
+    <!-- Core Assets -->
+    <link rel="stylesheet" href="css/store.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        /* Product Layout */
+        .product-container {
+            padding: 2rem 5% 6rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+        }
+
+        /* Gallery */
+        .product-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            position: sticky;
+            top: calc(var(--header-height) + 2rem);
+        }
+
+        .main-image-calc {
+            width: 100%;
+            height: 75vh;
+            background: #eaeaea;
+            overflow: hidden;
+            position: relative;
+            cursor: crosshair;
+        }
+
+        .main-image-calc img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .thumbnails {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+        }
+
+        .thumb {
+            width: 80px;
+            height: 100px;
+            object-fit: cover;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: var(--transition);
+        }
+
+        .thumb.active,
+        .thumb:hover {
+            opacity: 1;
+            outline: 1px solid var(--lux-text);
+        }
+
+        /* Product Info */
+        .product-meta {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888;
+            margin-bottom: 1rem;
+        }
+
+        .product-title-lg {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .product-price-lg {
+            font-family: var(--font-body);
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .product-desc {
+            font-size: 1.05rem;
+            color: #444;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+        }
+
+        .variant-selector {
+            margin-bottom: 2.5rem;
+        }
+
+        .variant-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .variant-options {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .variant-btn {
+            border: 1px solid var(--lux-border);
+            background: transparent;
+            padding: 0.75rem 1.5rem;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .variant-btn.selected,
+        .variant-btn:hover {
+            border-color: var(--lux-text);
+            background: var(--lux-text);
+            color: var(--lux-bg);
+        }
+
+        .cart-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .qty-picker {
+            display: flex;
+            border: 1px solid var(--lux-text);
+            height: 56px;
+        }
+
+        .qty-picker button {
+            background: transparent;
+            border: none;
+            width: 48px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .qty-picker input {
+            width: 50px;
+            text-align: center;
+            border: none;
+            background: transparent;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            outline: none;
+        }
+
+        /* Sticky Mobile ATB */
+        .mobile-atb {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(248, 247, 244, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--lux-border);
+            padding: 1rem 5%;
+            z-index: 1000;
+        }
+
+        @media(max-width: 1024px) {
+            .product-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .product-gallery {
+                position: relative;
+                top: 0;
+            }
+
+            .main-image-calc {
+                height: 60vh;
+            }
+
+            .mobile-atb {
+                display: flex;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Navigation (Shared) -->
+    <header class="lux-header">
+        <div class="container header-container">
+            <button class="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
+            <nav class="nav-links left">
+                <a href="store-shop.html">The Collection</a>
+                <a href="store-shop.html">New Arrivals</a>
+            </nav>
+            <a href="store-home.html" class="logo">AURA</a>
+            <nav class="nav-links right">
+                <a href="store-home.html">Our Story</a>
+                <a href="store-home.html">Journal</a>
+            </nav>
+            <div class="header-icons">
+                <button class="header-btn"><i class="fas fa-search"></i></button>
+                <button class="header-btn"><i class="far fa-user"></i></button>
+                <button class="header-btn" id="open-cart-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Side Cart Drawer -->
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+    <div class="drawer right" id="cart-drawer">
+        <div class="drawer-header">
+            <h3
+                style="font-family:var(--font-body); font-size:1rem; text-transform:uppercase; letter-spacing:2px; margin:0;">
+                Your Bag</h3>
+            <button class="drawer-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div id="cart-items-container" style="flex-grow:1; overflow-y:auto; padding-right:1rem;"></div>
+        <div style="border-top:1px solid var(--lux-border); padding-top:1.5rem; margin-top:auto;">
+            <div
+                style="display:flex; justify-content:space-between; margin-bottom:1.5rem; font-weight:600; text-transform:uppercase; font-size:0.9rem;">
+                <span>Subtotal</span>
+                <span id="cart-subtotal">$0.00</span>
+            </div>
+            <a href="store-checkout.html" class="btn btn-primary" style="width:100%;">Secure Checkout</a>
+        </div>
+    </div>
+
+    <!-- Product Section -->
+    <main class="product-container" id="product-root">
+        <!-- Rendered by JS based on ID -->
+        <div style="grid-column: span 2; text-align:center; padding: 4rem;">Loading product data...</div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="lux-footer" style="margin-top:4rem;">
+        <!-- Simplify Footer for brevity -->
+        <div class="container" style="text-align:center;">
+            <div class="footer-brand" style="margin-bottom:1rem;">AURA</div>
+            <p style="font-size:0.85rem; color:#888; text-transform:uppercase; letter-spacing:2px;">Architecting
+                high-performance aesthetics.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/store.js"></script>
+    <script src="js/products.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const allProducts = await fetchProducts();
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id') || 'aura_101'; // Default to first product
+
+            const product = allProducts.find(p => p.id === productId);
+
+            if (!product) {
+                document.getElementById('product-root').innerHTML = `<div style="grid-column:span 2; text-align:center;">Product not found. <a href="store-shop.html">Back to Shop</a></div>`;
+                return;
+            }
+
+            // Render Product
+            renderProduct(product);
+
+            function renderProduct(p) {
+                const root = document.getElementById('product-root');
+
+                // Build Variants
+                let variantsHtml = '';
+                if (p.variants && p.variants.length > 0) {
+                    const type = p.variants[0].color ? 'Color' : 'Size';
+                    const options = p.variants.map((v, i) => `
+                        <button class="variant-btn ${i === 0 ? 'selected' : ''}" data-sku="${v.sku}">${v.color || v.size}</button>
+                    `).join('');
+
+                    variantsHtml = `
+                        <div class="variant-selector">
+                            <span class="variant-label">${type}</span>
+                            <div class="variant-options">${options}</div>
+                        </div>
+                    `;
+                }
+
+                root.innerHTML = `
+                    <div class="product-gallery fade-in active">
+                        <div class="main-image-calc" id="main-image-container">
+                            <img src="${p.images[0]}" alt="${p.name}" id="main-image">
+                        </div>
+                        <div class="thumbnails" id="thumbnail-container">
+                            ${p.images.map((img, i) => `
+                                <img src="${img}" class="thumb ${i === 0 ? 'active' : ''}" data-src="${img}" alt="${p.name} preview">
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div class="product-details fade-in active">
+                        <p class="product-meta">${p.brand}</p>
+                        <h1 class="product-title-lg">${p.name}</h1>
+                        <div class="product-price-lg">
+                            <span>$${p.price.toFixed(2)}</span>
+                            ${p.compare_price > p.price ? `<span style="text-decoration:line-through; color:#999; font-size:1.1rem;">$${p.compare_price.toFixed(2)}</span>` : ''}
+                        </div>
+
+                        ${variantsHtml}
+
+                        <p class="product-desc">${p.description}</p>
+
+                        <div class="cart-actions">
+                            <div class="qty-picker">
+                                <button onclick="document.getElementById('p-qty').value = Math.max(1, parseInt(document.getElementById('p-qty').value) - 1)">-</button>
+                                <input type="number" id="p-qty" value="1" min="1">
+                                <button onclick="document.getElementById('p-qty').value = parseInt(document.getElementById('p-qty').value) + 1">+</button>
+                            </div>
+                            <button class="btn btn-primary" id="main-add-btn" style="flex-grow:1; min-height:56px;">Add to Bag</button>
+                        </div>
+
+                        <div style="border-top:1px solid var(--lux-border); padding-top:2rem; margin-top:2rem;">
+                            <div style="display:flex; justify-content:space-between; margin-bottom:1rem; border-bottom:1px solid var(--lux-border); padding-bottom:1rem;">
+                                <span style="font-weight:600; text-transform:uppercase; font-size:0.85rem; letter-spacing:1px;">Details & Care</span>
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; margin-bottom:1rem; border-bottom:1px solid var(--lux-border); padding-bottom:1rem;">
+                                <span style="font-weight:600; text-transform:uppercase; font-size:0.85rem; letter-spacing:1px;">Delivery</span>
+                                <i class="fas fa-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile ATB -->
+                    <div class="mobile-atb">
+                        <button class="btn btn-primary" id="mobile-add-btn" style="width:100%; min-height:56px;">Add to Bag - $${p.price.toFixed(2)}</button>
+                    </div>
+                `;
+
+                // Bind Interactive Layout
+                bindGallery();
+                bindVariants();
+                bindCart(p);
+            }
+
+            function bindGallery() {
+                const mainImg = document.getElementById('main-image');
+                const mainContainer = document.getElementById('main-image-container');
+                const thumbs = document.querySelectorAll('.thumb');
+
+                thumbs.forEach(thumb => {
+                    thumb.addEventListener('click', function () {
+                        thumbs.forEach(t => t.classList.remove('active'));
+                        this.classList.add('active');
+                        mainImg.src = this.dataset.src;
+                    });
+                });
+
+                // Image Zoom
+                mainContainer.addEventListener('mousemove', function (e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const xPercent = (x / rect.width) * 100;
+                    const yPercent = (y / rect.height) * 100;
+                    mainImg.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+                    mainImg.style.transform = 'scale(1.5)';
+                });
+
+                mainContainer.addEventListener('mouseleave', function () {
+                    mainImg.style.transformOrigin = 'center center';
+                    mainImg.style.transform = 'scale(1)';
+                });
+            }
+
+            function bindVariants() {
+                const btns = document.querySelectorAll('.variant-btn');
+                btns.forEach(btn => {
+                    btn.addEventListener('click', function () {
+                        btns.forEach(b => b.classList.remove('selected'));
+                        this.classList.add('selected');
+                        // Potential: update SKU/price dynamically here
+                    });
+                });
+            }
+
+            function bindCart(p) {
+                const executeCart = () => {
+                    const qty = parseInt(document.getElementById('p-qty') ? document.getElementById('p-qty').value : 1);
+                    // Assume addToCart is globally exposed in store.js
+                    addToCart(p.id, qty, p.price, p.name, p.images[0]);
+                    showNotification(`Added ${qty}x ${p.name}`);
+                    document.getElementById('cart-drawer').classList.add('open');
+                    document.getElementById('drawer-overlay').classList.add('active');
+                };
+
+                const mainBtn = document.getElementById('main-add-btn');
+                const mobBtn = document.getElementById('mobile-add-btn');
+
+                if (mainBtn) mainBtn.addEventListener('click', executeCart);
+                if (mobBtn) mobBtn.addEventListener('click', executeCart);
+            }
+
+            // Reattach Drawer cart clicks
+            const cartBtn = document.getElementById('open-cart-btn');
+            if (cartBtn) {
+                cartBtn.addEventListener('click', () => {
+                    document.getElementById('cart-drawer').classList.add('open');
+                    document.getElementById('drawer-overlay').classList.add('active');
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

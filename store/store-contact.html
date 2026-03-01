@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Services | Aura Heritage</title>
+    <!-- Core Assets -->
+    <link rel="stylesheet" href="css/store.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        .contact-page {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 5% 8rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+        }
+
+        .contact-info h1 {
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            margin-bottom: 2rem;
+        }
+
+        .info-block {
+            margin-bottom: 3rem;
+        }
+
+        .info-block h3 {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888;
+            margin-bottom: 1rem;
+        }
+
+        .info-block p {
+            font-size: 1.1rem;
+            color: var(--lux-text);
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-form {
+            background: #fafafa;
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--lux-border);
+            background: transparent;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--lux-text);
+        }
+
+        @media(max-width: 1024px) {
+            .contact-page {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .contact-form {
+                padding: 3rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <header class="lux-header">
+        <div class="container header-container">
+            <button class="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
+            <nav class="nav-links left">
+                <a href="store-shop.html">The Collection</a>
+                <a href="store-shop.html">New Arrivals</a>
+            </nav>
+            <a href="store-home.html" class="logo">AURA</a>
+            <nav class="nav-links right">
+                <a href="store-home.html">Our Story</a>
+                <a href="store-contact.html">Client Services</a>
+            </nav>
+            <div class="header-icons">
+                <button class="header-btn"><i class="fas fa-search"></i></button>
+                <button class="header-btn"><i class="far fa-user"></i></button>
+                <a href="store-cart.html" class="header-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contact-page">
+        <div class="contact-info">
+            <h1>Client Services</h1>
+            <p style="font-size:1.1rem; color:#666; margin-bottom:4rem; max-width:500px;">Our dedicated concierge team
+                is available to assist you with styling advice, order inquiries, and bespoke tailoring appointments.</p>
+
+            <div class="info-block">
+                <h3>Global Headquarters</h3>
+                <p>123 Prestige Avenue</p>
+                <p>Suite 400</p>
+                <p>New York, NY 10001</p>
+            </div>
+
+            <div class="info-block">
+                <h3>Direct Line</h3>
+                <p><a href="mailto:concierge@auraheritage.com"
+                        style="border-bottom: 1px solid var(--lux-text);">concierge@auraheritage.com</a></p>
+                <p>+1 (800) 555-0199</p>
+            </div>
+
+            <div class="info-block">
+                <h3>Operating Hours</h3>
+                <p>Monday - Friday: 9am - 8pm EST</p>
+                <p>Saturday - Sunday: 10am - 6pm EST</p>
+            </div>
+        </div>
+
+        <div>
+            <form class="contact-form"
+                onsubmit="event.preventDefault(); window.showNotification('Your inquiry has been received. Our concierge will contact you shortly.'); this.reset();">
+                <h2 style="font-size:2rem; margin-bottom:1rem;">Send an Inquiry</h2>
+                <div style="display:flex; gap:1rem;">
+                    <input type="text" placeholder="First Name" required style="flex:1;">
+                    <input type="text" placeholder="Last Name" required style="flex:1;">
+                </div>
+                <input type="email" placeholder="Email Address" required>
+                <input type="text" placeholder="Order Number (Optional)">
+                <textarea placeholder="How may we assist you?" required></textarea>
+                <button type="submit" class="btn btn-primary" style="align-self:flex-start; margin-top:1rem;">Submit
+                    Request</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="lux-footer" style="margin-top:0;">
+        <div class="container" style="text-align:center;">
+            <div class="footer-brand" style="margin-bottom:1rem;">AURA</div>
+            <p style="font-size:0.85rem; color:#888; text-transform:uppercase; letter-spacing:2px;">Architecting
+                high-performance aesthetics.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/store.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Checkout | Aura Heritage</title>
+    <link rel="stylesheet" href="css/store.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        .checkout-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .checkout-main {
+            flex: 1.2;
+            padding: 4rem 5% 4rem 10%;
+            background: var(--lux-bg);
+        }
+
+        .checkout-sidebar {
+            flex: 0.8;
+            padding: 4rem 10% 4rem 5%;
+            background: #fafafa;
+            border-left: 1px solid var(--lux-border);
+        }
+
+        .checkout-header {
+            margin-bottom: 3rem;
+        }
+
+        .breadcrumbs {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .breadcrumbs span.active {
+            color: var(--lux-text);
+            font-weight: 600;
+        }
+
+        .form-section {
+            margin-bottom: 3rem;
+        }
+
+        .form-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-row>* {
+            flex: 1;
+        }
+
+        .input-group input,
+        .input-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--lux-border);
+            background: transparent;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .input-group input:focus,
+        .input-group select:focus {
+            border-color: var(--lux-text);
+        }
+
+        /* Sidebar summary */
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar-item-img {
+            width: 65px;
+            height: 65px;
+            background: #eaeaea;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .sidebar-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .sidebar-item-qty {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--lux-text);
+            color: var(--lux-bg);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .sidebar-total-line {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .discount-form {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--lux-border);
+        }
+
+        .discount-form input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid var(--lux-border);
+        }
+
+        @media(max-width: 1024px) {
+            .checkout-layout {
+                flex-direction: column-reverse;
+            }
+
+            .checkout-main,
+            .checkout-sidebar {
+                padding: 3rem 5%;
+                border: none;
+            }
+
+            .form-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="checkout-layout">
+        <main class="checkout-main">
+            <div class="checkout-header">
+                <a href="store-home.html"
+                    style="font-family: var(--font-heading); font-size: 2.5rem; font-weight: 600; letter-spacing: 4px; text-transform: uppercase;">AURA</a>
+                <div class="breadcrumbs" style="margin-top:2rem;">
+                    <a href="store-cart.html">Cart</a> <i class="fas fa-chevron-right" style="font-size:0.6rem;"></i>
+                    <span class="active">Information</span> <i class="fas fa-chevron-right"
+                        style="font-size:0.6rem;"></i>
+                    <span>Shipping</span> <i class="fas fa-chevron-right" style="font-size:0.6rem;"></i>
+                    <span>Payment</span>
+                </div>
+            </div>
+
+            <form id="checkout-form" onsubmit="event.preventDefault(); initiateOrder();">
+                <div class="form-section">
+                    <h2>Contact Information</h2>
+                    <div class="input-group">
+                        <input type="email" required placeholder="Email or mobile phone number">
+                    </div>
+                    <div style="margin-top: 1rem;">
+                        <label style="font-size:0.85rem; display:flex; align-items:center; gap:0.5rem; cursor:pointer;">
+                            <input type="checkbox"> Email me with news and offers
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2>Shipping Address</h2>
+                    <div class="input-group" style="margin-bottom: 1rem;">
+                        <input type="text" required placeholder="Country/Region">
+                    </div>
+                    <div class="form-row">
+                        <div class="input-group"><input type="text" required placeholder="First name"></div>
+                        <div class="input-group"><input type="text" required placeholder="Last name"></div>
+                    </div>
+                    <div class="input-group" style="margin-bottom: 1rem;">
+                        <input type="text" required placeholder="Address">
+                    </div>
+                    <div class="input-group" style="margin-bottom: 1rem;">
+                        <input type="text" placeholder="Apartment, suite, etc. (optional)">
+                    </div>
+                    <div class="form-row">
+                        <div class="input-group"><input type="text" required placeholder="City"></div>
+                        <div class="input-group"><input type="text" required placeholder="State"></div>
+                        <div class="input-group"><input type="text" required placeholder="ZIP code"></div>
+                    </div>
+                </div>
+
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:3rem;">
+                    <a href="store-cart.html" style="font-size:0.9rem; color:#888;"><i class="fas fa-chevron-left"></i>
+                        Return to cart</a>
+                    <button type="submit" class="btn btn-primary">Continue to shipping</button>
+                </div>
+            </form>
+
+            <div id="order-success" style="display:none; text-align:center; padding: 4rem 0;">
+                <i class="fas fa-check-circle" style="font-size:4rem; color: #10B981; margin-bottom:2rem;"></i>
+                <h2 style="font-family:var(--font-heading);">Order Confirmed</h2>
+                <p>Thank you for your purchase. A tracking link will be sent shortly.</p>
+                <a href="store-home.html" class="btn btn-outline" style="margin-top:2rem;">Return to Store</a>
+            </div>
+
+        </main>
+
+        <aside class="checkout-sidebar">
+            <div id="checkout-items">
+                <!-- Rendered by JS -->
+            </div>
+
+            <div class="discount-form">
+                <input type="text" placeholder="Gift card or discount code">
+                <button class="btn btn-outline" style="padding: 0 1.5rem;"
+                    onclick="event.preventDefault();">Apply</button>
+            </div>
+
+            <div class="sidebar-total-line">
+                <span style="color:#666;">Subtotal</span>
+                <span id="co-subtotal">$0.00</span>
+            </div>
+            <div class="sidebar-total-line" style="border-bottom: 1px solid var(--lux-border); padding-bottom: 1.5rem;">
+                <span style="color:#666;">Shipping</span>
+                <span id="co-shipping">Calculated at next step</span>
+            </div>
+            <div class="sidebar-total-line" style="margin-top: 1.5rem; align-items:flex-end;">
+                <span style="font-size: 1.1rem; color:var(--lux-text);">Total</span>
+                <span id="co-total" style="font-size: 1.5rem; font-weight:600;">$0.00</span>
+            </div>
+        </aside>
+    </div>
+
+    <script src="js/store.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCheckout();
+        });
+
+        function renderCheckout() {
+            const itemsContainer = document.getElementById('checkout-items');
+            if (!itemsContainer) return;
+
+            const cart = getCart();
+            let html = '';
+            let subtotal = 0;
+
+            if (cart.length === 0) {
+                window.location.href = "store-cart.html";
+                return;
+            }
+
+            cart.forEach(item => {
+                const total = item.price * item.qty;
+                subtotal += total;
+                html += `
+                    <div class="sidebar-item">
+                        <div class="sidebar-item-img">
+                            <img src="${item.image}" alt="">
+                            <span class="sidebar-item-qty">${item.qty}</span>
+                        </div>
+                        <div style="flex:1;">
+                            <h4 style="font-size:0.9rem; margin:0 0 0.25rem;">${item.name}</h4>
+                        </div>
+                        <div style="font-weight:500; font-size:0.9rem;">
+                            $${total.toFixed(2)}
+                        </div>
+                    </div>
+                `;
+            });
+
+            itemsContainer.innerHTML = html;
+
+            document.getElementById('co-subtotal').innerText = '$' + subtotal.toFixed(2);
+            document.getElementById('co-total').innerText = '$' + subtotal.toFixed(2);
+        }
+
+        function initiateOrder() {
+            document.getElementById('checkout-form').style.display = 'none';
+            document.getElementById('order-success').style.display = 'block';
+            localStorage.removeItem('aura_cart'); // clear cart
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+
+</html>

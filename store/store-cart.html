@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Bag | Aura Heritage</title>
+    <!-- Core Assets -->
+    <link rel="stylesheet" href="css/store.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        .cart-page {
+            max-width: 1200px;
+            margin: 4rem auto 8rem;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+        }
+
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .cart-table th {
+            text-align: left;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--lux-border);
+            font-weight: 500;
+        }
+
+        .cart-table td {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--lux-border);
+        }
+
+        .cart-item-detail {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .cart-item-img {
+            width: 100px;
+            height: 130px;
+            object-fit: cover;
+            background: #eaeaea;
+        }
+
+        .cart-item-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-info p {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 0.5rem;
+        }
+
+        .qty-control {
+            display: inline-flex;
+            border: 1px solid var(--lux-border);
+            height: 40px;
+        }
+
+        .qty-control button {
+            background: none;
+            border: none;
+            width: 30px;
+            cursor: pointer;
+        }
+
+        .qty-control span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            font-size: 0.9rem;
+        }
+
+        .cart-summary {
+            background: rgba(30, 41, 59, 0.02);
+            padding: 2.5rem;
+            height: fit-content;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .summary-total {
+            border-top: 1px solid var(--lux-border);
+            padding-top: 1rem;
+            margin-top: 1rem;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        @media(max-width: 1024px) {
+            .cart-page {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .cart-table th {
+                display: none;
+            }
+
+            .cart-table td {
+                display: block;
+                width: 100%;
+                padding: 1rem 0;
+                border: none;
+            }
+
+            .cart-table tr {
+                border-bottom: 1px solid var(--lux-border);
+                display: block;
+                padding: 1rem 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Navigation (Shared) -->
+    <header class="lux-header">
+        <div class="container header-container">
+            <button class="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
+            <nav class="nav-links left">
+                <a href="store-shop.html">The Collection</a>
+                <a href="store-shop.html">New Arrivals</a>
+            </nav>
+            <a href="store-home.html" class="logo">AURA</a>
+            <nav class="nav-links right">
+                <a href="store-home.html">Our Story</a>
+                <a href="store-home.html">Journal</a>
+            </nav>
+            <div class="header-icons">
+                <button class="header-btn"><i class="fas fa-search"></i></button>
+                <button class="header-btn"><i class="far fa-user"></i></button>
+                <a href="store-cart.html" class="header-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="cart-page">
+        <div>
+            <h1 style="font-size: 2.5rem; margin-bottom: 2rem;">Your Bag</h1>
+
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th style="width: 50%;">Product</th>
+                        <th style="width: 20%; text-align:center;">Quantity</th>
+                        <th style="width: 15%; text-align:right;">Total</th>
+                        <th style="width: 15%; text-align:right;"></th>
+                    </tr>
+                </thead>
+                <tbody id="cart-page-items">
+                    <!-- Rendered by JS -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="cart-summary">
+            <h3
+                style="font-family:var(--font-body); font-size:1.1rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:2rem;">
+                Order Summary</h3>
+
+            <div class="summary-row">
+                <span style="color:#888;">Subtotal</span>
+                <span id="page-subtotal">$0.00</span>
+            </div>
+            <div class="summary-row">
+                <span style="color:#888;">Shipping</span>
+                <span id="page-shipping">Calculated at checkout</span>
+            </div>
+
+            <div class="summary-row summary-total">
+                <span>Estimated Total</span>
+                <span id="page-total">$0.00</span>
+            </div>
+
+            <a href="store-checkout.html" class="btn btn-primary"
+                style="width: 100%; margin-top: 2rem; min-height: 56px;">Proceed To Checkout</a>
+
+            <div
+                style="margin-top: 2rem; display:flex; gap: 1rem; justify-content:center; color:#888; font-size: 1.5rem;">
+                <i class="fab fa-cc-visa"></i>
+                <i class="fab fa-cc-mastercard"></i>
+                <i class="fab fa-cc-amex"></i>
+                <i class="fab fa-cc-paypal"></i>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="lux-footer" style="margin-top:4rem;">
+        <div class="container" style="text-align:center;">
+            <div class="footer-brand" style="margin-bottom:1rem;">AURA</div>
+            <p style="font-size:0.85rem; color:#888; text-transform:uppercase; letter-spacing:2px;">Architecting
+                high-performance aesthetics.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/store.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCartPage();
+
+            // Override global updateQty and remove to trigger full re-render on this page
+            const originalUpdate = window.updateQty;
+            const originalRemove = window.removeFromCart;
+
+            window.updateQty = (id, delta) => {
+                originalUpdate(id, delta);
+                renderCartPage();
+            };
+
+            window.removeFromCart = (id) => {
+                originalRemove(id);
+                renderCartPage();
+            };
+        });
+
+        function renderCartPage() {
+            const cartList = document.getElementById('cart-page-items');
+            if (!cartList) return;
+
+            // `getCart` is global from store.js
+            const cart = getCart();
+            let html = '';
+            let subtotal = 0;
+
+            if (cart.length === 0) {
+                html = `<tr><td colspan="4" style="text-align:center; padding: 4rem 0;">Your shopping bag is empty. <br><br><a href="store-shop.html" class="btn btn-outline">Continue Shopping</a></td></tr>`;
+                document.getElementById('page-subtotal').innerText = '$0.00';
+                document.getElementById('page-total').innerText = '$0.00';
+                document.getElementById('page-shipping').innerText = '-';
+            } else {
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.qty;
+                    subtotal += itemTotal;
+
+                    html += `
+                        <tr>
+                            <td>
+                                <div class="cart-item-detail">
+                                    <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+                                    <div class="cart-item-info">
+                                        <h4>${item.name}</h4>
+                                        <p>$${item.price.toFixed(2)}</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="text-align:center;">
+                                <div class="qty-control">
+                                    <button onclick="updateQty('${item.id}', -1)">-</button>
+                                    <span>${item.qty}</span>
+                                    <button onclick="updateQty('${item.id}', 1)">+</button>
+                                </div>
+                            </td>
+                            <td style="text-align:right; font-weight:500;">
+                                $${itemTotal.toFixed(2)}
+                            </td>
+                            <td style="text-align:right;">
+                                <button onclick="removeFromCart('${item.id}')" style="background:none; border:none; cursor:pointer; color:#888; font-size:1.1rem; text-decoration:underline;">Remove</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+
+                document.getElementById('page-subtotal').innerText = '$' + subtotal.toFixed(2);
+
+                const shipping = subtotal > 200 ? 0 : 25;
+                document.getElementById('page-shipping').innerText = shipping === 0 ? 'Complimentary' : '$' + shipping.toFixed(2);
+                document.getElementById('page-total').innerText = '$' + (subtotal + shipping).toFixed(2);
+            }
+
+            cartList.innerHTML = html;
+        }
+    </script>
+</body>
+
+</html>
