@@ -889,7 +889,7 @@ section {
 
 .demos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
     gap: 3rem;
 }
 
@@ -1463,7 +1463,7 @@ section {
 
 /* --- Pricing Tiers --- */
 .pricing-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     align-items: center;
 }
 
@@ -1665,6 +1665,19 @@ section {
     .contact-container {
         padding: 2rem;
     }
+
+    .video-frame {
+        padding-bottom: 125%;
+        /* Taller video frame on mobile to prevent text spill */
+    }
+
+    .promo-scene h2 {
+        font-size: 2.5rem;
+    }
+
+    .video-logo-bottom img {
+        width: 50px;
+    }
 }
 
 /* --- Case Study Subpage Styles --- */
@@ -1735,7 +1748,7 @@ section {
 }
 
 .cs-stats-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: 2rem;
 }
 
@@ -2156,7 +2169,7 @@ section {
 
 .cs-tech-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: 2rem;
 }
 

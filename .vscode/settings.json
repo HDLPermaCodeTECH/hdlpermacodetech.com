@@ -2,6 +2,9 @@
     "intelephense.diagnostics.excludes": [
         "**/PHPMailer/**"
     ],
+    "php.problems.exclude": {
+        "PHPMailer/**/*": true
+    },
     "php.validate.executablePath": "",
     "php.validate.run": "onSave"
 }
