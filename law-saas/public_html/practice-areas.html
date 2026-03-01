@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Practice Domains | 
+            Chronicle &amp; Partners
+    </title>
+    <!-- FontAwesome for standard icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- Global Ultra-Luxury CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Inline scripts for robust loading -->
+    <script>
+        document.documentElement.classList.add('js-enabled');
+    </script>
+</head>
+
+<body>
+
+    <nav class="navbar" id="mainNav">
+        <div class="container nav-container">
+            <!-- Brand -->
+            <a href="/" class="brand-logo">
+                Chronicle &amp; Partners
+            </a>
+
+            <!-- Links Desktop -->
+            <div class="nav-links" id="navLinks">
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                <a href="/practice-areas">Practice Areas</a>
+                <a href="/attorneys">Attorneys</a>
+                <a href="/results">Results</a>
+                <a href="/insights">Insights</a>
+                <a href="/portal/login">Client Portal</a>
+            </div>
+
+            <!-- Actions Desktop & Mobile Toggle -->
+            <div style="display:flex; align-items:center; gap: 1rem;">
+                <!-- Hide booking CTA on mobile inside this wrapper (move to dropdown) to save space -->
+                <div class="nav-btn-wrap">
+                    <a href="/booking" class="btn btn-primary" style="padding: 0.6rem 2rem; font-size:0.8rem;">Book
+                        Consultation</a>
+                </div>
+                <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Push content down below fixed navbar -->
+    <div style="height: var(--header-h);"></div>
+
+    <!-- AI Chatbot Floating Widget (Injected everywhere) -->
+    <div id="ai-chat-widget" style="position:fixed; bottom: 2rem; right: 2rem; z-index: 9999;">
+        <button id="aiChatBtn"
+            style="width: 60px; height: 60px; border-radius: 50%; background: var(--clr-primary); color: #fff; border: none; box-shadow: 0 10px 25px rgba(0,0,0,0.2); cursor: pointer; font-size: 1.5rem; transition: transform 0.2s;">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+    </div>
+
+    <header
+        style="padding: 10rem 0 6rem; background: var(--clr-surface-alt); border-bottom: 1px solid var(--clr-border);">
+        <div class="container" style="max-width: 900px; text-align:center;">
+            <span
+                style="display:inline-block; font-size: 0.85rem; text-transform:uppercase; letter-spacing: 2px; color: var(--clr-accent); font-weight: 600; margin-bottom: 1.5rem;">Expertise</span>
+            <h1 class="editorial-title" style="margin-bottom: 2rem;">Legal mastery across key industries.</h1>
+        </div>
+    </header>
+
+    <section style="padding: 6rem 0; background: var(--clr-bg);">
+        <div class="container"
+            style="display:grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 3rem;">
+
+            <!-- Area 1 -->
+            <article
+                style="border: 1px solid var(--clr-border); background: var(--clr-surface); transition: transform 0.3s;"
+                onmouseover="this.style.transform='translateY(-5px)';" onmouseout="this.style.transform='none';">
+                <div style="height: 250px; overflow:hidden;">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800"
+                        alt="Corporate" style="width:100%; height:100%; object-fit:cover; filter:grayscale(30%);">
+                </div>
+                <div style="padding: 3rem;">
+                    <h2 style="font-size: 2rem; margin-bottom: 1rem;">Corporate M&A</h2>
+                    <p style="color:var(--clr-text-muted); font-size:1.05rem; margin-bottom:2rem; line-height:1.7;">
+                        Advising publicly traded and highly valued private entities on domestic and cross-border
+                        mergers, acquisitions, and strategic alliances.</p>
+                    <a href="/contact"
+                        style="font-size:0.85rem; text-transform:uppercase; letter-spacing:1px; font-weight:600; color:var(--clr-primary); border-bottom:1px solid var(--clr-accent); padding-bottom:4px;">Inquire
+                        Services &rarr;</a>
+                </div>
+            </article>
+
+            <!-- Area 2 -->
+            <article
+                style="border: 1px solid var(--clr-border); background: var(--clr-surface); transition: transform 0.3s;"
+                onmouseover="this.style.transform='translateY(-5px)';" onmouseout="this.style.transform='none';">
+                <div style="height: 250px; overflow:hidden;">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800"
+                        alt="IP" style="width:100%; height:100%; object-fit:cover; filter:grayscale(30%);">
+                </div>
+                <div style="padding: 3rem;">
+                    <h2 style="font-size: 2rem; margin-bottom: 1rem;">Intellectual Property</h2>
+                    <p style="color:var(--clr-text-muted); font-size:1.05rem; margin-bottom:2rem; line-height:1.7;">
+                        Securing and defending advanced technologies, patents, trademarks, and copyright portfolios in
+                        federal courts and international tribunals.</p>
+                    <a href="/contact"
+                        style="font-size:0.85rem; text-transform:uppercase; letter-spacing:1px; font-weight:600; color:var(--clr-primary); border-bottom:1px solid var(--clr-accent); padding-bottom:4px;">Inquire
+                        Services &rarr;</a>
+                </div>
+            </article>
+
+            <!-- Area 3 -->
+            <article
+                style="border: 1px solid var(--clr-border); background: var(--clr-primary); color: #fff; transition: transform 0.3s;"
+                onmouseover="this.style.transform='translateY(-5px)';" onmouseout="this.style.transform='none';">
+                <div style="height: 250px; overflow:hidden;">
+                    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=800"
+                        alt="Litigation" style="width:100%; height:100%; object-fit:cover; filter:grayscale(100%);">
+                </div>
+                <div style="padding: 3rem;">
+                    <h2 style="font-size: 2rem; margin-bottom: 1rem; color:#fff;">Commercial Litigation</h2>
+                    <p style="color:rgba(255,255,255,0.7); font-size:1.05rem; margin-bottom:2rem; line-height:1.7;">
+                        Unyielding advocacy in high-stakes disputes. We resolve complex commercial conflicts
+                        efficiently, protecting our clients' assets and reputations.</p>
+                    <a href="/contact"
+                        style="font-size:0.85rem; text-transform:uppercase; letter-spacing:1px; font-weight:600; color:var(--clr-accent); border-bottom:1px solid var(--clr-accent); padding-bottom:4px;">Inquire
+                        Services &rarr;</a>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- Global Footer -->
+<footer
+    style="background: var(--clr-bg); border-top: 1px solid var(--clr-border); padding: 5rem 0 2rem; margin-top: 5rem;">
+    <div class="container"
+        style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 4rem; margin-bottom: 4rem;">
+
+        <!-- Branding -->
+        <div>
+            <a href="/" class="brand-logo" style="margin-bottom: 1.5rem; display:block;">
+                Chronicle &amp; Partners
+            </a>
+            <p style="color:var(--clr-text-muted); font-size: 0.95rem; margin-bottom: 2rem; max-width: 320px;">
+                An elite advisory providing sophisticated legal counsel to enterprises, innovators, and private wealth.
+            </p>
+            <div style="display:flex; gap:1.25rem; font-size: 1.25rem;">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+
+        <!-- Directory -->
+        <div>
+            <h4
+                style="font-family: var(--font-sans); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem;">
+                Expertise</h4>
+            <ul
+                style="display:flex; flex-direction:column; gap:0.85rem; color:var(--clr-text-muted); font-size:0.95rem;">
+                <li><a href="/practice-areas/corporate">Corporate Governance</a></li>
+                <li><a href="/practice-areas/intellectual-property">Intellectual Property</a></li>
+                <li><a href="/practice-areas/litigation">Commercial Litigation</a></li>
+                <li><a href="/practice-areas/private-wealth">Private Wealth Services</a></li>
+            </ul>
+        </div>
+
+        <!-- Links -->
+        <div>
+            <h4
+                style="font-family: var(--font-sans); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem;">
+                Platform</h4>
+            <ul
+                style="display:flex; flex-direction:column; gap:0.85rem; color:var(--clr-text-muted); font-size:0.95rem;">
+                <li><a href="/portal/login">Client Login</a></li>
+                <li><a href="/auth/admin">Attorney Login</a></li>
+                <li><a href="/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/terms">Terms &amp; Conditions</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+            <h4
+                style="font-family: var(--font-sans); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem;">
+                Headquarters</h4>
+            <ul
+                style="display:flex; flex-direction:column; gap:0.85rem; color:var(--clr-text-muted); font-size:0.95rem;">
+                <li><i class="fas fa-map-marker-alt" style="width:20px; color:var(--clr-primary);"></i> 100 Legal Way,
+                    New York, NY</li>
+                <li><i class="fas fa-envelope" style="width:20px; color:var(--clr-primary);"></i>
+                    inquiries@chronicle.com
+                </li>
+                <li><i class="fas fa-phone" style="width:20px; color:var(--clr-primary);"></i>
+                    +1 (800) 555-0199
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="container"
+        style="border-top: 1px solid var(--clr-border); padding-top: 2rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; font-size:0.8rem; color:var(--clr-text-muted);">
+        <span>&copy; 2026
+                Chronicle &amp; Partners. All rights reserved.</span>
+        <span><i class="fas fa-shield-alt"></i> Zero-Trust Secured Platform</span>
+    </div>
+</footer>
+
+<!-- Global Scripts -->
+<script src="/js/main.js"></script>
+</body>
+
+</html>

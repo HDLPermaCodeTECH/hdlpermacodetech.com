@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Documents | Chronicle &amp; Partners
+    </title>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body style="background: var(--clr-surface-alt);">
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <a href="/" style="color:#fff;">
+                Chronicle &amp; Partners
+            </a>
+        </div>
+        <div
+            style="padding: 0 2rem 2rem; color: rgba(255,255,255,0.5); font-size: 0.8rem; text-transform:uppercase; letter-spacing:1px;">
+            Client Portal</div>
+        <nav class="sidebar-menu">
+            <a href="/portal/dashboard" class="">
+                <i class="fas fa-home" style="width: 20px;"></i> Dashboard
+            </a>
+            <a href="/portal/cases" class="">
+                <i class="fas fa-folder-open" style="width: 20px;"></i> My Cases
+            </a>
+            <a href="/portal/documents" class="active">
+                <i class="fas fa-file-signature" style="width: 20px;"></i> Documents
+            </a>
+            <a href="/auth/logout" style="margin-top: 2rem; color: #fca5a5;">
+                <i class="fas fa-sign-out-alt" style="width: 20px;"></i> Secure Logout
+            </a>
+        </nav>
+    </aside>
+
+    <main class="dash-main">
+
+        <header style="margin-bottom: 3rem; border-bottom: 1px solid var(--clr-border); padding-bottom: 2rem;">
+            <h1
+                style="font-family:var(--font-sans); font-size: 2rem; color: var(--clr-primary); margin-bottom: 0.25rem;">
+                E-Discovery & Signatures</h1>
+            <p style="color:var(--clr-text-muted); font-size: 0.95rem;">Encrypted document vault.</p>
+        </header>
+
+        <!-- Document Controls -->
+        <div style="display:flex; justify-content:space-between; margin-bottom: 1.5rem;">
+            <div style="display:flex; gap: 1rem;">
+                <input type="text" class="form-control" placeholder="Search files..."
+                    style="width: 300px; padding: 0.5rem 1rem;">
+                <button class="btn btn-outline" style="padding: 0.5rem 1rem;"><i class="fas fa-filter"></i></button>
+            </div>
+            <button class="btn btn-primary" style="padding: 0.5rem 1.5rem;"
+                onclick="alert('File upload API called securely.')"><i class="fas fa-cloud-upload-alt"></i> Upload
+                Package</button>
+        </div>
+
+        <div
+            style="background:#fff; border:1px solid var(--clr-border); border-radius: var(--radius-sm); overflow:hidden;">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th style="width: 50%;">Document Name</th>
+                        <th>Type</th>
+                        <th>Size</th>
+                        <th>Date Added</th>
+                        <th style="text-align:right;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                        
+                            <tr>
+                                <td style="font-weight:500; display:flex; align-items:center; gap: 1rem;">
+                                    
+                                        <i class="fas fa-file-pdf" style="color:#ef4444; font-size:1.5rem;"></i>
+                                        
+                                                NDA_Signed_Final.pdf
+                                                    
+                                </td>
+                                <td>
+                                    PDF
+                                </td>
+                                <td style="color:var(--clr-text-muted);">
+                                    2.4 MB
+                                </td>
+                                <td>
+                                    2026-02-28
+                                </td>
+                                <td style="text-align:right;">
+                                    
+                                            <a href="#" style="color:var(--clr-text-muted); padding:0.5rem;"><i
+                                                    class="fas fa-download"></i></a>
+                                            
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                                <td style="font-weight:500; display:flex; align-items:center; gap: 1rem;">
+                                    
+                                        <i class="fas fa-file-pdf" style="color:#ef4444; font-size:1.5rem;"></i>
+                                        
+                                                Retainer_Invoice.pdf
+                                                    
+                                                        <span class="badge badge-error" style="margin-left:auto;">Action
+                                                            Required</span>
+                                                        
+                                </td>
+                                <td>
+                                    PDF
+                                </td>
+                                <td style="color:var(--clr-text-muted);">
+                                    400 KB
+                                </td>
+                                <td>
+                                    2026-01-15
+                                </td>
+                                <td style="text-align:right;">
+                                    
+                                        <button class="btn btn-primary" style="padding: 0.4rem 1rem; font-size:0.75rem;"
+                                            onclick="openSignaturePad()">E-Sign Document</button>
+                                        
+                                </td>
+                            </tr>
+                            
+                                
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <!-- MOCK CANVAS JAVASCRIPT FOR E-SIGNATURE ARCHITECTURE DEMO -->
+    <script>
+        function openSignaturePad() {
+            // Enterprise SaaS feature mock
+            alert('Opening ISO 27001 Compliant Cryptographic E-Signature module. (Canvas API injected via JSON).');
+        }
+    </script>
+    <script src="/js/main.js"></script>
+</body>
+
+</html>

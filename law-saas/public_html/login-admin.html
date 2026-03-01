@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Admin Node Login | Chronicle &amp; Partners
+    </title>
+    <!-- FontAwesome for standard icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- Global Ultra-Luxury CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body
+    style="background: var(--clr-primary); color: #fff; min-height: 100vh; display:flex; align-items:center; justify-content:center; padding: 2rem;">
+
+    <div
+        style="background: #fff; color: var(--clr-primary); width: 100%; max-width: 500px; padding: 4rem; box-shadow: 0 40px 80px rgba(0,0,0,0.5);">
+
+        <div style="text-align:center; margin-bottom: 3rem;">
+            <a href="/" class="brand-logo" style="display:block; margin-bottom: 1rem;">
+                Chronicle &amp; Partners
+            </a>
+            <h1 style="font-family:var(--font-sans); font-size: 1.25rem;">
+                Enterprise Admin Node
+            </h1>
+            <p style="color:var(--clr-text-muted); font-size: 0.9rem; margin-top:0.5rem;">
+                Authorized personnel only.
+            </p>
+        </div>
+
+        
+
+                <form action="/login" method="POST">
+                    <input type="hidden" name="mode" value="admin">
+
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <div style="position:relative;">
+                            <i class="fas fa-envelope"
+                                style="position:absolute; top:50%; left:1.25rem; transform:translateY(-50%); color:var(--clr-text-muted);"></i>
+                            <input type="email" name="email" class="form-control" style="padding-left: 3rem;" required
+                                placeholder="admin@chronicle.com">
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 2.5rem;">
+                        <label>Master Password</label>
+                        <div style="position:relative;">
+                            <i class="fas fa-key"
+                                style="position:absolute; top:50%; left:1.25rem; transform:translateY(-50%); color:var(--clr-text-muted);"></i>
+                            <input type="password" name="password" class="form-control" style="padding-left: 3rem;"
+                                required placeholder="••••••••">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary"
+                        style="width:100%; padding: 1.25rem;">Authenticate</button>
+                </form>
+
+                <div style="text-align:center; margin-top: 2rem; font-size: 0.75rem; color:var(--clr-text-muted);">
+                    <i class="fas fa-shield-alt"></i> 256-bit encrypted transmission. Zero-Trust Architecture.
+                </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Dashboard | Chronicle &amp; Partners
+    </title>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body style="background: var(--clr-surface-alt);">
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <a href="/" style="color:#fff;">
+                Chronicle &amp; Partners
+            </a>
+        </div>
+        <div
+            style="padding: 0 2rem 2rem; color: rgba(255,255,255,0.5); font-size: 0.8rem; text-transform:uppercase; letter-spacing:1px;">
+            Client Portal</div>
+        <nav class="sidebar-menu">
+            <a href="/portal/dashboard" class="active">
+                <i class="fas fa-home" style="width: 20px;"></i> Dashboard
+            </a>
+            <a href="/portal/cases" class="">
+                <i class="fas fa-folder-open" style="width: 20px;"></i> My Cases
+            </a>
+            <a href="/portal/documents" class="">
+                <i class="fas fa-file-signature" style="width: 20px;"></i> Documents <span class="badge badge-warning"
+                    style="margin-left:auto;">1</span>
+            </a>
+            <a href="/portal/invoices" class="">
+                <i class="fas fa-file-invoice-dollar" style="width: 20px;"></i> Invoices
+            </a>
+            <a href="/auth/logout" style="margin-top: 2rem; color: #fca5a5;">
+                <i class="fas fa-sign-out-alt" style="width: 20px;"></i> Secure Logout
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Dashboard Engine -->
+    <main class="dash-main">
+
+        <!-- Header -->
+        <header
+            style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 3rem; border-bottom: 1px solid var(--clr-border); padding-bottom: 2rem;">
+            <div>
+                <h1
+                    style="font-family:var(--font-sans); font-size: 2rem; color: var(--clr-primary); margin-bottom: 0.25rem;">
+                    Welcome, Robert Harrison
+                </h1>
+                <p style="color:var(--clr-text-muted); font-size: 0.95rem;">Last secure login: 3/1/2026
+                </p>
+            </div>
+            <a href="/booking" class="btn btn-primary"><i class="fas fa-video" style="margin-right: 8px;"></i> Request
+                Zoom Slot</a>
+        </header>
+
+        <!-- Metrics Grid -->
+        <div
+            style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+
+            <div
+                style="background:#fff; padding: 2rem; border:1px solid var(--clr-border); border-radius: var(--radius-sm); box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                <span
+                    style="font-size:0.8rem; text-transform:uppercase; color:var(--clr-text-muted); font-weight:600;"><i
+                        class="fas fa-briefcase" style="margin-right:0.5rem; color:var(--clr-accent);"></i> Active
+                    Cases</span>
+                <h3 style="font-family:var(--font-sans); font-size:2.5rem; margin-top:1rem;">
+                    1
+                </h3>
+            </div>
+
+            <div
+                style="background:#fff; padding: 2rem; border:1px solid var(--clr-border); border-radius: var(--radius-sm); box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                <span
+                    style="font-size:0.8rem; text-transform:uppercase; color:var(--clr-text-muted); font-weight:600;"><i
+                        class="fas fa-pen-nib" style="margin-right:0.5rem; color:var(--clr-accent);"></i> Pending
+                    Signatures</span>
+                <h3 style="font-family:var(--font-sans); font-size:2.5rem; margin-top:1rem; color:var(--clr-error);">1
+                </h3>
+            </div>
+
+            <div
+                style="background:#fff; padding: 2rem; border:1px solid var(--clr-border); border-radius: var(--radius-sm); box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                <span
+                    style="font-size:0.8rem; text-transform:uppercase; color:var(--clr-text-muted); font-weight:600;"><i
+                        class="fas fa-calendar-check" style="margin-right:0.5rem; color:var(--clr-accent);"></i>
+                    Upcoming Appointments</span>
+                <h3 style="font-family:var(--font-sans); font-size:2.5rem; margin-top:1rem;">
+                    1
+                </h3>
+            </div>
+
+        </div>
+
+        <!-- Table View: Active Cases -->
+        <div
+            style="background:#fff; border:1px solid var(--clr-border); border-radius: var(--radius-sm); overflow:hidden;">
+            <div
+                style="padding: 1.5rem; border-bottom: 1px solid var(--clr-border); display:flex; justify-content:space-between; align-items:center;">
+                <h3 style="font-family:var(--font-sans); font-size: 1.1rem; color: var(--clr-primary);">Recent Active
+                    Matters</h3>
+                <a href="/portal/cases" style="font-size:0.85rem; font-weight:600; color:var(--clr-accent);">View All
+                    &rarr;</a>
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Case ID</th>
+                        <th>Matter Description</th>
+                        <th>Status</th>
+                        <th>Next Milestone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                        
+                            <tr>
+                                <td style="font-family:monospace; color:var(--clr-text-muted);">
+                                    C-9921
+                                </td>
+                                <td style="font-weight:500;">
+                                    Merger Acquisition Corp.
+                                </td>
+                                <td>
+                                    <span
+                                        class="badge badge-success">
+                                        Active
+                                    </span>
+                                </td>
+                                <td>
+                                    2026-03-15
+                                </td>
+                            </tr>
+                            
+                                
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <!-- Global Scripts -->
+    <script src="/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Executive Contact | 
+            Chronicle &amp; Partners
+    </title>
+    <!-- FontAwesome for standard icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- Global Ultra-Luxury CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Inline scripts for robust loading -->
+    <script>
+        document.documentElement.classList.add('js-enabled');
+    </script>
+</head>
+
+<body>
+
+    <nav class="navbar" id="mainNav">
+        <div class="container nav-container">
+            <!-- Brand -->
+            <a href="/" class="brand-logo">
+                Chronicle &amp; Partners
+            </a>
+
+            <!-- Links Desktop -->
+            <div class="nav-links" id="navLinks">
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                <a href="/practice-areas">Practice Areas</a>
+                <a href="/attorneys">Attorneys</a>
+                <a href="/results">Results</a>
+                <a href="/insights">Insights</a>
+                <a href="/portal/login">Client Portal</a>
+            </div>
+
+            <!-- Actions Desktop & Mobile Toggle -->
+            <div style="display:flex; align-items:center; gap: 1rem;">
+                <!-- Hide booking CTA on mobile inside this wrapper (move to dropdown) to save space -->
+                <div class="nav-btn-wrap">
+                    <a href="/booking" class="btn btn-primary" style="padding: 0.6rem 2rem; font-size:0.8rem;">Book
+                        Consultation</a>
+                </div>
+                <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Push content down below fixed navbar -->
+    <div style="height: var(--header-h);"></div>
+
+    <!-- AI Chatbot Floating Widget (Injected everywhere) -->
+    <div id="ai-chat-widget" style="position:fixed; bottom: 2rem; right: 2rem; z-index: 9999;">
+        <button id="aiChatBtn"
+            style="width: 60px; height: 60px; border-radius: 50%; background: var(--clr-primary); color: #fff; border: none; box-shadow: 0 10px 25px rgba(0,0,0,0.2); cursor: pointer; font-size: 1.5rem; transition: transform 0.2s;">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+    </div>
+
+    <header
+        style="padding: 10rem 0 4rem; background: var(--clr-surface-alt); border-bottom: 1px solid var(--clr-border);">
+        <div class="container" style="text-align:center;">
+            <span
+                style="display:inline-block; font-size: 0.85rem; text-transform:uppercase; letter-spacing: 2px; color: var(--clr-accent); font-weight: 600; margin-bottom: 1.5rem;">Headquarters</span>
+            <h1 class="editorial-title" style="margin-bottom: 2rem;">Contact Us.</h1>
+        </div>
+    </header>
+
+    <section style="padding: 6rem 0; background: var(--clr-bg);">
+        <div class="container" style="display:grid; grid-template-columns: 1fr 1fr; gap: 6rem;">
+
+            <!-- Info -->
+            <div>
+                <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Direct Inquiries</h2>
+                <p style="color:var(--clr-text-muted); font-size: 1.1rem; margin-bottom: 3rem; line-height: 1.8;">
+                    For immediate assistance or to direct confidential communications to a specific partner, please
+                    utilize the secure channels below or submit a preliminary inquiry via our secure form.
+                </p>
+
+                <div style="margin-bottom: 2rem;">
+                    <h4
+                        style="font-family:var(--font-sans); font-size: 0.85rem; text-transform:uppercase; letter-spacing:1px; color:var(--clr-primary); margin-bottom: 0.5rem;">
+                        New York HQ</h4>
+                    <p style="color:var(--clr-text-muted);">100 Legal Way<br>Manhattan, NY 10001</p>
+                </div>
+
+                <div style="margin-bottom: 2rem;">
+                    <h4
+                        style="font-family:var(--font-sans); font-size: 0.85rem; text-transform:uppercase; letter-spacing:1px; color:var(--clr-primary); margin-bottom: 0.5rem;">
+                        Communications</h4>
+                    <p style="color:var(--clr-text-muted);">Phone: +1 (800) 555-0199<br>Email: inquiries@chronicle.com
+                    </p>
+                </div>
+
+                <a href="/booking" class="btn btn-outline" style="margin-top: 1rem;">Schedule Formal Consultation</a>
+            </div>
+
+            <!-- Form -->
+            <div
+                style="background: var(--clr-surface); padding: 4rem; border: 1px solid var(--clr-border); box-shadow: 0 20px 40px rgba(0,0,0,0.02);">
+                <h3 style="font-size: 1.75rem; margin-bottom: 2rem;">Secure Messaging</h3>
+                <form
+                    onsubmit="event.preventDefault(); alert('Message strongly encrypted and routed to the administrative desk.'); this.reset();">
+
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Corporate Affiliation / Organization</label>
+                        <input type="text" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Subject of Inquiry</label>
+                        <select class="form-control" style="appearance:none;" required>
+                            <option value="">Select Domain...</option>
+                            <option value="corporate">Corporate / M&A</option>
+                            <option value="ip">Intellectual Property</option>
+                            <option value="litigation">Commercial Litigation</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Brief Description</label>
+                        <textarea class="form-control" rows="5" required></textarea>
+                        <p style="font-size: 0.75rem; color:var(--clr-text-muted); margin-top: 0.5rem;"><i
+                                class="fas fa-lock"></i> Transmission is encrypted. Do not include highly sensitive
+                            proprietary data in this initial intake form.</p>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width:100%; padding: 1.25rem;">Submit
+                        Inquiry</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Global Footer -->
+<footer
+    style="background: var(--clr-bg); border-top: 1px solid var(--clr-border); padding: 5rem 0 2rem; margin-top: 5rem;">
+    <div class="container"
+        style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 4rem; margin-bottom: 4rem;">
+
+        <!-- Branding -->
+        <div>
+            <a href="/" class="brand-logo" style="margin-bottom: 1.5rem; display:block;">
+                Chronicle &amp; Partners
+            </a>
+            <p style="color:var(--clr-text-muted); font-size: 0.95rem; margin-bottom: 2rem; max-width: 320px;">
+                An elite advisory providing sophisticated legal counsel to enterprises, innovators, and private wealth.
+            </p>
+            <div style="display:flex; gap:1.25rem; font-size: 1.25rem;">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+
+        <!-- Directory -->
+        <div>
+            <h4
+                style="font-family: var(--font-sans); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem;">
+                Expertise</h4>
+            <ul
+                style="display:flex; flex-direction:column; gap:0.85rem; color:var(--clr-text-muted); font-size:0.95rem;">
+                <li><a href="/practice-areas/corporate">Corporate Governance</a></li>
+                <li><a href="/practice-areas/intellectual-property">Intellectual Property</a></li>
+                <li><a href="/practice-areas/litigation">Commercial Litigation</a></li>
+                <li><a href="/practice-areas/private-wealth">Private Wealth Services</a></li>
+            </ul>
+        </div>
+
+        <!-- Links -->
+        <div>
+            <h4
+                style="font-family: var(--font-sans); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem;">
+                Platform</h4>
+            <ul
+                style="display:flex; flex-direction:column; gap:0.85rem; color:var(--clr-text-muted); font-size:0.95rem;">
+                <li><a href="/portal/login">Client Login</a></li>
+                <li><a href="/auth/admin">Attorney Login</a></li>
+                <li><a href="/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/terms">Terms &amp; Conditions</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+            <h4
+                style="font-family: var(--font-sans); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem;">
+                Headquarters</h4>
+            <ul
+                style="display:flex; flex-direction:column; gap:0.85rem; color:var(--clr-text-muted); font-size:0.95rem;">
+                <li><i class="fas fa-map-marker-alt" style="width:20px; color:var(--clr-primary);"></i> 100 Legal Way,
+                    New York, NY</li>
+                <li><i class="fas fa-envelope" style="width:20px; color:var(--clr-primary);"></i>
+                    inquiries@chronicle.com
+                </li>
+                <li><i class="fas fa-phone" style="width:20px; color:var(--clr-primary);"></i>
+                    +1 (800) 555-0199
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="container"
+        style="border-top: 1px solid var(--clr-border); padding-top: 2rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; font-size:0.8rem; color:var(--clr-text-muted);">
+        <span>&copy; 2026
+                Chronicle &amp; Partners. All rights reserved.</span>
+        <span><i class="fas fa-shield-alt"></i> Zero-Trust Secured Platform</span>
+    </div>
+</footer>
+
+<!-- Global Scripts -->
+<script src="/js/main.js"></script>
+</body>
+
+</html>
