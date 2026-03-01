@@ -133,6 +133,27 @@
                 /* Disable scroll animation on mobile phones since tap vs hover behaves unexpectedly */
             }
         }
+
+        /* Ensure 4 columns on laptop/desktop */
+        @media (min-width: 1024px) {
+            .templates-grid {
+                grid-template-columns: repeat(4, 1fr);
+                max-width: 1600px;
+                gap: 2rem;
+            }
+
+            .template-preview {
+                height: 200px;
+            }
+
+            .template-title {
+                font-size: 1.4rem;
+            }
+
+            .template-desc {
+                font-size: 0.95rem;
+            }
+        }
     </style>
 </head>
 
