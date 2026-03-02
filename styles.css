@@ -695,6 +695,13 @@ section {
 .contact-info p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.contact-details p {
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .contact-details {
