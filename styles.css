@@ -728,8 +728,32 @@ section {
         width: max-content;
     }
 
+    .custom-select {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .custom-select-trigger {
+        width: 100%;
+        text-align: center;
+    }
+
+    .contact-form {
+        align-items: center;
+    }
+
+    .form-group,
+    .form-row,
+    .custom-select-wrapper {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
     .submit-btn {
         align-self: center !important;
+        width: auto !important;
+        min-width: 250px;
     }
 }
 
