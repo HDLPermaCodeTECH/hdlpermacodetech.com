@@ -1079,6 +1079,20 @@ section {
     opacity: 1;
 }
 
+@media (max-width: 768px) {
+    .demo-overlay {
+        opacity: 1;
+        visibility: visible;
+        background: rgba(15, 23, 42, 0.6);
+        /* Slightly more transparent on mobile static state */
+    }
+
+    .demo-btn {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 .demo-info {
     padding: 2.5rem;
     flex-grow: 1;
