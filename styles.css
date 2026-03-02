@@ -988,6 +988,17 @@ section {
     gap: 3rem;
 }
 
+@media (max-width: 768px) {
+    .demos {
+        padding: 4rem 1rem;
+    }
+
+    .demos-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
 .demo-card {
     background: linear-gradient(160deg, rgba(30, 41, 59, 0.4) 0%, rgba(2, 6, 23, 0.8) 100%);
     border: 1px solid rgba(255, 255, 255, 0.05);
