@@ -1,11 +1,81 @@
+# ----------------------------------------------------------------------
+# 1. CLEAN URL REDIRECTION
+# ----------------------------------------------------------------------
 RewriteEngine On
 
-# 1. Externally redirect direct requests for .html to extensionless URL
+# Externally redirect direct requests for .html to extensionless URL
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^\ ]+)\.html
 RewriteRule ^/?(.*)\.html$ /$1 [L,R=301]
 
-# 2. Internally map extensionless URL to .html if it exists
+# Internally map extensionless URL to .html if it exists
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^(.*)$ $1.html [L]
+
+# ----------------------------------------------------------------------
+# 2. SECURITY HARDENING
+# ----------------------------------------------------------------------
+
+# Disable Directory Listing (Prevent File Browsing)
+Options -Indexes
+
+# Block Access to Hidden Files (e.g. .env, .git)
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# Block Access to Sensitive Configuration and Build Files
+<FilesMatch "(^#.*#|\.(bak|conf|dist|fla|in[ci]|log|psd|sh|sql|sw[op])|~)$">
+    Require all denied
+</FilesMatch>
+<FilesMatch "(package\.json|package-lock\.json|server\.js)">
+    Require all denied
+</FilesMatch>
+
+# Disable Image Hotlinking (Anti-Theft)
+RewriteEngine on
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?hdlpermacodetech.com [NC]
+RewriteRule \.(jpg|jpeg|png|gif|webp|svg)$ - [F,NC,L]
+
+# ----------------------------------------------------------------------
+# 3. HTTP SECURITY HEADERS
+# ----------------------------------------------------------------------
+<IfModule mod_headers.c>
+    # Prevent Clickjacking (Stops cloning the site within an iframe)
+    Header set X-Frame-Options "SAMEORIGIN"
+
+    # Stop MIME-type sniffing
+    Header set X-Content-Type-Options "nosniff"
+
+    # Enable advanced XSS protection
+    Header set X-XSS-Protection "1; mode=block"
+
+    # Strict Transport Security (Force HTTPS)
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+    # Referrer Policy
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Soft Content Security Policy (Anti XSS)
+    # Permits external APIs (Analytics) but blocks dangerous objects
+    Header set Content-Security-Policy "default-src * data: blob: 'unsafe-inline' 'unsafe-eval'; object-src 'none'; frame-ancestors 'none';"
+</IfModule>
+
+# ----------------------------------------------------------------------
+# 4. PERFORMANCE & GZIP COMPRESSION
+# ----------------------------------------------------------------------
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json image/svg+xml
+</IfModule>
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+</IfModule>

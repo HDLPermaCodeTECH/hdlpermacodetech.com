@@ -3,19 +3,43 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 const path = require('path');
+const helmet = require('helmet');
+const compression = require('compression');
+const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware
+// Security Middleware
+app.use(helmet({
+    contentSecurityPolicy: false, // CSP is configured natively in .htaccess
+    crossOriginEmbedderPolicy: false
+}));
+app.disable('x-powered-by'); // Hide Express info
+
+// Performance Compression Config
+app.use(compression());
+
+// Strict API Rate Limiting for Contact Forms
+const apiLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 10, // Limit each IP to 10 requests per windowMs
+    message: { error: 'Too many requests generated from this IP, please try again later.' },
+    standardHeaders: true,
+    legacyHeaders: false,
+});
+app.use('/send-project-brief', apiLimiter);
+app.use('/send-lead-magnet', apiLimiter);
+
+// Strict CORS Middleware
 const corsOptions = {
-    origin: '*', // Allow all origins for the form submission
+    origin: ['https://hdlpermacodetech.com', 'https://www.hdlpermacodetech.com', 'http://localhost:5000', 'http://127.0.0.1:5000'],
     methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
 };
 app.use(cors(corsOptions));
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '10kb' })); // Limit JSON body size to prevent attack payloads
 
 // Global middleware to remove .html extensions (301 Redirect)
 app.use((req, res, next) => {
@@ -474,6 +498,12 @@ app.post('/send-lead-magnet', async (req, res) => {
         console.error("Error processing lead magnet:", error);
         res.status(500).json({ success: false, message: 'Mailer Error: ' + error.message });
     }
+});
+
+// Global Error Handler (Production-Ready)
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ success: false, message: 'Internal Server Error. Please try again later.' });
 });
 
 // Start Server
