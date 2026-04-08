@@ -17,8 +17,24 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
+// Global middleware to remove .html extensions (301 Redirect)
+app.use((req, res, next) => {
+    if (req.path === '/index.html') {
+        const query = req.url.slice(req.path.length);
+        return res.redirect(301, '/' + query);
+    } else if (req.path.endsWith('.html')) {
+        const newPath = req.path.slice(0, -5);
+        const query = req.url.slice(req.path.length);
+        return res.redirect(301, newPath + query);
+    }
+    next();
+});
+
 // Serve static HTML/CSS files from the current directory
-app.use(express.static(path.join(__dirname)));
+// Automatically resolve extensionless URLs to .html files
+app.use(express.static(path.join(__dirname), {
+    extensions: ['html']
+}));
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
