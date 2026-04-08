@@ -4,6 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Analytics & Tracking Setup -->
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('track', 'PageView');
+    </script>
+
     <!-- SEO & Primary Meta Tags -->
     <title>Web Development Pricing | HDL Perma Code TECH Packages</title>
     <meta name="description"
@@ -30,11 +55,21 @@
         content="Affordable, professional web development pricing packages for startups and growing businesses. Transparent one-time payments for high-converting websites and SaaS.">
     <meta property="twitter:image" content="https://hdlpermacodetech.com/images/HDL_HexShield_Icon.png">
 
+        <!-- JSON-LD Structured Data JSON -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "PriceSpecification",
+      "name": "Pricing | HDL Perma Code TECH",
+      "url": "https://hdlpermacodetech.com/pricing.html",
+      "description": "Transparent pricing for premium web development packages including Professional, E-Commerce, and Startups."
+    }
+    </script>
+
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&family=Outfit:wght@300;500;800&display=swap" as="style">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&family=Outfit:wght@300;500;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&family=Outfit:wght@300;500;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/HDL_HexShield_Icon.png">
     <link rel="apple-touch-icon" href="images/HDL_HexShield_Icon.png">
     <link rel="stylesheet" href="styles.css">

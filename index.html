@@ -4,6 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Analytics & Tracking Setup -->
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('track', 'PageView');
+    </script>
+
     <!-- SEO & Primary Meta Tags -->
     <title>HDL Perma Code TECH | Premium Web Development & Digital Solutions</title>
     <meta name="description"
@@ -57,9 +82,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&family=Outfit:wght@300;500;800&display=swap"
-        rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&family=Outfit:wght@300;500;800&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&family=Outfit:wght@300;500;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/HDL_HexShield_Icon.png">
     <link rel="apple-touch-icon" href="images/HDL_HexShield_Icon.png">
     <link rel="stylesheet" href="styles.css">
@@ -451,7 +475,7 @@
             <div class="demo-card-wrapper reveal delay-1">
                 <div class="demo-card">
                     <div class="demo-thumbnail">
-                        <img src="images/aura-dashboard-mockup.webp" alt="Real-time Analytics Dashboard"
+                        <img src="images/aura-dashboard-mockup.webp" alt="Real-time Analytics Dashboard" loading="lazy" width="800" height="450"
                             onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80'">
                         <a href="demo-analytics.html" class="demo-overlay">
                             <span class="btn btn-primary demo-btn">Launch Demo</span>
@@ -473,7 +497,7 @@
             <div class="demo-card-wrapper reveal delay-2">
                 <div class="demo-card">
                     <div class="demo-thumbnail">
-                        <img src="images/ai-generated-ui.png" alt="AI Generative Interface"
+                        <img src="images/ai-generated-ui.png" alt="AI Generative Interface" loading="lazy" width="800" height="450"
                             onerror="this.src='https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80'">
                         <a href="demo-ai.html" class="demo-overlay">
                             <span class="btn btn-primary demo-btn">Launch Demo</span>
@@ -495,7 +519,7 @@
             <div class="demo-card-wrapper reveal delay-3">
                 <div class="demo-card">
                     <div class="demo-thumbnail">
-                        <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=800&q=80"
+                        <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=800&q=80" loading="lazy" width="800" height="450"
                             alt="E-Commerce 3D Configurator">
                         <a href="demo-ecommerce.html" class="demo-overlay">
                             <span class="btn btn-primary demo-btn">Launch Demo</span>
@@ -526,7 +550,7 @@
             <!-- Template 1: E-Commerce -->
             <article class="template-card reveal delay-1">
                 <div class="template-preview">
-                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80"
+                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80" loading="lazy" width="800" height="450"
                         alt="E-Commerce Store Template">
                 </div>
                 <div class="template-info">
@@ -547,7 +571,7 @@
             <!-- Template 2: Law Firm SaaS -->
             <article class="template-card reveal delay-2">
                 <div class="template-preview">
-                    <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=800"
+                    <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=800&q=80" loading="lazy" width="800" height="450"
                         alt="Law Firm SaaS Template">
                 </div>
                 <div class="template-info">
@@ -569,7 +593,7 @@
             <!-- Template 3: Wedding Website -->
             <article class="template-card reveal delay-3">
                 <div class="template-preview">
-                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80"
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80" loading="lazy" width="800" height="450"
                         alt="Premium Wedding Website Template">
                 </div>
                 <div class="template-info">
@@ -641,7 +665,7 @@
             <!-- Article 1 -->
             <article class="card"
                 style="display: flex; flex-direction: column; overflow: hidden; transition: transform 0.3s;">
-                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80"
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" loading="lazy" width="600" height="200"
                     alt="Blog Image" style="width: 100%; height: 200px; object-fit: cover;">
                 <div style="padding: 2rem;">
                     <div
@@ -662,7 +686,7 @@
             <!-- Article 2 -->
             <article class="card"
                 style="display: flex; flex-direction: column; overflow: hidden; transition: transform 0.3s;">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80"
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" loading="lazy" width="600" height="200"
                     alt="Blog Image" style="width: 100%; height: 200px; object-fit: cover;">
                 <div style="padding: 2rem;">
                     <div
