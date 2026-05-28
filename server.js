@@ -261,7 +261,7 @@ app.post('/send-project-brief', async (req, res) => {
                                                 <td style="padding: 40px; line-height: 1.6; color: #cbd5e1;">
                                                     <h2 style="color: #f8fafc; margin-top: 0; font-size: 22px; font-weight: 600; letter-spacing: -0.5px;">Hi ${name},</h2>
                                                     <p style="color: #94a3b8; font-size: 15px; margin-bottom: 20px;">Thank you for reaching out and submitting your project brief. We have successfully received your inquiry, and our team is already reviewing the details.</p>
-                                                    <p style="color: #94a3b8; font-size: 15px;">At HDL Perma Code TECH, we take pride in engineering high-performance, conversion-optimized digital experiences. We're excited about the possibility of building your next big project.</p>
+                                                    <p style="color: #94a3b8; font-size: 15px;">At HDL Perma Code TECH, we take pride in development high-performance, conversion-optimized digital experiences. We're excited about the possibility of building your next big project.</p>
 
                                                     <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #1e293b; padding: 25px; border-radius: 10px; margin: 30px 0; border-left: 4px solid #38bdf8; box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);">
                                                         <tr>

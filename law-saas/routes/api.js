@@ -5,7 +5,7 @@ const router = express.Router();
  * ========================================================================
  * ENTERPRISE SAAS API MOCKS
  * 
- * Note: These endpoints satisfy the architectural requirements defined 
+ * Note: These endpoints satisfy the structural requirements defined 
  * in the prompt for Zoom, Stripe, AI Assistant, and E-Signatures.
  * In a live deployment, these would connect to respective third-party SDKs.
  * ========================================================================

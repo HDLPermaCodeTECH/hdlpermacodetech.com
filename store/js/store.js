@@ -56,7 +56,7 @@ function initNavigation() {
     });
 }
 
-/* --- 2. Cart Architecture --- */
+/* --- 2. Cart Structure --- */
 // Cart structure: Array of objects {id, variantSku, qty, price, name, image}
 function initCart() {
     updateCartCount();
